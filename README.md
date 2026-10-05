@@ -1,6 +1,6 @@
-# Bob's Game — Modern SDL3 Port
+# Bob's Game Resurrection — Modern SDL3 Port
 
-A preservation port of Robert Pelloni's **Bob's Game** (2003-2009), recovered from the original C++ source.
+A preservation port of Robert Pelloni's cult DS homebrew **Bob's Game** (2003-2009), recovered from the original C++ source.
 
 ## About
 
