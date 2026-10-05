@@ -4,9 +4,9 @@ project(bobsgame)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# SDL3 from local build
-set(SDL3_INCLUDE_DIR "$ENV{HOME}/workspace/SDL/include")
-set(SDL3_LIB_DIR "$ENV{HOME}/workspace/SDL/build")
+# SDL3 from system install (/usr/local)
+set(SDL3_INCLUDE_DIR "/usr/local/include")
+set(SDL3_LIB_DIR "/usr/local/lib")
 
 # All source files
 set(SOURCE_FILES
@@ -99,6 +99,7 @@ set(SOURCE_FILES
     src/gamelogic/town/videostore.cpp
     src/gamelogic/town/yuushouse.cpp
     src/main.cpp
+    src/glew.c
     src/minigame/microgame.cpp
     src/minigame/ping.cpp
     src/minigame/platformexplore.cpp
@@ -117,14 +118,34 @@ target_include_directories(bobsgame PRIVATE
 
 target_link_directories(bobsgame PRIVATE
     ${SDL3_LIB_DIR}
+    /usr/local/lib
 )
 
 target_link_libraries(bobsgame
     SDL3
+    SDL3_ttf
     GL
 )
 
-# Note: SDL3_mixer and SDL3_ttf are required but not yet available.
-# Build them from source and add:
-#   target_include_directories(bobsgame PRIVATE /path/to/SDL3_mixer/include /path/to/SDL3_ttf/include)
-#   target_link_libraries(bobsgame SDL3_mixer SDL3_ttf)
+# Audio support (SDL3_mixer)
+# Default OFF: SDL3_mixer doesn't build against SDL 3.2.10 (needs 3.4+ APIs)
+# When OFF, uses the stub header in cmake/stubs/ (silent, no audio)
+# When ON, tries to find system SDL3_mixer
+option(BOBSGAME_ENABLE_AUDIO "Enable audio via SDL3_mixer" OFF)
+
+if(BOBSGAME_ENABLE_AUDIO)
+    find_package(SDL3_mixer QUIET)
+    if(SDL3_mixer_FOUND)
+        target_link_libraries(bobsgame SDL3_mixer::SDL3_mixer)
+        message(STATUS "Audio: Using system SDL3_mixer")
+    else()
+        message(WARNING "Audio: SDL3_mixer not found, falling back to stub (silent)")
+        target_include_directories(bobsgame PRIVATE ${CMAKE_SOURCE_DIR}/cmake/stubs)
+    endif()
+else()
+    # Use stub header (silent audio)
+    target_include_directories(bobsgame PRIVATE ${CMAKE_SOURCE_DIR}/cmake/stubs)
+    message(STATUS "Audio: Disabled (using stub, game will be silent)")
+endif()
+
+# Note: SDL3_ttf is required and linked above.
