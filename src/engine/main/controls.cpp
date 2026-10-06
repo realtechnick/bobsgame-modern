@@ -334,8 +334,8 @@ z axis left trigger - right trigger
 							if(ZOOMto<MINZOOM)ZOOMto=MINZOOM;
 						}
                         //HARDWARE_brightness--;
-                        //HARDWARE_create_brightened_palette((void*)GAME_original_SPRITE_PALETTE,(int*)GAME_temp_SPRITE_PALETTE,HARDWARE_brightness);
-                        //HARDWARE_load_sprite_palette(1,0,(int*)GAME_temp_SPRITE_PALETTE);
+                        //HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,GAME_temp_SPRITE_PALETTE,HARDWARE_brightness);
+                        //HARDWARE_load_sprite_palette(1,0,GAME_temp_SPRITE_PALETTE);
                         //HARDWARE_refresh_sprite_textures();
                      break;
                     }
@@ -347,8 +347,8 @@ z axis left trigger - right trigger
 							if(ZOOMto>MAXZOOM)ZOOMto=MAXZOOM;
 						}
                         //HARDWARE_brightness++;
-                        //HARDWARE_create_brightened_palette((void*)GAME_original_SPRITE_PALETTE,(int*)GAME_temp_SPRITE_PALETTE,HARDWARE_brightness);
-                        //HARDWARE_load_sprite_palette(1,0,(int*)GAME_temp_SPRITE_PALETTE);
+                        //HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,GAME_temp_SPRITE_PALETTE,HARDWARE_brightness);
+                        //HARDWARE_load_sprite_palette(1,0,GAME_temp_SPRITE_PALETTE);
                         //HARDWARE_refresh_sprite_textures();
                      break;
                     }
