@@ -30,12 +30,10 @@ static inline int Mix_AllocateChannels(int n) { return n; }
 
 // Sample loading (returns dummy pointer)
 static inline Mix_Chunk* Mix_LoadWAV(const char* f) { (void)f; return (Mix_Chunk*)1; }
-static inline Mix_Chunk* Mix_LoadWAV_RW(SDL_RWops* rw, int f) { (void)rw; (void)f; return (Mix_Chunk*)1; }
 static inline void Mix_FreeChunk(Mix_Chunk* c) { (void)c; }
 
 // Music loading (returns dummy pointer)
 static inline Mix_Music* Mix_LoadMUS(const char* f) { (void)f; return (Mix_Music*)1; }
-static inline Mix_Music* Mix_LoadMUS_RW(SDL_RWops* rw, int f) { (void)rw; (void)f; return (Mix_Music*)1; }
 static inline void Mix_FreeMusic(Mix_Music* m) { (void)m; }
 
 // Playback (no-op)
