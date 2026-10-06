@@ -278,7 +278,7 @@ void TEXT_reset_vars()
 void TEXT_update_sprite_window_gfx_data(int box)
 {//=========================================================================================================================
 
-	int* gfx_data = (int*)HARDWARE_load_file(TEXT_textbox[box].sprite_window_gfx->FileName);
+	unsigned char* gfx_data = (unsigned char*)HARDWARE_load_file(TEXT_textbox[box].sprite_window_gfx->FileName);
 	int* top_pixel = &TEXT_textbox[box].sprite_window_top_pixel;
 	int size_x = TEXT_textbox[box].sprite_window_gfx->data_size_x;
 	int size_y = TEXT_textbox[box].sprite_window_gfx->data_size_y;
