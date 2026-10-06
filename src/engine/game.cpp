@@ -532,6 +532,7 @@ void GAME_main(int gamespeed) //kodenermaschiniene
 
 	}
 
+	MAP_set_map_cam_to_cameraman();
 	HARDWARE_unload_wavs_done_playing();
 
 }
