@@ -251,38 +251,17 @@ void draw_sprite(SPRITE* s)
 void gl_draw_sprites(int layer)
 {//===========================================================================================================================
 
-	//Collect sprites for this layer and sort by Y (back-to-front) for correct overlap.
-	//Without Y-sort, draw order is by slot index, causing shadows/characters to
-	//clip incorrectly when moving behind objects.
-	SPRITE* sorted[256];
-	int count = 0;
 	int i=0;
-	for(i=0;i<256;i++)
+	for(i=255;i>=0;i--)
 	{
+
+		//if(PLAYER_id_gfx_slot[i]!=-1&&((PLAYER_id_priority[i]==layer)||(layer==4&&PLAYER_id_priority[i]>=4)))
 		if(HARDWARE_sprites[i]!=NULL)
 		{
-			SPRITE* sprite = HARDWARE_sprites[i];
-			if((sprite->layer==layer)||(layer==4&&sprite->layer>=4))
-			{
-				sorted[count++] = sprite;
-			}
-		}
-	}
-	//Simple bubble sort by screen_y (ascending = further back first)
-	for(i=0;i<count-1;i++) {
-		for(int j=0;j<count-1-i;j++) {
-			if(sorted[j]->screen_y > sorted[j+1]->screen_y) {
-				SPRITE* tmp = sorted[j];
-				sorted[j] = sorted[j+1];
-				sorted[j+1] = tmp;
-			}
-		}
-	}
 
-	for(i=0;i<count;i++)
-	{
-		SPRITE* sprite = sorted[i];
-		{
+			SPRITE* sprite = HARDWARE_sprites[i];
+
+			if((sprite->layer==layer)||(layer==4&&sprite->layer>=4))
 			{
 				if(GLOBAL_sprite_layer_enabled)
 				{
