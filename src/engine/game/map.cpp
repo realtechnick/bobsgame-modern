@@ -223,7 +223,7 @@ if(CLOCK_hour>12+11)brightness=-10;
 	if((CLOCK_hour>=5&&CLOCK_hour<6))//yellowish
 	{
 
-		HARDWARE_create_brightened_palette(HARDWARE_map_palette,(int*)&GAME_temp_TILESET_PALETTE,brightness+GLOBAL_BRIGHTNESS);
+		HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,brightness+GLOBAL_BRIGHTNESS);
 
 		GAME_temp_TILESET_PALETTE[1]=HARDWARE_RGB(0,0,0);
 
@@ -237,7 +237,7 @@ if(CLOCK_hour>12+11)brightness=-10;
 	if((CLOCK_hour>=6&&CLOCK_hour<=7))//yellowish
 	{
 
-		HARDWARE_create_brightened_palette(HARDWARE_map_palette,(int*)&GAME_temp_TILESET_PALETTE,brightness+GLOBAL_BRIGHTNESS);
+		HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,brightness+GLOBAL_BRIGHTNESS);
 
 		GAME_temp_TILESET_PALETTE[1]=HARDWARE_RGB(0,0,0);
 
@@ -247,7 +247,7 @@ if(CLOCK_hour>12+11)brightness=-10;
 	}
 	if(CLOCK_hour>=8&&CLOCK_hour<=12+7)//normal	160 248 248
 	{
-		HARDWARE_create_brightened_palette(HARDWARE_map_palette,(int*)&GAME_temp_TILESET_PALETTE,brightness+GLOBAL_BRIGHTNESS);
+		HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,brightness+GLOBAL_BRIGHTNESS);
 
 		GAME_temp_TILESET_PALETTE[1]=HARDWARE_RGB(0,0,0);
 
@@ -260,7 +260,7 @@ if(CLOCK_hour>12+11)brightness=-10;
 	if(CLOCK_hour>=12+8&&CLOCK_hour<=12+10)//dark blue
 	{
 
-		HARDWARE_create_brightened_palette(HARDWARE_map_palette,(int*)&GAME_temp_TILESET_PALETTE,brightness+GLOBAL_BRIGHTNESS);
+		HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,brightness+GLOBAL_BRIGHTNESS);
 
 		GAME_temp_TILESET_PALETTE[1]=HARDWARE_RGB(0,0,0);
 
@@ -272,7 +272,7 @@ if(CLOCK_hour>12+11)brightness=-10;
 	if((CLOCK_hour>=12+11||CLOCK_hour<=4))//black
 	{
 
-		HARDWARE_create_brightened_palette(HARDWARE_map_palette,(int*)&GAME_temp_TILESET_PALETTE,brightness+GLOBAL_BRIGHTNESS);
+		HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,brightness+GLOBAL_BRIGHTNESS);
 
 		GAME_temp_TILESET_PALETTE[1]=HARDWARE_RGB(0,0,0);
 
