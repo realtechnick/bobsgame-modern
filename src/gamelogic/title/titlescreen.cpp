@@ -60,17 +60,10 @@ void load_title_screen()
 
 
 				float aspectratio = 1;//((float)((float)(GAME_VIEWPORT_HEIGHT_PIXELS)/2.0f)/192.0f);
-				int fromx = (640-256)/2; // Center on 640-wide screen
-				int fromy = 22;
+				int fromx = 0; // TEST: top-left
+				int fromy = 0;
 
 				intro_top_palette[(int)intro_top_tileset[(8*8)*intro_top_map[5+(31*32)]]]=HARDWARE_RGB(0,0,0);
-
-				//AUX draw multiplies by ZOOM, so pre-divide to get correct screen pos.
-				//Reassign fromx/fromy/aspectratio so ALL AUX loads (including shine) use adjusted values.
-				extern float ZOOM;
-				fromx = (int)(fromx / ZOOM);
-				fromy = (int)(fromy / ZOOM);
-				aspectratio = (float)(aspectratio / ZOOM);
 
 				HARDWARE_load_AUX_map_to_xy_xy(1,intro_top_map,intro_top_tileset,intro_top_palette,256,192,fromx,fromy,aspectratio,0);
 
