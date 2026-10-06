@@ -3053,9 +3053,11 @@ void bobsgame_SCHOOLBackHallway_Map_Load_Function()
 
 void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 {
+	static NPC* randomkids_npcs[100]={NULL};
 	if(MAP_just_loaded==1)
 	{
-
+		int _c=0;
+		for(_c=0;_c<100;_c++)randomkids_npcs[_c]=NULL;
 	}
 
 //class 3  39 40
@@ -3066,7 +3068,7 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 //left hallway 10.52
 //right hallway 196.52
 //7:00-7:35 from hallway left and right to classrooms 1 2 3
-	static NPC* randomkids_npcs[100]={NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL};
+
 	int randamount=100;
 		int c=0;
 	int hi=0;
@@ -4410,9 +4412,11 @@ void bobsgame_SCHOOLGymCafeteria_Map_Load_Function()
 
 void bobsgame_SCHOOLGymCafeteria_Map_Run_Function(int MAP_just_loaded)
 {
+	static NPC* randomkids_npcs[12]={NULL};
 	if(MAP_just_loaded==1)
 	{
-
+		int _c=0;
+		for(_c=0;_c<12;_c++)randomkids_npcs[_c]=NULL;
 	}
 
 //11.27//down
@@ -4540,7 +4544,7 @@ void bobsgame_SCHOOLGymCafeteria_Map_Run_Function(int MAP_just_loaded)
 			}
 		}
 	}
-	static NPC* randomkids_npcs[12]={NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL};
+
 	int randamount=12;
 	//kids come in from door, 42.12    3.44
 	//get in line, 3.33  3.21  20.21
