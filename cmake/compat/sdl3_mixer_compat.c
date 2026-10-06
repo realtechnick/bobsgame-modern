@@ -62,6 +62,7 @@ void Mix_CloseAudio(void) {
 }
 
 int Mix_AllocateChannels(int n) {
+    if (n == -1) return g_num_channels;  // SDL2_mixer: -1 queries without changing
     if (n > 32) n = 32;
     if (n < 0) n = 0;
     g_num_channels = n;
@@ -165,7 +166,15 @@ int Mix_PlayChannel(int channel, Mix_Chunk *chunk, int loops) {
     float gain = (float)chunk->volume / (float)MIX_MAX_VOLUME;
     MIX_SetTrackGain(track, gain);
     
-    MIX_PlayTrack(track, loops);
+    // 3.x takes loop count via play properties, not as a MIX_PlayTrack arg
+    // (SDL2_mixer semantics: -1 = infinite, 0 = play once)
+    SDL_PropertiesID props = SDL_CreateProperties();
+    if (props) {
+        SDL_SetNumberProperty(props, MIX_PROP_PLAY_LOOPS_NUMBER, (Sint64)loops);
+    }
+    bool played = MIX_PlayTrack(track, props);
+    SDL_DestroyProperties(props);
+    if (!played) return -1;
     g_channel_chunks[channel] = chunk;
     return channel;
 }
@@ -183,8 +192,14 @@ int Mix_PlayMusic(Mix_Music *music, int loops) {
     MIX_SetTrackGain(g_music_track, gain);
     
     g_current_music = music;
-    MIX_PlayTrack(g_music_track, loops);
-    return 0;
+    // 3.x takes loop count via play properties (SDL2_mixer: -1 = infinite)
+    SDL_PropertiesID props = SDL_CreateProperties();
+    if (props) {
+        SDL_SetNumberProperty(props, MIX_PROP_PLAY_LOOPS_NUMBER, (Sint64)loops);
+    }
+    bool played = MIX_PlayTrack(g_music_track, props);
+    SDL_DestroyProperties(props);
+    return played ? 0 : -1;
 }
 
 int Mix_HaltChannel(int channel) {
