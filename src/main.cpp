@@ -300,7 +300,7 @@ int main(int argc, char *argv[])//int argc, char **argv)
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 
 		window = SDL_CreateWindow("\"bob's game\" alpha 1",
-								1280, 960,
+								960, 720,
 								//SDL_WINDOW_FULLSCREEN |
 								SDL_WINDOW_OPENGL);
 
