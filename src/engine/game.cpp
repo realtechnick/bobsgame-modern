@@ -292,6 +292,17 @@ void GAME_init()
 
 
 
+	if(GAMESTATE==GAMETOY)
+	{
+		PLAYER_npc->gfx=GFX_KID_yuu;
+		MAP_set_map_cam_to_cameraman();
+		MAP_change_map(MAP_bobsgame_INTROTown,32,76);
+		// Gametoy will be triggered via normal intro dialogue
+		// For direct testing, walk to the trigger point in town
+	}
+
+
+
 	if(GAMESTATE==CITY)
 	{
 
