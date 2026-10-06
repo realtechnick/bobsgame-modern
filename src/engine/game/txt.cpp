@@ -464,7 +464,7 @@ void TEXT_init()
 		TEXT_textbox[i].sprite_window_indexed_gfx_data=(int*)malloc(32*64*sizeof(int));
 
 		int x=0;
-		for(x=0;x<3*64*64;x++)TEXT_textbox[i].indexed_gfx_data[x]=TEXT_color[0];
+		for(x=0;x<3*64*64;x++)((unsigned char*)TEXT_textbox[i].indexed_gfx_data)[x]=TEXT_color[0];
 		for(x=0;x<32*64;x++)TEXT_textbox[i].sprite_window_indexed_gfx_data[x]=TEXT_color[0];
 
 		TEXT_textbox[i].sprite_window_sprite = HARDWARE_create_sprite(TEXTSPRITEWINDOW_GFX[i],0,5,TEXT_scale,TEXT_textbox[i].screen_x-32,GAME_VIEWPORT_HEIGHT_PIXELS,255);
@@ -589,7 +589,7 @@ void TEXT_clear_text_box_gfx_data(int box)
 	int x;
 	for(x=0; x<64*64*3; x++)
 	{
-		TEXT_textbox[box].indexed_gfx_data[x]=TEXT_color[0];
+		((unsigned char*)TEXT_textbox[box].indexed_gfx_data)[x]=TEXT_color[0];
 	}
 }
 
