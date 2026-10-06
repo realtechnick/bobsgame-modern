@@ -582,11 +582,10 @@ void render()
 		glOrtho(0, 1280, 960, 0, -1, 1);
 		glMatrixMode(GL_MODELVIEW);
 
-		gl_draw_flipped(screen,0,0//-(((HARDWARE_SCREEN_HEIGHT_PIXELS/4)*((float)((float)(HARDWARE_SCREEN_HEIGHT_PIXELS*2)/(float)(GAME_VIEWPORT_HEIGHT_PIXELS*2)))))
-						,
-						(HARDWARE_SCREEN_WIDTH_PIXELS*ZOOM)//*2*((float)((float)(HARDWARE_SCREEN_WIDTH_PIXELS*2)/(float)(GAME_VIEWPORT_WIDTH_PIXELS*2))))
-						,
-						(HARDWARE_SCREEN_HEIGHT_PIXELS*ZOOM)//*2*((float)((float)(HARDWARE_SCREEN_HEIGHT_PIXELS*2)/(float)(GAME_VIEWPORT_HEIGHT_PIXELS*2))))
+		//Draw the 640x480 framebuffer texture scaled 2x to fill the 1280x960 window.
+		gl_draw_flipped(screen,0,0,
+						1280,
+						960
 						);
 
 		glMatrixMode(GL_PROJECTION);
