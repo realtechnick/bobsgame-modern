@@ -573,12 +573,25 @@ void render()
 
 		//#ifdef ND gl_draw_flipped(screen,0,0,(HARDWARE_SCREEN_WIDTH_PIXELS*ZOOM),(HARDWARE_SCREEN_HEIGHT_PIXELS*ZOOM));
 
+		//Window is 2x the 640x480 game coordinates (see main.cpp). Switch the
+		//projection to window pixels for the blit so the 640x480 texture scales
+		//up cleanly, then restore it for overlays below.
+		glMatrixMode(GL_PROJECTION);
+		glPushMatrix();
+		glLoadIdentity();
+		glOrtho(0, 1280, 960, 0, -1, 1);
+		glMatrixMode(GL_MODELVIEW);
+
 		gl_draw_flipped(screen,0,0//-(((HARDWARE_SCREEN_HEIGHT_PIXELS/4)*((float)((float)(HARDWARE_SCREEN_HEIGHT_PIXELS*2)/(float)(GAME_VIEWPORT_HEIGHT_PIXELS*2)))))
 						,
 						(HARDWARE_SCREEN_WIDTH_PIXELS*ZOOM)//*2*((float)((float)(HARDWARE_SCREEN_WIDTH_PIXELS*2)/(float)(GAME_VIEWPORT_WIDTH_PIXELS*2))))
 						,
 						(HARDWARE_SCREEN_HEIGHT_PIXELS*ZOOM)//*2*((float)((float)(HARDWARE_SCREEN_HEIGHT_PIXELS*2)/(float)(GAME_VIEWPORT_HEIGHT_PIXELS*2))))
 						);
+
+		glMatrixMode(GL_PROJECTION);
+		glPopMatrix();
+		glMatrixMode(GL_MODELVIEW);
 	}
 
 

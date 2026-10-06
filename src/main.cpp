@@ -300,9 +300,8 @@ int main(int argc, char *argv[])//int argc, char **argv)
 	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 
 		//Window is 2x the internal 640x480 for visibility on modern displays.
-		//The game still draws in 640x480 coordinates (glOrtho below); OpenGL
-		//scales it to fill the window automatically. Never change the 640x480
-		//game coordinates — camera math, sprites, and GameToy depend on them.
+		//See render.cpp framebuffer blit for the matching projection scale-up.
+		//Game logic, camera, sprites, and GameToy all still use 640x480.
 		window = SDL_CreateWindow("\"bob's game\" alpha 1",
 								1280, 960,
 								//SDL_WINDOW_FULLSCREEN |
