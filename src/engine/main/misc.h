@@ -70,7 +70,7 @@
 
 int HARDWARE_get_file_size(const char* name);
 int HARDWARE_RGB(int r, int g, int b);
-void HARDWARE_create_brightened_palette(unsigned short *pal, int *newpal, int bright);
+void HARDWARE_create_brightened_palette(unsigned short *pal, unsigned short *newpal, int bright);
 void* HARDWARE_load_file(const char* name);
 void HARDWARE_unload_file(void** data_pointer);
 int power_of_two(int v);
