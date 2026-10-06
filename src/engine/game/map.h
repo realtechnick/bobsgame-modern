@@ -49,8 +49,8 @@ extern unsigned short* HARDWARE_map_1;
 extern unsigned short* HARDWARE_map_2;
 extern unsigned short* HARDWARE_map_3;
 
-extern unsigned short* HARDWARE_map_hit_layer; //was bool before condensed separate bins into 1 single bin
-extern unsigned short* HARDWARE_map_fx_layer;
+extern unsigned char* HARDWARE_map_hit_layer; //was bool before condensed separate bins into 1 single bin
+extern unsigned char* HARDWARE_map_fx_layer;
 
 
 extern char HARDWARE_map_0_filename[256];
