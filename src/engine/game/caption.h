@@ -49,7 +49,7 @@ struct CAPTION
 	int TEXT_string_position;
 
 	int colors[3];
-	int* font_pointer;
+	unsigned char* font_pointer;
 	int font_height;
 
 };
