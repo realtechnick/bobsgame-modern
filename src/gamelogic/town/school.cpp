@@ -1862,9 +1862,11 @@ void bobsgame_SCHOOLGymHallway_Map_Load_Function()
 
 void bobsgame_SCHOOLGymHallway_Map_Run_Function(int MAP_just_loaded)
 {
+	static NPC* randomkids_npcs[40]={NULL};
 	if(MAP_just_loaded==1)
 	{
-
+		int _c=0;
+		for(_c=0;_c<40;_c++)randomkids_npcs[_c]=NULL;
 	}
 
 //7:00-7:35 kids flooding from left and middle bottom hallway, to upper left hallway
