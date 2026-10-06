@@ -240,7 +240,7 @@ void HARDWARE_set_sprite_texture_filename_and_maybe_preload_texture(GFX* gfx, co
 		//this is for caption chunks, it tracks a dynamic indexed graphic array inside itself
 		if(gfx->indexed_gfx_data!=NULL)
 		{
-			//sprite_indexed_gfx_data = gfx->indexed_gfx_data;
+			//sprite_indexed_gfx_data = (unsigned char*)gfx->indexed_gfx_data;
 			amount_of_frames_in_file=1;
 			gfx_data_is_file=0;
 		}
@@ -318,36 +318,36 @@ GLuint HARDWARE_preload_sprite_texture_frame(GFX* gfx, int frame, int IndexInCac
 		//determine whether we are loading from a file or from internal memory
 		//-----------------------------
 			int gfx_data_is_file=1;
-			int* sprite_indexed_gfx_data = NULL;
+			unsigned char* sprite_indexed_gfx_data = NULL;
 
 			//if name is TEXT, TEXTANSWER, or CAPTION use internal arrays for sprite gfx "TEXTSPRITEWINDOW" "PINGPADDLE" "PINGBALL"
 			if(gfx==TEXT_GFX[0])
-			{sprite_indexed_gfx_data = TEXT_textbox[0].indexed_gfx_data; gfx_data_is_file=0;}
+			{sprite_indexed_gfx_data = (unsigned char*)TEXT_textbox[0].indexed_gfx_data; gfx_data_is_file=0;}
 			if(gfx==TEXT_GFX[1])
-			{sprite_indexed_gfx_data = TEXT_textbox[1].indexed_gfx_data; gfx_data_is_file=0;}
+			{sprite_indexed_gfx_data = (unsigned char*)TEXT_textbox[1].indexed_gfx_data; gfx_data_is_file=0;}
 
 			if(gfx==TEXTANSWER_GFX)
-			{sprite_indexed_gfx_data = TEXTANSWER_answerbox_indexed_gfx_data;gfx_data_is_file=0;}
+			{sprite_indexed_gfx_data = (unsigned char*)TEXTANSWER_answerbox_indexed_gfx_data;gfx_data_is_file=0;}
 
 			if(gfx==TEXTSPRITEWINDOW_GFX[0])
-			{sprite_indexed_gfx_data = TEXT_textbox[0].sprite_window_indexed_gfx_data;gfx_data_is_file=0;if(GLOBAL_hq2x_is_on)palette = HARDWARE_HQ2X_SPRITE_PALETTE_ENHANCED_RGB;}
+			{sprite_indexed_gfx_data = (unsigned char*)TEXT_textbox[0].sprite_window_indexed_gfx_data;gfx_data_is_file=0;if(GLOBAL_hq2x_is_on)palette = HARDWARE_HQ2X_SPRITE_PALETTE_ENHANCED_RGB;}
 			if(gfx==TEXTSPRITEWINDOW_GFX[1])
-			{sprite_indexed_gfx_data = TEXT_textbox[1].sprite_window_indexed_gfx_data;gfx_data_is_file=0;if(GLOBAL_hq2x_is_on)palette = HARDWARE_HQ2X_SPRITE_PALETTE_ENHANCED_RGB;}
+			{sprite_indexed_gfx_data = (unsigned char*)TEXT_textbox[1].sprite_window_indexed_gfx_data;gfx_data_is_file=0;if(GLOBAL_hq2x_is_on)palette = HARDWARE_HQ2X_SPRITE_PALETTE_ENHANCED_RGB;}
 
 			if(	gfx==PINGPADDLE_GFX)
-			{sprite_indexed_gfx_data = PING_paddle_gfx;gfx_data_is_file=0;palette = HARDWARE_HQ2X_SPRITE_PALETTE_ENHANCED_RGB;}
+			{sprite_indexed_gfx_data = (unsigned char*)PING_paddle_gfx;gfx_data_is_file=0;palette = HARDWARE_HQ2X_SPRITE_PALETTE_ENHANCED_RGB;}
 
 			if(	gfx==PINGBALL_GFX)
-			{sprite_indexed_gfx_data = PING_ball_gfx;gfx_data_is_file=0;}
+			{sprite_indexed_gfx_data = (unsigned char*)PING_ball_gfx;gfx_data_is_file=0;}
 
 
 			if(gfx->indexed_gfx_data!=NULL)
 			{
-				sprite_indexed_gfx_data = gfx->indexed_gfx_data;
+				sprite_indexed_gfx_data = (unsigned char*)gfx->indexed_gfx_data;
 				gfx_data_is_file=0;
 			}
 
-			if(gfx_data_is_file==1)sprite_indexed_gfx_data = (int*)HARDWARE_load_file(gfx->FileName);
+			if(gfx_data_is_file==1)sprite_indexed_gfx_data = (unsigned char*)HARDWARE_load_file(gfx->FileName);
 
 
 			//-----------------------------
@@ -781,7 +781,7 @@ void HARDWARE_update_sprite_texture(SPRITE* sprite, int gfx_index)
 			//it will create texture from this indexed data below.
 			if(gfx->indexed_gfx_data!=NULL)
 			{
-				//sprite_indexed_gfx_data = gfx->indexed_gfx_data;
+				//sprite_indexed_gfx_data = (unsigned char*)gfx->indexed_gfx_data;
 				//amount_of_frames_in_file=1;
 				gfx_data_is_file=0;
 			}
