@@ -13,6 +13,7 @@
 #define INTRO 0
 #define TOWN 1
 #define CITY 2
+#define GAMETOY 3
 
 
 #define FIRST_SPRITE_ID 0
