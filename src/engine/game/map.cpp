@@ -14,13 +14,13 @@ int MAP_fx_border_height=0;
 
 int HARDWARE_map_id=0;
 
-int* HARDWARE_map_0=NULL;
-int* HARDWARE_map_1=NULL;
-int* HARDWARE_map_2=NULL;
-int* HARDWARE_map_3=NULL;
+unsigned short* HARDWARE_map_0=NULL;
+unsigned short* HARDWARE_map_1=NULL;
+unsigned short* HARDWARE_map_2=NULL;
+unsigned short* HARDWARE_map_3=NULL;
 
-int* HARDWARE_map_hit_layer=NULL; //was bool before condensed separate bins into 1 single bin
-int* HARDWARE_map_fx_layer=NULL;
+unsigned short* HARDWARE_map_hit_layer=NULL; //was bool before condensed separate bins into 1 single bin
+unsigned short* HARDWARE_map_fx_layer=NULL;
 
 
 char HARDWARE_map_0_filename[256];
@@ -50,8 +50,8 @@ int HARDWARE_map_height_tiles=0;
 int HARDWARE_map_width=0;
 int HARDWARE_map_height=0;
 
-int* HARDWARE_map_palette=NULL;
-int* HARDWARE_map_tileset=NULL;
+unsigned short* HARDWARE_map_palette=NULL;
+unsigned char* HARDWARE_map_tileset=NULL;
 
 //=========================================================================================================================
 void MAP_set_map_cam_to_cameraman()
@@ -328,16 +328,16 @@ void MAP_change_map(int cm,int sx,int sy)
 
 
 	//load new map files into memory
-	HARDWARE_map_0=(int*)HARDWARE_load_file(HARDWARE_map_0_filename);
-	HARDWARE_map_1=(int*)HARDWARE_load_file(HARDWARE_map_1_filename);
-	HARDWARE_map_2=(int*)HARDWARE_load_file(HARDWARE_map_2_filename);
-	HARDWARE_map_3=(int*)HARDWARE_load_file(HARDWARE_map_3_filename);
+	HARDWARE_map_0=(unsigned short*)HARDWARE_load_file(HARDWARE_map_0_filename);
+	HARDWARE_map_1=(unsigned short*)HARDWARE_load_file(HARDWARE_map_1_filename);
+	HARDWARE_map_2=(unsigned short*)HARDWARE_load_file(HARDWARE_map_2_filename);
+	HARDWARE_map_3=(unsigned short*)HARDWARE_load_file(HARDWARE_map_3_filename);
 
-	HARDWARE_map_hit_layer=(int*)HARDWARE_load_file(HARDWARE_map_hit_layer_filename);
-	HARDWARE_map_fx_layer=(int*)HARDWARE_load_file(HARDWARE_map_fx_layer_filename);
+	HARDWARE_map_hit_layer=(unsigned short*)HARDWARE_load_file(HARDWARE_map_hit_layer_filename);
+	HARDWARE_map_fx_layer=(unsigned short*)HARDWARE_load_file(HARDWARE_map_fx_layer_filename);
 
-	HARDWARE_map_palette=(int*)HARDWARE_load_file(HARDWARE_map_palette_filename);
-	HARDWARE_map_tileset=(int*)HARDWARE_load_file(HARDWARE_map_tileset_filename);
+	HARDWARE_map_palette=(unsigned short*)HARDWARE_load_file(HARDWARE_map_palette_filename);
+	HARDWARE_map_tileset=(unsigned char*)HARDWARE_load_file(HARDWARE_map_tileset_filename);
 
 	//set width and height
 	HARDWARE_map_width=HARDWARE_map_width_tiles*8;
