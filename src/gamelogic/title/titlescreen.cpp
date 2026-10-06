@@ -62,6 +62,10 @@ void load_title_screen()
 				float aspectratio = 1;//((float)((float)(GAME_VIEWPORT_HEIGHT_PIXELS)/2.0f)/192.0f);
 				int fromx = 192; // Center: (640-256)/2
 				int fromy = 22;
+				extern float ZOOM;
+				fromx = (int)(fromx / ZOOM);
+				fromy = (int)(fromy / ZOOM);
+				aspectratio = aspectratio / ZOOM;
 
 				intro_top_palette[(int)intro_top_tileset[(8*8)*intro_top_map[5+(31*32)]]]=HARDWARE_RGB(0,0,0);
 
@@ -119,6 +123,9 @@ void load_title_screen()
 					float aspectratio = 1;
 					int fromx = (640-256)/2;
 					int fromy = 22;
+					fromx = (int)(fromx / ZOOM);
+					fromy = (int)(fromy / ZOOM);
+					aspectratio = aspectratio / ZOOM;
 					fromx = (int)(fromx / ZOOM);
 					fromy = (int)(fromy / ZOOM);
 					aspectratio = (float)(aspectratio / ZOOM);
@@ -225,6 +232,9 @@ void load_title_screen()
 					float aspectratio = 1;
 					int fromx = (640-256)/2;
 					int fromy = 22;
+					fromx = (int)(fromx / ZOOM);
+					fromy = (int)(fromy / ZOOM);
+					aspectratio = aspectratio / ZOOM;
 					fromx = (int)(fromx / ZOOM);
 					fromy = (int)(fromy / ZOOM);
 					aspectratio = (float)(aspectratio / ZOOM);
@@ -395,6 +405,9 @@ void unload_title_screen()
 					float aspectratio = 1;
 					int fromx = (640-256)/2;
 					int fromy = 22;
+					fromx = (int)(fromx / ZOOM);
+					fromy = (int)(fromy / ZOOM);
+					aspectratio = aspectratio / ZOOM;
 					fromx = (int)(fromx / ZOOM);
 					fromy = (int)(fromy / ZOOM);
 					aspectratio = (float)(aspectratio / ZOOM);
