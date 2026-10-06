@@ -8,6 +8,7 @@
 // Internal state
 static MIX_Mixer *g_mixer = NULL;
 static MIX_Track *g_channel_tracks[32] = {NULL};  // 32 channels max
+static Mix_Chunk *g_channel_chunks[32] = {NULL}; // chunk currently on each channel
 static MIX_Track *g_music_track = NULL;
 static int g_num_channels = 0;
 static void (*g_music_finished_callback)(void) = NULL;
@@ -51,6 +52,7 @@ void Mix_CloseAudio(void) {
             MIX_DestroyTrack(g_channel_tracks[i]);
             g_channel_tracks[i] = NULL;
         }
+        g_channel_chunks[i] = NULL;
     }
     if (g_mixer) {
         MIX_DestroyMixer(g_mixer);
@@ -164,6 +166,7 @@ int Mix_PlayChannel(int channel, Mix_Chunk *chunk, int loops) {
     MIX_SetTrackGain(track, gain);
     
     MIX_PlayTrack(track, loops);
+    g_channel_chunks[channel] = chunk;
     return channel;
 }
 
@@ -190,6 +193,7 @@ int Mix_HaltChannel(int channel) {
         for (int i = 0; i < g_num_channels; i++) {
             MIX_Track *track = get_channel_track(i);
             if (track) MIX_StopTrack(track, 0);
+            g_channel_chunks[i] = NULL;
         }
         return 0;
     }
@@ -197,6 +201,7 @@ int Mix_HaltChannel(int channel) {
     MIX_Track *track = get_channel_track(channel);
     if (!track) return -1;
     MIX_StopTrack(track, 0);
+    if (channel >= 0 && channel < 32) g_channel_chunks[channel] = NULL;
     return 0;
 }
 
@@ -242,9 +247,7 @@ void Mix_HookMusicFinished(void (*callback)(void)) {
     // For now, store it. The new API has MIX_SetTrackStoppedCallback
 }
 
-int Mix_GetChunk(int channel, Mix_Chunk **chunk) {
-    // Not directly supported in new API - return error
-    (void)channel;
-    (void)chunk;
-    return -1;
+Mix_Chunk *Mix_GetChunk(int channel) {
+    if (channel < 0 || channel >= 32) return NULL;
+    return g_channel_chunks[channel];
 }

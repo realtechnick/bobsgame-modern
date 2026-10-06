@@ -36,7 +36,7 @@ void Mix_CloseAudio(void);
 
 // Channel management
 int Mix_AllocateChannels(int n);
-int Mix_GetChunk(int channel, Mix_Chunk **chunk);
+Mix_Chunk *Mix_GetChunk(int channel);
 
 // Chunk operations
 Mix_Chunk *Mix_LoadWAV(const char *file);
