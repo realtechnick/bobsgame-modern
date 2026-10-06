@@ -166,8 +166,8 @@ void CLOCK_vbl()
 	if(CLOCK_paused==0&&GLOBAL_text_engine_state==0)
 	{
 		//CLOCK_moving=0;
-		daycaption->screen_x=timecaption->width;
-		moneycaption->screen_x=timecaption->width+daycaption->width;
+		if(timecaption!=NULL&&daycaption!=NULL)daycaption->screen_x=timecaption->width;
+		if(timecaption!=NULL&&daycaption!=NULL&&moneycaption!=NULL)moneycaption->screen_x=timecaption->width+daycaption->width;
 
 		CLOCK_vbl_count++;
 
