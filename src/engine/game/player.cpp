@@ -575,16 +575,14 @@ void PLAYER_main()
 
 			if(xdistance>=ydistance||y_to_x_ratio<ycounter)
 			{
-				if(cameraman->MAP_x>xtarget)cameraman->MAP_x--;
-				if(cameraman->MAP_x<xtarget)cameraman->MAP_x++;
+				cameraman->MAP_x=xtarget;
 				xcounter++;
 				ycounter=0;
 			}
 
 			if(ydistance>=xdistance||x_to_y_ratio<xcounter)
 			{
-				if(cameraman->MAP_y>ytarget)cameraman->MAP_y--;
-				if(cameraman->MAP_y<ytarget)cameraman->MAP_y++;
+				cameraman->MAP_y=ytarget;
 				ycounter++;
 				xcounter=0;
 			}
