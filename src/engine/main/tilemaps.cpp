@@ -711,7 +711,7 @@ void HARDWARE_load_metatile(int bg_layer, int MAP_width_pixels, int MAP_height_p
 	//load that into a texture
 
 	//calloc mallocs and inits
-	int* clipmap = (int*)calloc(METATILE_SIZE/8 * METATILE_SIZE/8, sizeof(int));
+	unsigned short* clipmap = (unsigned short*)calloc(METATILE_SIZE/8 * METATILE_SIZE/8, sizeof(unsigned short));
 
 	unsigned short* map = NULL;
 
@@ -758,7 +758,7 @@ void HARDWARE_load_metatile(int bg_layer, int MAP_width_pixels, int MAP_height_p
 						//seek to correct part of larger map file
 						//fseek(file,sizeof(int)*bigmapindex,SEEK_SET);
 
-						int* cmp = &clipmap[clipmapindex];
+						unsigned short* cmp = &clipmap[clipmapindex];
 
 						//if its off the edge of the map, only read to the edge
 						if((clipx/8)+METATILE_SIZE/8>=(MAP_width_pixels/8))
@@ -789,7 +789,7 @@ void HARDWARE_load_metatile(int bg_layer, int MAP_width_pixels, int MAP_height_p
 							//seek to correct part of larger map file
 							//fseek(file,sizeof(int)*bigmapindex,SEEK_SET);
 
-							int* cmp = &clipmap[clipmapindex+offset]; //skip the blank space
+							unsigned short* cmp = &clipmap[clipmapindex+offset]; //skip the blank space
 
 							//if its off the edge of the map, only read to the edge
 							if((METATILE_SIZE/8)-offset>=(MAP_width_pixels/8))
