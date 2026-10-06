@@ -72,7 +72,6 @@ void load_title_screen()
 
 				//Build logo texture directly (bypass AUX system)
 				{
-					fprintf(stderr, "TITLE LOGO: Building texture...\n");
 					int tw = 256, th = 256; // power of two
 					unsigned char* rgba = (unsigned char*)calloc(tw * th * 4, 1);
 					for(int y=0; y<192; y++) for(int x=0; x<256; x++) {
@@ -100,7 +99,6 @@ void load_title_screen()
 					free(rgba);
 					title_logo_x = fromx;
 					title_logo_y = fromy;
-					fprintf(stderr, "TITLE LOGO: Texture %u created at (%d,%d)\n", title_logo_tex, fromx, fromy);
 				}
 
 				HARDWARE_load_AUX_map_to_xy_xy(1,intro_top_map,intro_top_tileset,intro_top_palette,256,192,fromx,fromy,aspectratio,0);
