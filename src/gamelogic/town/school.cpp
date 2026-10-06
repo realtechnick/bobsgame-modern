@@ -1939,7 +1939,7 @@ void bobsgame_SCHOOLGymHallway_Map_Run_Function(int MAP_just_loaded)
 			if(randomkids_npcs[c]!=NULL)if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI++;}
 
 			if(randomkids_npcs[c]!=NULL)if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]!=NULL)if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL)if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //12:00-12:10 kids flooding from upper left hallway into gym right hallway
@@ -1985,7 +1985,7 @@ void bobsgame_SCHOOLGymHallway_Map_Run_Function(int MAP_just_loaded)
 		{
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=1;
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(randomkids_npcs[c]->MAP_x>=153*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 155*8, (46+(c%3))*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //1:00-1:05 kids flooding out of gym to upper left hallway
@@ -2031,7 +2031,7 @@ void bobsgame_SCHOOLGymHallway_Map_Run_Function(int MAP_just_loaded)
 		{
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(randomkids_npcs[c]->MAP_x<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 10*8, randomkids_npcs[c]->MAP_y+randomkids_npcs[c]->size_y-randomkids_npcs[c]->hitsize_y)==1)randomkids_npcs[c]->AI=1;
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 10*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //3:30-3:35 kids flooding from upper left hallway to all classrooms and gym
@@ -2084,7 +2084,7 @@ void bobsgame_SCHOOLGymHallway_Map_Run_Function(int MAP_just_loaded)
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==6)if((randomkids_npcs[c]->MAP_y<=37*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 119*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==7)if((randomkids_npcs[c]->MAP_y<=37*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 81*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==8)if((randomkids_npcs[c]->MAP_y<=37*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 41*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //4:30-5:00 kids flooding out of upper left hallway and gym and all classrooms to lower left and middle hallways
@@ -2189,7 +2189,7 @@ void bobsgame_SCHOOLGymHallway_Map_Run_Function(int MAP_just_loaded)
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=107*8&&randomkids_npcs[c]->MAP_x>=100*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 104*8, 48*8)==1)randomkids_npcs[c]->AI+=2;
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_y>=47*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 10*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_y>=47*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 104*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //=================================================================================================================
@@ -2395,7 +2395,7 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==9)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==10)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //=================================================================================================================
@@ -2479,7 +2479,7 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //=================================================================================================================
@@ -2551,7 +2551,7 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==9)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==10)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //=================================================================================================================
@@ -2634,7 +2634,7 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //=================================================================================================================
@@ -2706,7 +2706,7 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==9)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==10)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //=================================================================================================================
@@ -2792,7 +2792,7 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //=================================================================================================================
@@ -2856,7 +2856,7 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 				if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5) if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 39+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 				if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==6)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 				if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-				if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+				if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 			}
 		}
 	}
@@ -2918,7 +2918,7 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //TODO: screaming, loud, really fast children
@@ -3134,7 +3134,7 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 38+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==6)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (78+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //9:30-9:35 from hallways left and right and classrooms 1 2 3 to playground 1 2
@@ -3208,7 +3208,7 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y<=10*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (105+(c%3))*8, 13*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=10*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (117+(c%3))*8, 13*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //10:00-10:05 from playground 1 2 to classrooms 1 2 3 and hallways left and right
@@ -3272,7 +3272,7 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==9)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==10)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //12:00-12:10 from classrooms 1 2 3 to hallways left and right
@@ -3344,7 +3344,7 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //1:00-1:05 from hallways left and right to classrooms 1 2 3
@@ -3404,7 +3404,7 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 38+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==6)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (78+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //3:00-3:05 from hallways left and right and classrooms 1 2 3 to playground 1 2
@@ -3478,7 +3478,7 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y<=10*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (105+(c%3))*8, 13*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=10*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (117+(c%3))*8, 13*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //3:30-3:35 from playground 1 2 to hallways left and right
@@ -3536,7 +3536,7 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //4:30-5:00 from classrooms 1 2 3 to hallways left and right
@@ -3608,7 +3608,7 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
 //=================================================================================================================
@@ -4589,7 +4589,7 @@ void bobsgame_SCHOOLGymCafeteria_Map_Run_Function(int MAP_just_loaded)
 		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_x>=48*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,   49*8, 40*8)==1){randomkids_npcs[c]->AI+=2;}
 		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==12)if(randomkids_npcs[c]->MAP_x<= 3*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 	3*8,42*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==13)if(randomkids_npcs[c]->MAP_y<= 9*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 	42*8,12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-		if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
+		if(randomkids_npcs[c]!=NULL&&MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 	}
 
 //=================================================================================================================
