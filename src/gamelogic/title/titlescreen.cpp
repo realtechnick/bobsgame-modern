@@ -275,6 +275,9 @@ void load_title_screen()
 					intro_top_palette[(int)intro_top_tileset[(8*8)*intro_top_map[2+(31*32)]]]=HARDWARE_RGB(g[2],31,g[2]);
 					intro_top_palette[(int)intro_top_tileset[(8*8)*intro_top_map[3+(31*32)]]]=HARDWARE_RGB(g[3],31,g[3]);
 					intro_top_palette[(int)intro_top_tileset[(8*8)*intro_top_map[4+(31*32)]]]=HARDWARE_RGB(g[4],31,g[4]);
+					fromx = (int)(fromx / ZOOM);
+					fromy = (int)(fromy / ZOOM);
+					aspectratio = aspectratio / ZOOM;
 					HARDWARE_load_AUX_map_to_xy_xy(1,intro_top_map,intro_top_tileset,intro_top_palette,256,192,fromx,fromy,aspectratio,0);
 				}
 
@@ -311,6 +314,9 @@ void load_title_screen()
 						intro_top_palette[(int)intro_top_tileset[(8*8)*intro_top_map[2+(31*32)]]]=HARDWARE_RGB(g[2],31,g[2]);
 						intro_top_palette[(int)intro_top_tileset[(8*8)*intro_top_map[3+(31*32)]]]=HARDWARE_RGB(g[3],31,g[3]);
 						intro_top_palette[(int)intro_top_tileset[(8*8)*intro_top_map[4+(31*32)]]]=HARDWARE_RGB(g[4],31,g[4]);
+					fromx = (int)(fromx / ZOOM);
+					fromy = (int)(fromy / ZOOM);
+					aspectratio = aspectratio / ZOOM;
 						HARDWARE_load_AUX_map_to_xy_xy(1,intro_top_map,intro_top_tileset,intro_top_palette,256,192,fromx,fromy,aspectratio,0);
 
 
