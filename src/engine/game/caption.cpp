@@ -36,7 +36,7 @@ int CAPTION_get_char_width(int font_height, int* font_pointer, int letter_index)
 void CAPTION_draw_blank_column(CAPTION* c)
 {//=========================================================================================================================
 
-	int* gfxdata = c->gfx[c->chunk]->indexed_gfx_data;
+	unsigned char* gfxdata = (unsigned char*)c->gfx[c->chunk]->indexed_gfx_data;
 
 	if(c->multiline==0)
 	{
@@ -70,7 +70,7 @@ void CAPTION_draw_blank_column(CAPTION* c)
 void CAPTION_draw_column(CAPTION* c,int x_in_letter, int letter_index)
 {//=========================================================================================================================
 
-	int* gfxdata = c->gfx[c->chunk]->indexed_gfx_data;
+	unsigned char* gfxdata = (unsigned char*)c->gfx[c->chunk]->indexed_gfx_data;
 
 	if(c->multiline==0)
 	{
@@ -523,7 +523,7 @@ void CAPTION_make_caption(CAPTION**cpp,int screen,int x,int y,int seconds,const 
 
 			//fill the chunk GFX indexed gfx data with 0
 			int i=0;
-			for(i=0;i<64*32;i++)caption_chunk_GFX->indexed_gfx_data[i]=0;//caption_box_sprite_Bitmap[64*32*c+i];
+			for(i=0;i<64*32;i++)((unsigned char*)caption_chunk_GFX->indexed_gfx_data)[i]=0;//caption_box_sprite_Bitmap[64*32*c+i];
 
 			//set caption struct to point to GFX struct
 			caption->gfx[c]=caption_chunk_GFX;
