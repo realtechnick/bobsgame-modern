@@ -880,7 +880,8 @@ SPRITE* HARDWARE_create_sprite(GFX* gfx, int gfx_index, int layer, float scale, 
 
 		if(slot==-1)
 		{
-			ERROR_set_error("ran out of available sprite slots! \n");
+			static int _sprite_slot_error_reported=0;
+			if(!_sprite_slot_error_reported){_sprite_slot_error_reported=1;ERROR_set_error("ran out of available sprite slots! \n");}
 		}
 
 
