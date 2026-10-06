@@ -1013,7 +1013,8 @@ void TEXT_window(const char* temptext)//meant to be called from GAME_update so i
 			if(TEXT_text[TEXT_string_position]=='<')
 			{
 				TEXT_parse_options();
-				ERROR_set_error("tag parsed inside draw text.");
+				static int _tag_error_reported=0;
+				if(!_tag_error_reported){_tag_error_reported=1;ERROR_set_error("tag parsed inside draw text.");}
 			}
 
 			else
