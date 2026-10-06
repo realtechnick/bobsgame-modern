@@ -227,7 +227,7 @@ void adjust_color(int *pr, int *pg, int *pb)
 
 
 		//==========================================================================================================================
-		void HARDWARE_create_brightened_palette(int *pal, int *newpal, int bright)//HARDWARE_CreatePalBright
+		void HARDWARE_create_brightened_palette(unsigned short *pal, int *newpal, int bright)//HARDWARE_CreatePalBright
 		{//==========================================================================================================================
 
             int x=0;
