@@ -384,8 +384,8 @@ void unload_title_screen()
 
 				whilefix();
 
-				//HARDWARE_load_bg_palette(1,3,(int*)&intro_palette_1);
-				//HARDWARE_load_bg_palette(0,3,(int*)&intro_palette_0);
+				//HARDWARE_load_bg_palette(1,3,intro_palette_1);
+				//HARDWARE_load_bg_palette(0,3,intro_palette_0);
 					float aspectratio = ((float)((float)(GAME_VIEWPORT_HEIGHT_PIXELS)/2.0f)/192.0f);
 					int fromx = ((GAME_VIEWPORT_WIDTH_PIXELS-(aspectratio*256.0f))/2);
 					int fromy = 0;
@@ -455,8 +455,8 @@ void title_screen()
 	//========================================================
 	//start screen
 	//========================================================
-	//HARDWARE_load_sprite_palette((int*)GAME_original_SPRITE_PALETTE);///FIX THIS
-	//HARDWARE_load_sprite_palette(0,(int*)GAME_original_SPRITE_PALETTE);
+	//HARDWARE_load_sprite_palette(GAME_original_SPRITE_PALETTE);///FIX THIS
+	//HARDWARE_load_sprite_palette(0,GAME_original_SPRITE_PALETTE);
 
 	TITLESCREEN_vbl_counter=0;
 	load_title_screen();
@@ -577,9 +577,9 @@ void load_bob_scene_2()
 						{
 							fade_vbl_counter++;
 
-							HARDWARE_create_brightened_palette(HARDWARE_map_palette,(int*)&GAME_temp_TILESET_PALETTE,p);
+							HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,p);
 
-							HARDWARE_load_bg_palette((int*)&GAME_temp_TILESET_PALETTE);
+							HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
 
 							HARDWARE_reload_bg_textures();
 
@@ -664,9 +664,9 @@ void load_bob_scene_3()
 						{
 							fade_vbl_counter++;
 
-							HARDWARE_create_brightened_palette(HARDWARE_map_palette,(int*)&GAME_temp_TILESET_PALETTE,p);
+							HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,p);
 
-							HARDWARE_load_bg_palette((int*)&GAME_temp_TILESET_PALETTE);
+							HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
 
 							HARDWARE_reload_bg_textures();
 
