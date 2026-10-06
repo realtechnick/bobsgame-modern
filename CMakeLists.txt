@@ -4,9 +4,63 @@ project(bobsgame)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# SDL3 from system install (/usr/local)
-set(SDL3_INCLUDE_DIR "/usr/local/include")
-set(SDL3_LIB_DIR "/usr/local/lib")
+# SDL3 - find via CMake, with Homebrew paths for macOS
+# On Apple Silicon Macs, Homebrew is in /opt/homebrew
+# On Intel Macs and Linux, it's typically /usr/local
+if(APPLE)
+    list(APPEND CMAKE_PREFIX_PATH "/opt/homebrew" "/usr/local")
+endif()
+
+find_path(SDL3_INCLUDE_DIR
+    NAMES SDL3/SDL.h
+    PATHS /opt/homebrew/include /usr/local/include /usr/include
+    NO_DEFAULT_PATH
+)
+find_path(SDL3_INCLUDE_DIR NAMES SDL3/SDL.h)  # fallback to default search
+
+find_library(SDL3_LIBRARY
+    NAMES SDL3
+    PATHS /opt/homebrew/lib /usr/local/lib /usr/lib
+    NO_DEFAULT_PATH
+)
+find_library(SDL3_LIBRARY NAMES SDL3)  # fallback
+
+if(NOT SDL3_INCLUDE_DIR)
+    message(FATAL_ERROR "SDL3 headers not found. Install SDL3:\n"
+        "  macOS: brew install sdl3\n"
+        "  Ubuntu/Debian: apt install libsdl3-dev (if available) or build from source\n"
+        "  https://github.com/libsdl-org/SDL/releases")
+endif()
+
+if(NOT SDL3_LIBRARY)
+    message(FATAL_ERROR "SDL3 library not found. Install SDL3 (see above).")
+endif()
+
+message(STATUS "SDL3 include: ${SDL3_INCLUDE_DIR}")
+message(STATUS "SDL3 library: ${SDL3_LIBRARY}")
+
+# SDL3_ttf - same approach
+find_path(SDL3_TTF_INCLUDE_DIR
+    NAMES SDL3_ttf/SDL_ttf.h
+    PATHS /opt/homebrew/include /usr/local/include /usr/include
+    NO_DEFAULT_PATH
+)
+find_path(SDL3_TTF_INCLUDE_DIR NAMES SDL3_ttf/SDL_ttf.h)
+
+find_library(SDL3_TTF_LIBRARY
+    NAMES SDL3_ttf
+    PATHS /opt/homebrew/lib /usr/local/lib /usr/lib
+    NO_DEFAULT_PATH
+)
+find_library(SDL3_TTF_LIBRARY NAMES SDL3_ttf)
+
+if(SDL3_TTF_INCLUDE_DIR AND SDL3_TTF_LIBRARY)
+    message(STATUS "SDL3_ttf include: ${SDL3_TTF_INCLUDE_DIR}")
+    message(STATUS "SDL3_ttf library: ${SDL3_TTF_LIBRARY}")
+else()
+    message(WARNING "SDL3_ttf not found. Install it:\n"
+        "  macOS: brew install sdl3_ttf")
+endif()
 
 # All source files
 set(SOURCE_FILES
@@ -113,19 +167,23 @@ add_executable(bobsgame ${SOURCE_FILES})
 
 target_include_directories(bobsgame PRIVATE
     ${SDL3_INCLUDE_DIR}
+    ${SDL3_TTF_INCLUDE_DIR}
     src
 )
 
-target_link_directories(bobsgame PRIVATE
-    ${SDL3_LIB_DIR}
-    /usr/local/lib
+target_link_libraries(bobsgame
+    ${SDL3_LIBRARY}
+    ${SDL3_TTF_LIBRARY}
 )
 
-target_link_libraries(bobsgame
-    SDL3
-    SDL3_ttf
-    GL
-)
+# OpenGL
+if(APPLE)
+    find_library(OPENGL_LIBRARY OpenGL)
+    target_link_libraries(bobsgame ${OPENGL_LIBRARY})
+else()
+    find_package(OpenGL REQUIRED)
+    target_link_libraries(bobsgame OpenGL::GL)
+endif()
 
 # Audio support (SDL3_mixer)
 # Default OFF: SDL3_mixer doesn't build against SDL 3.2.10 (needs 3.4+ APIs)
