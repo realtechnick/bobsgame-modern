@@ -59,7 +59,7 @@ void HARDWARE_init_arrays()
 
 
 //==========================================================================================================================
-void HARDWARE_load_sprite_palette(int* palette)//HARDWARE_LoadSpritePal
+void HARDWARE_load_sprite_palette(unsigned short* palette)//HARDWARE_LoadSpritePal
 {//==========================================================================================================================
 
 	palette=NULL;
@@ -1047,7 +1047,7 @@ void HARDWARE_init_gfx_data()
 		//brighten palette
 		//-----------------------------
 
-		//HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,(int*)&GAME_temp_SPRITE_PALETTE,2);
+		//HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,GAME_temp_SPRITE_PALETTE,2);
 
 
 		//-----------------------------
@@ -1143,7 +1143,7 @@ void HARDWARE_init_gfx_data()
 		GAME_temp_SPRITE_PALETTE[GENERICshirtpantsshoescolors[9]] = HARDWARE_RGB(5,5,5);//shoes
 	*/
 
-		//HARDWARE_load_sprite_palette(0,(int*)&GAME_temp_SPRITE_PALETTE);
+		//HARDWARE_load_sprite_palette(0,GAME_temp_SPRITE_PALETTE);
 
 
 	//-----------------------------
