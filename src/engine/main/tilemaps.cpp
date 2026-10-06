@@ -713,7 +713,7 @@ void HARDWARE_load_metatile(int bg_layer, int MAP_width_pixels, int MAP_height_p
 	//calloc mallocs and inits
 	int* clipmap = (int*)calloc(METATILE_SIZE/8 * METATILE_SIZE/8, sizeof(int));
 
-	int* map = NULL;
+	unsigned short* map = NULL;
 
 	if(bg_layer==0)map=HARDWARE_map_0;
 	if(bg_layer==1)map=HARDWARE_map_1;
