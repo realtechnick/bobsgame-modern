@@ -60,8 +60,8 @@ void load_title_screen()
 
 
 				float aspectratio = 1;//((float)((float)(GAME_VIEWPORT_HEIGHT_PIXELS)/2.0f)/192.0f);
-				int fromx = 0; // TEST: top-left
-				int fromy = 0;
+				int fromx = 192; // Center: (640-256)/2
+				int fromy = 22;
 
 				intro_top_palette[(int)intro_top_tileset[(8*8)*intro_top_map[5+(31*32)]]]=HARDWARE_RGB(0,0,0);
 
