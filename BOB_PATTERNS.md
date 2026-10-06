@@ -76,5 +76,11 @@ Per Boss (2026-10-06): The game is "fully playable start to finish" but not "fin
 3. **Null safety** — Bob was sloppy with pointers. Guard everything.
 4. **Our inventions** — last resort. If we're writing new logic, we're probably misunderstanding his.
 
+## AUX Layer Positioning
+
+- **AUX draw multiplies by ZOOM**: `draw_texture(..., ZOOM*AUX_bg_x, ...)` — positions must account for this.
+- Title logo empiric: x=32 centers the 256px logo on 640px screen (not the calculated 192). The ZOOM interaction is non-obvious; when in doubt, test positions empirically.
+- The AUX system itself works fine — "invisible" graphics are usually positioning bugs, not texture/data issues.
+
 ---
 *Last updated: 2026-10-06. Add patterns as discovered.*
