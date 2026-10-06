@@ -57,6 +57,12 @@ Bob's camera is **intentional and elaborate**. Key lessons:
 - Dialogue tags like `<1>`, `<0>`, `<PURPLE>`, `<WHITE>` control speaker/portrait and colors.
 - Caption buffers had the same int-vs-byte bug as text.
 
+## Palette / Lighting
+
+- **Dark interior bug** (fixed 2026-10-06): Yuu's house loaded too dark. Root cause was map-load ordering — `load_bg_pals_based_on_time()` runs *before* `MAP_current_map_load_function()`, and nothing reset the palette to a sane baseline for interior maps. Fix: force brightness-0 palette restore in each house map's load function. For the very first map loaded (Yuu's room), also patch the Run function's `MAP_just_loaded` block — the load function may run before the palette is ready on boot.
+- Time-of-day still works after this fix: clock refreshes palettes every 15 game-minutes and on map change, so interiors go dark at night normally.
+- Historical note: this exact bug plagued Demo 2 PC testing. Bob never cracked it.
+
 ## What "Finished" Means
 
 Per Boss (2026-10-06): The game is "fully playable start to finish" but not "finished." There are rooms that feel like sketches, systems that trail off. The restoration goal is to understand Bob's intent well enough to finish it *his* way, not ours.
