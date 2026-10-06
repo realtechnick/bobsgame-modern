@@ -59,7 +59,7 @@ extern unsigned short clear_palette[256]; //always filled with 0
 
 
 
-void HARDWARE_load_bg_palette(int* palette);
+void HARDWARE_load_bg_palette(unsigned short* palette);
 void HARDWARE_delete_all_bg_data();
 void HARDWARE_reload_bg_textures();
 
