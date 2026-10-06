@@ -50,13 +50,13 @@ typedef struct
 extern int GLOBAL_text_engine_state;
 
 
-extern int* FONT_NORMAL_indexed_gfx_data;
-extern int* FONT_HUGE_indexed_gfx_data;
-extern int* FONT_SMALL_indexed_gfx_data;
-extern int* FONT_TINY_indexed_gfx_data;
-extern int* FONT_OUTLINED_indexed_gfx_data;
-extern int* FONT_BOB_indexed_gfx_data;
-extern int* FONT_JAPANESE_indexed_gfx_data;
+extern unsigned char* FONT_NORMAL_indexed_gfx_data;
+extern unsigned char* FONT_HUGE_indexed_gfx_data;
+extern unsigned char* FONT_SMALL_indexed_gfx_data;
+extern unsigned char* FONT_TINY_indexed_gfx_data;
+extern unsigned char* FONT_OUTLINED_indexed_gfx_data;
+extern unsigned char* FONT_BOB_indexed_gfx_data;
+extern unsigned char* FONT_JAPANESE_indexed_gfx_data;
 
 
 extern TEXTBOX TEXT_textbox[2];
