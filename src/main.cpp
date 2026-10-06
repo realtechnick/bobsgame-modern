@@ -588,16 +588,29 @@ int main(int argc, char *argv[])//int argc, char **argv)
 
 		if(vsync==1)
 		{
+			// Game logic is tuned for 60 ticks/sec (20 substeps x 60fps = 1200/sec).
+			// Vsync alone follows the display refresh, so on a 120Hz+ screen the
+			// whole simulation runs fast. Gate logic to 60Hz; vsync still gives
+			// tear-free presentation.
+			newtimer = SDL_GetPerformanceCounter();
+			if(newtimer-lasttimer >= hires_ticks_per_second/60)
+			{
+				lasttimer=newtimer;
 
-			GAME_main(20); //kodenermaschiniene
+				GAME_main(20); //kodenermaschiniene
 
-			//ERROR_check_SDL_and_GL_errors("GAME_main");
+				//ERROR_check_SDL_and_GL_errors("GAME_main");
 
-			main_vbl();
+				main_vbl();
 
-			//ERROR_check_SDL_and_GL_errors("vbl");
+				//ERROR_check_SDL_and_GL_errors("vbl");
 
-			framesrendered++;
+				framesrendered++;
+			}
+			else
+			{
+				SDL_Delay(1);
+			}
 		}
 		else
 		if(vsync==0)
