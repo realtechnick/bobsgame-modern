@@ -573,13 +573,11 @@ void render()
 
 		//#ifdef ND gl_draw_flipped(screen,0,0,(HARDWARE_SCREEN_WIDTH_PIXELS*ZOOM),(HARDWARE_SCREEN_HEIGHT_PIXELS*ZOOM));
 
-		//Window is 1280x960 (2x) but the game draws at 640x480 (see main.cpp).
-		//The OpenGL viewport automatically scales 640x480 ortho coordinates to
-		//fill the 1280x960 window. Draw the texture at native 640x480 and let
-		//the GPU handle the upscale.
-		gl_draw_flipped(screen,0,0,
-						HARDWARE_SCREEN_WIDTH_PIXELS,
-						HARDWARE_SCREEN_HEIGHT_PIXELS
+		gl_draw_flipped(screen,0,0//-(((HARDWARE_SCREEN_HEIGHT_PIXELS/4)*((float)((float)(HARDWARE_SCREEN_HEIGHT_PIXELS*2)/(float)(GAME_VIEWPORT_HEIGHT_PIXELS*2)))))
+						,
+						(HARDWARE_SCREEN_WIDTH_PIXELS*ZOOM)//*2*((float)((float)(HARDWARE_SCREEN_WIDTH_PIXELS*2)/(float)(GAME_VIEWPORT_WIDTH_PIXELS*2))))
+						,
+						(HARDWARE_SCREEN_HEIGHT_PIXELS*ZOOM)//*2*((float)((float)(HARDWARE_SCREEN_HEIGHT_PIXELS*2)/(float)(GAME_VIEWPORT_HEIGHT_PIXELS*2))))
 						);
 	}
 
