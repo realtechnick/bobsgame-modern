@@ -146,7 +146,7 @@ void PLAYER_main()
 			//invert palette
 			int	c=0;
 			for(c=0;c<256;c++) GAME_temp_TILESET_PALETTE[c]=~HARDWARE_map_palette[c];
-			HARDWARE_load_bg_palette((int*)&GAME_temp_TILESET_PALETTE);
+			HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
 
 			TEXT_set_sprite_window(0,PLAYER_npc,NULL);
 			//text_window("<NOCANCEL>It seems that Yuu has met his untimely demise.<.>Don't get killed, idiot.");
