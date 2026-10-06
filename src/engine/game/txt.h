@@ -28,7 +28,7 @@ typedef struct
 	SPRITE* button_sprite;
 
 	int* indexed_gfx_data;//NULL
-	int* sprite_window_indexed_gfx_data;//NULL
+	unsigned char* sprite_window_indexed_gfx_data;//NULL
 
 	int voice_pitch;//40000
 
