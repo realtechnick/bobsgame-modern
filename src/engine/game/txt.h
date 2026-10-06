@@ -248,18 +248,18 @@ int TEXT_get_char_width(int letter_index);
 #define CHAR_aI		106
 #define CHAR_aA		107
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+//Ñ
+//á
+//é
+//í
+//ó
+//ú
+//ñ
+//¡
+//¿
+//É
+//Í
+//Á
 
 
 
@@ -281,21 +281,21 @@ int TEXT_get_char_width(int letter_index);
 #define CHAR_gu		121
 
 
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+//»
+//«
+//â
+//ê
+//î
+//ô
+//û
+//à
+//è
+//ë
+//ç
+//œ
 
-//
-//
+//Ó
+//ù
 
 
 #define CHAR_dI		122
@@ -307,14 +307,14 @@ int TEXT_get_char_width(int letter_index);
 #define CHAR_du		128
 #define CHAR_dB		129
 
-//
-//
-//
-//
-//
-//
-//
-//
+//Ï
+//Ä
+//Ö
+//Ü
+//ä
+//ö
+//ü
+//ß
 
 
 
