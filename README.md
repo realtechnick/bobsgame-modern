@@ -1,15 +1,40 @@
-# Bob's Game Resurrection — Modern SDL3 Port
+# Bob's Game — Modern SDL3 Port
 
-A preservation port of Robert Pelloni's cult DS homebrew **Bob's Game** (2003-2009), recovered from the original C++ source.
+A preservation port of **Robert Pelloni's** cult DS homebrew RPG *Bob's Game* (2003-2009), recovered from the original C++ source and migrated from SDL2 to SDL3 for modern systems.
+
+**Status: First playable build** (2026-10-06) — title screen through town exploration works on Apple Silicon Mac.
 
 ## About
 
-Bob's Game is a 2D RPG/life-sim by Robert Pelloni. This port migrates the original
-SDL2/OpenGL codebase to SDL3 for modern systems. This is preservation work —
-Pelloni has passed away, and this may be among the last surviving copies of the source.
+Bob's Game is a 2D RPG/life-sim by Robert Pelloni. This is preservation work — Pelloni has passed away, and this may be among the last surviving copies of the source. The goal is a 1:1 faithful port: restore Bob's intended behavior, don't reinvent it.
 
-**Original source:** `bobsgamed/okClassic` (96 .cpp, 101 .h files, ~5.4MB)
-**Supplemental data:** `bobsgame/BobsGameOnline` v8830 (257 maps, 37 more than okClassic)
+**Original source:** `bobsgamed/okClassic` (96 .cpp, 101 .h files)
+**Supplemental data:** `bobsgame/BobsGameOnline` v8830 (257 maps)
+
+## What's Working
+
+**Title Screen**
+- Green "bob's game" logo with shine animation, correctly centered
+- "a game by one person" tagline and "press the action button" prompt
+
+**Gameplay**
+- Town and suburb fully walkable
+- School traversable without crashes
+- Intro and "MOVING DAY" sequence run correctly
+- Yuu's house interiors load with correct brightness
+- Dialogue portraits display correctly
+- Yuu's drop shadow renders properly
+
+**GameToy**
+- Tetrid works correctly (1.0x zoom, 640x480 window)
+
+**Audio**
+- Music plays and loops, sound effects work, ambience works
+- Requires SDL3_mixer (see Building)
+
+**Performance**
+- 60Hz frame logic (correct on any display refresh rate)
+- ~119fps on Apple Silicon at 640x480
 
 ## Building
 
@@ -18,70 +43,55 @@ Pelloni has passed away, and this may be among the last surviving copies of the 
 - C++11 compiler (GCC, Clang, MSVC)
 - SDL3 (3.2.10+)
 - SDL3_ttf (3.2.2+)
+- SDL3_mixer (for audio)
 - OpenGL
-
-### Linux
-```bash
-mkdir build && cd build
-cmake ..
-make -j$(nproc)
-./bobsgame
-```
-
-### Audio
-Audio is **disabled by default** (game runs silent). SDL3_mixer doesn't build
-against SDL 3.2.10 (requires 3.4+ APIs). To enable:
-```bash
-cmake -DBOBSGAME_ENABLE_AUDIO=ON ..
-```
-Requires system SDL3_mixer.
 
 ### macOS
 ```bash
-brew install sdl3 sdl3_ttf
+brew install sdl3 sdl3_ttf sdl3_mixer
 mkdir build && cd build
-cmake ..
+cmake -DBOBSGAME_ENABLE_AUDIO=ON ..
 make -j$(sysctl -n hw.ncpu)
 ./bobsgame
 ```
 
+### Linux
+```bash
+mkdir build && cd build
+cmake -DBOBSGAME_ENABLE_AUDIO=ON ..
+make -j$(nproc)
+./bobsgame
+```
+
+**Note:** Keep the window at 640x480. The game's camera, sprite, and GameToy math is tuned for it — use OS display scaling for a larger picture.
+
 ## Project Structure
 
 ```
-src/                    # C++ source (96 .cpp, 99 .h)
+src/                    # C++ source (preserved 1:1 from original)
   engine/               # Core engine (rendering, game loop, audio)
   gamelogic/            # Game logic (maps, NPCs, dialogue)
   minigame/             # Minigames (tetrid, ramio, ping, etc.)
   shaders/              # GLSL shaders
   GL/                   # Bundled GLEW headers
-data/                   # Original game data (68MB, from okClassic)
-data_v8830/             # Supplemental v8830 data (242MB, 37 extra maps)
-cmake/stubs/            # Stub headers (SDL3_mixer when audio disabled)
-web-build/              # Emscripten/WebAssembly build config
+data/                   # Original game data (from okClassic)
+data_v8830/             # Supplemental v8830 data (archived, not yet integrated)
+cmake/                  # Build config and SDL3_mixer compatibility shim
 ```
 
-## Data
+## Philosophy
 
-The game requires data files at runtime. Two datasets are included:
+**Preservation first.** Bob's code is meticulously designed — among the most advanced DS homebrew projects. When something breaks in the port, the answer is almost always "restore Bob's intended behavior," not "redesign the system." Fixes are source-faithful; refactors wait until preservation is complete.
 
-- **`data/`** (68MB): Original data from okClassic. 225 unique maps.
-- **`data_v8830/`** (242MB): Supplemental from BobsGameOnline v8830. 257 maps
-  (37 more than okClassic, including ALPHA maps and CITYNorthSide).
+See `BOB_PATTERNS.md` for documented patterns from the source.
 
-The v8830 data is **not yet integrated** into the runtime — it's archived for
-future use. The game currently loads from `data/`.
+## Known Gaps
 
-## Status
-
-- ✅ Compiles on Linux (GCC, 1.6MB binary)
-- ✅ SDL2 → SDL3 migration complete
-- ✅ All 96 source files build
-- ❌ Audio disabled (SDL3_mixer stub)
-- ❌ Not yet runtime-tested (no display on build server)
-- ❌ v8830 data not integrated
-- ❌ Web build has issues (see web-build/README.md)
+- `Mix_FadeOutMusic` stops instead of fading; `Mix_HookMusicFinished` unwired
+- Clock shows $0 but time/day captions missing during intro
+- v8830 data not yet integrated into runtime
+- Web build has issues (see web-build/README.md)
 
 ## License
 
-Original code by Robert Pelloni (2003-2009). Treated as freeware/abandonware
-for preservation purposes. This port is for personal/preservation use.
+Original code by Robert Pelloni (2003-2009). Treated as freeware/abandonware for preservation purposes. This port is for personal/preservation use.
