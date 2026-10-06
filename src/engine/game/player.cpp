@@ -487,7 +487,7 @@ void PLAYER_main()
 		int accelspeed=2;
 		int dist = distance(cameraman->MAP_x,cameraman->MAP_y,xtarget,ytarget);
 		if(dist<0)dist*=-1;
-		if(dist>0)accelspeed=((GAME_VIEWPORT_HEIGHT_PIXELS/8)/dist)*2;
+		if(dist>0)accelspeed=(GAME_VIEWPORT_HEIGHT_PIXELS/8)/dist;
 
 		//=======================cameraman acceleration,depending on if r is pressed or not==============================
 		if(cameraman->vbls>accelspeed)//>accel speed
@@ -575,14 +575,16 @@ void PLAYER_main()
 
 			if(xdistance>=ydistance||y_to_x_ratio<ycounter)
 			{
-				cameraman->MAP_x=xtarget;
+				if(cameraman->MAP_x>xtarget)cameraman->MAP_x--;
+				if(cameraman->MAP_x<xtarget)cameraman->MAP_x++;
 				xcounter++;
 				ycounter=0;
 			}
 
 			if(ydistance>=xdistance||x_to_y_ratio<xcounter)
 			{
-				cameraman->MAP_y=ytarget;
+				if(cameraman->MAP_y>ytarget)cameraman->MAP_y--;
+				if(cameraman->MAP_y<ytarget)cameraman->MAP_y++;
 				ycounter++;
 				xcounter=0;
 			}
