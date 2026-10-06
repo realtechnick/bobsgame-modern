@@ -152,9 +152,9 @@ void GAME_init()
 						{
 							fade_vbl_counter++;
 
-							HARDWARE_create_brightened_palette(HARDWARE_map_palette,(int*)&GAME_temp_TILESET_PALETTE,p);
+							HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,p);
 
-							HARDWARE_load_bg_palette((int*)&GAME_temp_TILESET_PALETTE);
+							HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
 							HARDWARE_reload_bg_textures();
 
 							p+=amt;
