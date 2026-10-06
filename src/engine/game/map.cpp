@@ -19,8 +19,8 @@ unsigned short* HARDWARE_map_1=NULL;
 unsigned short* HARDWARE_map_2=NULL;
 unsigned short* HARDWARE_map_3=NULL;
 
-unsigned short* HARDWARE_map_hit_layer=NULL; //was bool before condensed separate bins into 1 single bin
-unsigned short* HARDWARE_map_fx_layer=NULL;
+unsigned char* HARDWARE_map_hit_layer=NULL; //was bool before condensed separate bins into 1 single bin
+unsigned char* HARDWARE_map_fx_layer=NULL;
 
 
 char HARDWARE_map_0_filename[256];
@@ -333,8 +333,8 @@ void MAP_change_map(int cm,int sx,int sy)
 	HARDWARE_map_2=(unsigned short*)HARDWARE_load_file(HARDWARE_map_2_filename);
 	HARDWARE_map_3=(unsigned short*)HARDWARE_load_file(HARDWARE_map_3_filename);
 
-	HARDWARE_map_hit_layer=(unsigned short*)HARDWARE_load_file(HARDWARE_map_hit_layer_filename);
-	HARDWARE_map_fx_layer=(unsigned short*)HARDWARE_load_file(HARDWARE_map_fx_layer_filename);
+	HARDWARE_map_hit_layer=(unsigned char*)HARDWARE_load_file(HARDWARE_map_hit_layer_filename);
+	HARDWARE_map_fx_layer=(unsigned char*)HARDWARE_load_file(HARDWARE_map_fx_layer_filename);
 
 	HARDWARE_map_palette=(unsigned short*)HARDWARE_load_file(HARDWARE_map_palette_filename);
 	HARDWARE_map_tileset=(unsigned char*)HARDWARE_load_file(HARDWARE_map_tileset_filename);
