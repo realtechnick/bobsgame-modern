@@ -293,9 +293,11 @@ int main(int argc, char *argv[])//int argc, char **argv)
 
 
 
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_CORE);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 3);
-	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 0);
+	//Use compatibility profile for legacy fixed-function OpenGL (the game uses glVertexPointer etc.)
+	//macOS supports up to OpenGL 2.1 in compatibility mode
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_PROFILE_MASK, SDL_GL_CONTEXT_PROFILE_COMPATIBILITY);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MAJOR_VERSION, 2);
+	SDL_GL_SetAttribute(SDL_GL_CONTEXT_MINOR_VERSION, 1);
 
 		window = SDL_CreateWindow("\"bob's game\" alpha 1",
 								640, 480,
