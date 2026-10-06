@@ -1829,6 +1829,10 @@ void NPC_vbl()
 				bottom_npc->sprite = HARDWARE_create_sprite(bottom_npc->gfx,bottom_npc->gfx_index,bottom_npc->layer,bottom_npc->scale,bottom_npc->screen_x,bottom_npc->screen_y,bottom_npc->alpha);
 
 				//if any part of the feet are under a tile on the above layer, dont draw the shadow
+				//DISABLED 2026-10-06: This was clipping the shadow incorrectly in the SDL3 port.
+				//The map layer check misfires, causing the shadow to disappear when it shouldn't.
+				//TODO: Investigate why the map check is wrong, or reimplement properly.
+				#if 0
 					//3
 					//0
 					//2
@@ -1855,6 +1859,7 @@ void NPC_vbl()
 					//dont draw past the feet
 					bottom_npc->sprite->draw_size_y=bottom_npc->size_y;
 				}
+				#endif
 
 
 				//-----------------------------
