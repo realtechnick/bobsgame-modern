@@ -133,7 +133,7 @@ int font_index(char c)
 		case '.': {i=CHAR_PERIOD; break;}
 		case ',': {i=CHAR_COMMA; break;}
 		case '\'':{i=CHAR_QUOTE; break;}// /'
-		case '‚Äô': {i=CHAR_QUOTE; break;}// /'
+		case 'í': {i=CHAR_QUOTE; break;}// /'
 		case '!': {i=CHAR_EXCLAMATION; break;}
 		case '?': {i=CHAR_QUESTIONMARK; break;}
 		case '=': {i=CHAR_EQUALS; break;}
@@ -172,43 +172,43 @@ int font_index(char c)
 		case '8': {i=CHAR_8; break;}
 		case '9': {i=CHAR_9; break;}
 
-		case '√ë': {i=CHAR_dN; break;}
-		case '√°': {i=CHAR_aa; break;}
-		case '√©': {i=CHAR_ae; break;}
-		case '√≠': {i=CHAR_ai; break;}
-		case '√≥': {i=CHAR_ao; break;}
-		case '√∫': {i=CHAR_au; break;}
-		case '√±': {i=CHAR_dn; break;}
-		case '¬°': {i=CHAR_iE; break;}
-		case '¬ø': {i=CHAR_iQ; break;}
-		case '√â': {i=CHAR_aE; break;}
-		case '√ç': {i=CHAR_aI; break;}
-		case '√Å': {i=CHAR_aA; break;}
+		case '—': {i=CHAR_dN; break;}
+		case '·': {i=CHAR_aa; break;}
+		case 'È': {i=CHAR_ae; break;}
+		case 'Ì': {i=CHAR_ai; break;}
+		case 'Û': {i=CHAR_ao; break;}
+		case '˙': {i=CHAR_au; break;}
+		case 'Ò': {i=CHAR_dn; break;}
+		case '°': {i=CHAR_iE; break;}
+		case 'ø': {i=CHAR_iQ; break;}
+		case '…': {i=CHAR_aE; break;}
+		case 'Õ': {i=CHAR_aI; break;}
+		case '¡': {i=CHAR_aA; break;}
 
-		case '¬ª': {i=CHAR_RR; break;}
-		case '¬´': {i=CHAR_LL; break;}
-		case '√¢': {i=CHAR_ca; break;}
-		case '√™': {i=CHAR_ce; break;}
-		case '√Æ': {i=CHAR_ci; break;}
-		case '√¥': {i=CHAR_co; break;}
-		case '√ª': {i=CHAR_cu; break;}
-		case '√†': {i=CHAR_ga; break;}
-		case '√®': {i=CHAR_ge; break;}
-		case '√´': {i=CHAR_de; break;}
-		case '√ß': {i=CHAR_cc; break;}
-		case '≈ì': {i=CHAR_lo; break;}
+		case 'ª': {i=CHAR_RR; break;}
+		case '´': {i=CHAR_LL; break;}
+		case '‚': {i=CHAR_ca; break;}
+		case 'Í': {i=CHAR_ce; break;}
+		case 'Ó': {i=CHAR_ci; break;}
+		case 'Ù': {i=CHAR_co; break;}
+		case '˚': {i=CHAR_cu; break;}
+		case '‡': {i=CHAR_ga; break;}
+		case 'Ë': {i=CHAR_ge; break;}
+		case 'Î': {i=CHAR_de; break;}
+		case 'Á': {i=CHAR_cc; break;}
+		case 'ú': {i=CHAR_lo; break;}
 
-		case '√ì': {i=CHAR_aO; break;}
-		case '√π': {i=CHAR_gu; break;}
+		case '”': {i=CHAR_aO; break;}
+		case '˘': {i=CHAR_gu; break;}
 
-		case '√è': {i=CHAR_dI; break;}
-		case '√Ñ': {i=CHAR_dA; break;}
-		case '√ñ': {i=CHAR_dO; break;}
-		case '√ú': {i=CHAR_dU; break;}
-		case '√§': {i=CHAR_da; break;}
-		case '√∂': {i=CHAR_do; break;}
-		case '√º': {i=CHAR_du; break;}
-		case '√ü': {i=CHAR_dB; break;}
+		case 'œ': {i=CHAR_dI; break;}
+		case 'ƒ': {i=CHAR_dA; break;}
+		case '÷': {i=CHAR_dO; break;}
+		case '‹': {i=CHAR_dU; break;}
+		case '‰': {i=CHAR_da; break;}
+		case 'ˆ': {i=CHAR_do; break;}
+		case '¸': {i=CHAR_du; break;}
+		case 'ﬂ': {i=CHAR_dB; break;}
 
 
 		case ' ': {i=CHAR_SPACE; break;}
