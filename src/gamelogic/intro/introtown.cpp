@@ -224,18 +224,18 @@ static int tetridchallenge=0;
 			{
 
 
-				HARDWARE_create_brightened_palette(HARDWARE_map_palette,(int*)&GAME_temp_TILESET_PALETTE,p);
+				HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,p);
 				//HARDWARE_create_brightened_palette(current_touchmap_302_palette,(int*)&tileset_palette_touchmap_302,p);
 				//HARDWARE_create_brightened_palette(current_touchmap_1_palette,(int*)&tileset_palette_touchmap_1,p);
-				//HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,(int*)&GAME_temp_SPRITE_PALETTE,p);
+				//HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,GAME_temp_SPRITE_PALETTE,p);
 
-				//HARDWARE_load_sprite_palette(1,0,(int*)&GAME_temp_SPRITE_PALETTE);
-				//HARDWARE_load_sprite_palette(0,0,(int*)&GAME_temp_SPRITE_PALETTE);
-				HARDWARE_load_bg_palette((int*)&GAME_temp_TILESET_PALETTE);
+				//HARDWARE_load_sprite_palette(1,0,GAME_temp_SPRITE_PALETTE);
+				//HARDWARE_load_sprite_palette(0,0,GAME_temp_SPRITE_PALETTE);
+				HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
 				HARDWARE_reload_bg_textures();
-				//HARDWARE_load_bg_palette(1,2,(int*)&GAME_temp_TILESET_PALETTE);
-				//HARDWARE_load_bg_palette(1,1,(int*)&GAME_temp_TILESET_PALETTE);
-				//HARDWARE_load_bg_palette(1,0,(int*)&GAME_temp_TILESET_PALETTE);
+				//HARDWARE_load_bg_palette(1,2,GAME_temp_TILESET_PALETTE);
+				//HARDWARE_load_bg_palette(1,1,GAME_temp_TILESET_PALETTE);
+				//HARDWARE_load_bg_palette(1,0,GAME_temp_TILESET_PALETTE);
 				//HARDWARE_load_bg_palette(0,3,(int*)&tileset_palette_touchmap_302);
 				//HARDWARE_load_bg_palette(0,1,(int*)&tileset_palette_touchmap_1);
 
