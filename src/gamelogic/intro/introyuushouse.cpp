@@ -128,6 +128,11 @@ void bobsgame_INTRODownstairs_Map_Load_Function()
 	{
 		HARDWARE_play_music("g65_theme",32);
 	}
+	// Force bright interior palette on load (fixes dark house bug)
+	// Matches what the circuit breaker restore does later
+	HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,0);
+	HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
+	HARDWARE_reload_bg_textures();
 
 
 }
@@ -480,7 +485,10 @@ if(battery_quest<4)
 
 }
 
-
+	// Force bright interior palette on load (fixes dark house bug)
+	HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,0);
+	HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
+	HARDWARE_reload_bg_textures();
 }
 void bobsgame_INTROUpstairs_Map_Run_Function(int MAP_just_loaded)
 {
@@ -591,6 +599,11 @@ void bobsgame_INTROUpstairsYuusRoom_Map_Load_Function()
 
 	HARDWARE_play_music("birds_horns",64);
 
+	// Force bright interior palette on load (fixes dark house bug)
+	HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,0);
+	HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
+	HARDWARE_reload_bg_textures();
+
 
 
 }
@@ -602,7 +615,10 @@ void bobsgame_INTROUpstairsYuusRoom_Map_Run_Function(int MAP_just_loaded)
 {
 	if(MAP_just_loaded==1)
 	{
-
+		// Bright interior palette on first frame (fixes dark start room)
+		HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,0);
+		HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
+		HARDWARE_reload_bg_textures();
 	}
 
 
@@ -680,6 +696,10 @@ void bobsgame_INTROUpstairsBabyRoom_Map_Load_Function()
 {
 //RANGE_INTROBabyRoomToUpstairs 7*8,8*8,11*8,9*8
 //RANGE_box23 3*8,9*8,5*8,12*8
+	// Bright interior palette (fixes dark rooms)
+	HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,0);
+	HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
+	HARDWARE_reload_bg_textures();
 }
 void bobsgame_INTROUpstairsBabyRoom_Map_Run_Function(int MAP_just_loaded)
 {
@@ -757,6 +777,10 @@ void bobsgame_INTROUpstairsBrothersRoom_Map_Load_Function()
 		HARDWARE_play_music("g65_theme",64);
 	}
 
+	// Bright interior palette (fixes dark rooms)
+	HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,0);
+	HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
+	HARDWARE_reload_bg_textures();
 }
 
 void bobsgame_INTROUpstairsBrothersRoom_Map_Run_Function(int MAP_just_loaded)
@@ -844,6 +868,10 @@ void bobsgame_INTROUpstairsBathroom_Map_Load_Function()
 //RANGE_INTROUpstairsBathroomToUpstairs 7*8,8*8,11*8,9*8
 //RANGE_box26 7*8,15*8,10*8,17*8
 //RANGE_box27 7*8,17*8,9*8,19*8
+	// Bright interior palette (fixes dark rooms)
+	HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,0);
+	HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
+	HARDWARE_reload_bg_textures();
 }
 
 void bobsgame_INTROUpstairsBathroom_Map_Run_Function(int MAP_just_loaded)
@@ -885,6 +913,10 @@ void bobsgame_INTROUpstairsParentsRoom_Map_Load_Function()
 {
 //RANGE_INTROParentsRoomToUpstairs 4*8,8*8,8*8,9*8
 //RANGE_box28 2*8,12*8,5*8,13*8
+	// Bright interior palette (fixes dark rooms)
+	HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,0);
+	HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
+	HARDWARE_reload_bg_textures();
 }
 
 void bobsgame_INTROUpstairsParentsRoom_Map_Run_Function(int MAP_just_loaded)
@@ -934,6 +966,10 @@ void bobsgame_INTROBasement_Map_Load_Function()
 //RANGE_box37 39*8,21*8,41*8,23*8
 //RANGE_box38 44*8,20*8,47*8,22*8
 //RANGE_box39 55*8,32*8,57*8,33*8
+	// Bright interior palette (fixes dark rooms)
+	HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,0);
+	HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
+	HARDWARE_reload_bg_textures();
 }
 
 void bobsgame_INTROBasement_Map_Run_Function(int MAP_just_loaded)
@@ -1074,6 +1110,10 @@ void bobsgame_INTROGarage_Map_Load_Function()
 //RANGE_box49 14*8,26*8,15*8,29*8
 //RANGE_box50 11*8,24*8,14*8,26*8
 //RANGE_box51 5*8,26*8,8*8,28*8
+	// Bright interior palette (fixes dark rooms)
+	HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,0);
+	HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
+	HARDWARE_reload_bg_textures();
 }
 void bobsgame_INTROGarage_Map_Run_Function(int MAP_just_loaded)
 {
@@ -1141,6 +1181,10 @@ void bobsgame_INTRODownstairsBathroom_Map_Load_Function()
 //RANGE_INTROMirrorEffect 6*8,11*8,11*8,13*8
 //RANGE_box52 2*8,11*8,4*8,12*8
 //DO SPRITE MIRRORING ABOVE LAYER 3
+	// Bright interior palette (fixes dark rooms)
+	HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,0);
+	HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
+	HARDWARE_reload_bg_textures();
 }
 void bobsgame_INTRODownstairsBathroom_Map_Run_Function(int MAP_just_loaded)
 {

@@ -33,7 +33,7 @@ void CLOCK_init()
 	CLOCK_vbl_count=0;
 	CLOCK_second=0;
 	CLOCK_minute=0;
-	CLOCK_hour=1;
+	CLOCK_hour=10;
 	CLOCK_day=1;
 
 	CLOCK_update_clock();

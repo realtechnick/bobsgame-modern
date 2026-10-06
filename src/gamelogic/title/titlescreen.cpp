@@ -277,7 +277,7 @@ void load_title_screen()
 
 					//if(easymode)if(easymodecaption==NULL)CAPTION_make_caption(&easymodecaption, 1, CAPTION_CENTERED_X,200, -1, "easy mode", FONT_NORMAL_ID, BLUE, CLEAR,5,1);
 
-					//if(introcaption==NULL)CAPTION_make_caption(&introcaption, 1, CAPTION_CENTERED_X, GAME_VIEWPORT_HEIGHT_PIXELS-10, -1, "press the action button", FONT_NORMAL_ID, WHITE, CLEAR,6,1);
+					if(introcaption==NULL)CAPTION_make_caption(&introcaption, 1, CAPTION_CENTERED_X, GAME_VIEWPORT_HEIGHT_PIXELS-10, -1, "press the action button", FONT_NORMAL_ID, WHITE, CLEAR,6,1);
 
 					if(BUTTON_A_PRESSED)
 					{
