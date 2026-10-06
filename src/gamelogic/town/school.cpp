@@ -1875,7 +1875,7 @@ void bobsgame_SCHOOLGymHallway_Map_Run_Function(int MAP_just_loaded)
 //music room  41 39
 //left hallway 10 52
 //top left hallway 10 12
-	static NPC* randomkids_npcs[40]={NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL};
+	
 	int randamount=40;
 		int c=0;
 	int hi=0;
@@ -2295,9 +2295,11 @@ void bobsgame_SCHOOLClassHallway_Map_Load_Function()
 
 void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 {
+	static NPC* randomkids_npcs[40]={NULL};
 	if(MAP_just_loaded==1)
 	{
-
+		int _c=0;
+		for(_c=0;_c<40;_c++)randomkids_npcs[_c]=NULL;
 	}
 
 //kids flooding out of class based on time
@@ -2321,7 +2323,7 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 //6th classroom 169,40
 //5th classroom 128,40
 //4th classroom 88 40
-	static NPC* randomkids_npcs[40]={NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL};
+	
 	int randamount=40;
 		int c=0;
 	int hi=0;
