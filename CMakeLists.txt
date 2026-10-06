@@ -204,6 +204,17 @@ endif()
 option(BOBSGAME_ENABLE_AUDIO "Enable audio via SDL3_mixer" OFF)
 
 if(BOBSGAME_ENABLE_AUDIO)
+    # SDL3_mixer's CMake package requires the SDL3::Headers target, which is
+    # only created when SDL3 itself is located via find_package (we locate SDL3
+    # manually with find_path/find_library above, e.g. Homebrew layouts).
+    find_package(SDL3 QUIET)
+    if(NOT TARGET SDL3::Headers)
+        add_library(SDL3::Headers INTERFACE IMPORTED)
+        if(SDL3_INCLUDE_DIR)
+            set_target_properties(SDL3::Headers PROPERTIES
+                INTERFACE_INCLUDE_DIRECTORIES "${SDL3_INCLUDE_DIR}")
+        endif()
+    endif()
     find_package(SDL3_mixer QUIET)
     if(SDL3_mixer_FOUND)
         # Use compatibility shim (maps SDL2_mixer API to SDL3_mixer 3.x)

@@ -6,7 +6,7 @@
 #include "../../main.h"
 //#include "sound.h"
 
-#include <SDL3_mixer/SDL_mixer.h>
+#include <sdl3_mixer_compat.h>
 
 int G_mute=0;//GLOBAL MUTE
 

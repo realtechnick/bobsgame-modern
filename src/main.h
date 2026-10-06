@@ -76,7 +76,7 @@
 #define BYTE_GREEN 1
 #define BYTE_BLUE 0
 
-#include <SDL3_mixer/SDL_mixer.h>
+#include <sdl3_mixer_compat.h>
 #include <SDL3_ttf/SDL_ttf.h>
 //#include "SDL_image.h"
 //#include "SDL_net.h"
