@@ -392,7 +392,7 @@ void adjust_color(int *pr, int *pg, int *pb)
 
             fread(filepointer, 1, size, file);
         }
-        if(file==NULL){ERROR_set_error(name);ERROR_set_error(" was not found\n");}
+        if(file==NULL){ERROR_set_error(name);ERROR_set_error(" was not found\n");return NULL;}
 
 		fclose(file);
 		//HARDWARE_wait_for_vbl();
@@ -434,7 +434,7 @@ void adjust_color(int *pr, int *pg, int *pb)
 			size = ftell(file);
 			rewind(file);
         }
-        if(file==NULL){ERROR_set_error(name);ERROR_set_error(" was not found\n");}
+        if(file==NULL){ERROR_set_error(name);ERROR_set_error(" was not found\n");return NULL;}
 
 		fclose(file);
 
