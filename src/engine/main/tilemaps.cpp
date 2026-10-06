@@ -283,7 +283,7 @@ void HARDWARE_reload_bg_textures()
 
 
 //==========================================================================================================================
-void HARDWARE_load_bg_palette(int* palette)//HARDWARE_LoadBgPal
+void HARDWARE_load_bg_palette(unsigned short* palette)//HARDWARE_LoadBgPal
 {//==========================================================================================================================
 
 
