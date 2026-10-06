@@ -229,7 +229,7 @@ if(CLOCK_hour>12+11)brightness=-10;
 
 		set_window_colors(TIME_DAWN);
 
-		HARDWARE_load_bg_palette((int*)&GAME_temp_TILESET_PALETTE);
+		HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
 
 	}
 
@@ -243,7 +243,7 @@ if(CLOCK_hour>12+11)brightness=-10;
 
 		set_window_colors(TIME_EARLY);
 
-		HARDWARE_load_bg_palette((int*)&GAME_temp_TILESET_PALETTE);
+		HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
 	}
 	if(CLOCK_hour>=8&&CLOCK_hour<=12+7)//normal	160 248 248
 	{
@@ -253,7 +253,7 @@ if(CLOCK_hour>12+11)brightness=-10;
 
 		set_window_colors(TIME_DAY);
 
-		HARDWARE_load_bg_palette((int*)&GAME_temp_TILESET_PALETTE);
+		HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
 
 
 	}
@@ -266,7 +266,7 @@ if(CLOCK_hour>12+11)brightness=-10;
 
 		set_window_colors(TIME_DUSK);
 
-		HARDWARE_load_bg_palette((int*)&GAME_temp_TILESET_PALETTE);
+		HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
 
 	}
 	if((CLOCK_hour>=12+11||CLOCK_hour<=4))//black
@@ -278,7 +278,7 @@ if(CLOCK_hour>12+11)brightness=-10;
 
 		set_window_colors(TIME_DARK);
 
-		HARDWARE_load_bg_palette((int*)&GAME_temp_TILESET_PALETTE);
+		HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
 
 	}
 
