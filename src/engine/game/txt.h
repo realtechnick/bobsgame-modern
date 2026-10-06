@@ -70,7 +70,7 @@ extern NPC* TEXT_npc_5;
 extern NPC* TEXT_npc_6;
 
 
-extern int* TEXT_font_pointer;
+extern unsigned char* TEXT_font_pointer;
 extern int TEXT_font_id;
 
 extern int TEXT_color[3];
@@ -248,18 +248,18 @@ int TEXT_get_char_width(int letter_index);
 #define CHAR_aI		106
 #define CHAR_aA		107
 
-//Ñ
-//á
-//é
-//í
-//ó
-//ú
-//ñ
-//¡
-//¿
-//É
-//Í
-//Á
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -281,21 +281,21 @@ int TEXT_get_char_width(int letter_index);
 #define CHAR_gu		121
 
 
-//»
-//«
-//â
-//ê
-//î
-//ô
-//û
-//à
-//è
-//ë
-//ç
-//œ
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
-//Ó
-//ù
+//
+//
 
 
 #define CHAR_dI		122
@@ -307,14 +307,14 @@ int TEXT_get_char_width(int letter_index);
 #define CHAR_du		128
 #define CHAR_dB		129
 
-//Ï
-//Ä
-//Ö
-//Ü
-//ä
-//ö
-//ü
-//ß
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
