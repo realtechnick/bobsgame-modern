@@ -65,13 +65,14 @@ void load_title_screen()
 
 				intro_top_palette[(int)intro_top_tileset[(8*8)*intro_top_map[5+(31*32)]]]=HARDWARE_RGB(0,0,0);
 
-				//AUX draw multiplies by ZOOM, so divide to get correct screen pos
+				//AUX draw multiplies by ZOOM, so pre-divide to get correct screen pos.
+				//Reassign fromx/fromy/aspectratio so ALL AUX loads (including shine) use adjusted values.
 				extern float ZOOM;
-				int aux_x = (int)(fromx / ZOOM);
-				int aux_y = (int)(fromy / ZOOM);
-				float aux_zoom = (float)(1.0f / ZOOM);
+				fromx = (int)(fromx / ZOOM);
+				fromy = (int)(fromy / ZOOM);
+				aspectratio = (float)(aspectratio / ZOOM);
 
-				HARDWARE_load_AUX_map_to_xy_xy(1,intro_top_map,intro_top_tileset,intro_top_palette,256,192,aux_x,aux_y,aux_zoom,0);
+				HARDWARE_load_AUX_map_to_xy_xy(1,intro_top_map,intro_top_tileset,intro_top_palette,256,192,fromx,fromy,aspectratio,0);
 
 
 
@@ -122,9 +123,12 @@ void load_title_screen()
 
 					whilefix();
 
-					float aspectratio = 1;//((float)((float)(GAME_VIEWPORT_HEIGHT_PIXELS)/2.0f)/192.0f);
-					int fromx = ((GAME_VIEWPORT_WIDTH_PIXELS-(aspectratio*256.0f))/2);
-					int fromy = 32;
+					float aspectratio = 1;
+					int fromx = (640-256)/2;
+					int fromy = 22;
+					fromx = (int)(fromx / ZOOM);
+					fromy = (int)(fromy / ZOOM);
+					aspectratio = (float)(aspectratio / ZOOM);
 
 					HARDWARE_load_AUX_map_to_xy_xy(1,intro_top_map,intro_top_tileset,intro_palette_1,256,192,fromx,fromy,aspectratio,0);
 					//HARDWARE_load_AUX_map_to_xy_xy(0,intro_bottom_map,intro_bottom_tileset,intro_palette_0,256,192,fromx,fromy+(GAME_VIEWPORT_HEIGHT_PIXELS/2),aspectratio,0);
@@ -225,9 +229,12 @@ void load_title_screen()
 					intro_palette_1[(int)intro_top_tileset[(8*8)*intro_top_map[5+(31*32)]]]=HARDWARE_RGB(c,c,c);
 					//intro_palette_0[2]=HARDWARE_RGB(c,c,c);
 
-					float aspectratio = 1;//((float)((float)(GAME_VIEWPORT_HEIGHT_PIXELS)/2.0f)/192.0f);
-					int fromx = ((GAME_VIEWPORT_WIDTH_PIXELS-(aspectratio*256.0f))/2);
-					int fromy = 0;
+					float aspectratio = 1;
+					int fromx = (640-256)/2;
+					int fromy = 22;
+					fromx = (int)(fromx / ZOOM);
+					fromy = (int)(fromy / ZOOM);
+					aspectratio = (float)(aspectratio / ZOOM);
 
 					HARDWARE_load_AUX_map_to_xy_xy(1,intro_top_map,intro_top_tileset,intro_palette_1,256,192,fromx,fromy,aspectratio,0);
 					//HARDWARE_load_AUX_map_to_xy_xy(0,intro_bottom_map,intro_bottom_tileset,intro_palette_0,256,192,fromx,fromy+(GAME_VIEWPORT_HEIGHT_PIXELS/2),aspectratio,0);
@@ -392,9 +399,12 @@ void unload_title_screen()
 
 				//HARDWARE_load_bg_palette(1,3,intro_palette_1);
 				//HARDWARE_load_bg_palette(0,3,intro_palette_0);
-					float aspectratio = ((float)((float)(GAME_VIEWPORT_HEIGHT_PIXELS)/2.0f)/192.0f);
-					int fromx = ((GAME_VIEWPORT_WIDTH_PIXELS-(aspectratio*256.0f))/2);
-					int fromy = 0;
+					float aspectratio = 1;
+					int fromx = (640-256)/2;
+					int fromy = 22;
+					fromx = (int)(fromx / ZOOM);
+					fromy = (int)(fromy / ZOOM);
+					aspectratio = (float)(aspectratio / ZOOM);
 
 					HARDWARE_load_AUX_map_to_xy_xy(1,intro_top_map,intro_top_tileset,intro_palette_1,256,192,fromx,fromy,aspectratio,0);
 					HARDWARE_load_AUX_map_to_xy_xy(0,intro_bottom_map,intro_bottom_tileset,intro_palette_0,256,192,fromx,fromy+(GAME_VIEWPORT_HEIGHT_PIXELS/2),aspectratio,0);
