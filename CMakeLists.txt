@@ -4,6 +4,10 @@ project(bobsgame)
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# The original 2009 code uses int->float narrowing in initializer lists.
+# Suppress the C++11 narrowing error (was a warning in older compilers).
+add_compile_options(-Wno-c++11-narrowing)
+
 # SDL3 - find via CMake, with Homebrew paths for macOS
 # On Apple Silicon Macs, Homebrew is in /opt/homebrew
 # On Intel Macs and Linux, it's typically /usr/local
