@@ -461,7 +461,7 @@ void TEXT_init()
 		TEXT_textbox[i].sprite_window_gfx=GFX_KID_yuu;
 
 		TEXT_textbox[i].indexed_gfx_data=(int*)malloc(3*64*64*sizeof(int));
-		TEXT_textbox[i].sprite_window_indexed_gfx_data=(int*)malloc(32*64*sizeof(int));
+		TEXT_textbox[i].sprite_window_indexed_gfx_data=(unsigned char*)malloc(32*64*sizeof(unsigned char));
 
 		int x=0;
 		for(x=0;x<3*64*64;x++)((unsigned char*)TEXT_textbox[i].indexed_gfx_data)[x]=TEXT_color[0];
