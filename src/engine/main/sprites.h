@@ -96,7 +96,7 @@
 //================
 
 
-extern int* GAME_original_SPRITE_PALETTE;
+extern unsigned short* GAME_original_SPRITE_PALETTE;
 extern unsigned short GAME_temp_SPRITE_PALETTE[256];
 extern SPRITE* HARDWARE_sprites[256];
 
