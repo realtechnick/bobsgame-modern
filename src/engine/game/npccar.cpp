@@ -206,8 +206,7 @@ bool NPC_move_car_dont_hit_other_cars(NPC** npcpp,int speed,int x,int y)
 void NPC_create_car_if_within_range_else_delete(NPC** npcpp,int x,int y,int direction)
 {//=========================================================================================================================
 
-	if(npcpp==NULL){ERROR_set_error("NPC_create_car_if_within_range_else_delete()");return;}
-	if(*npcpp==NULL){ERROR_set_error("NPC_create_car_if_within_range_else_delete()");return;}
+	if(npcpp==NULL){return;}
 	NPC* npc = *npcpp;
 
 
