@@ -969,10 +969,10 @@ void bobsgame_INTROBasement_Map_Run_Function(int MAP_just_loaded)
 	if(battery_quest==3&&GLOBAL_text_engine_state==0)
 	{
 							{
-								HARDWARE_create_brightened_palette(HARDWARE_map_palette,(int*)&GAME_temp_TILESET_PALETTE,-15);
+								HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,-15);
 								//GAME_temp_TILESET_PALETTE[246]=RGB(0,0,0);
 
-								HARDWARE_load_bg_palette((int*)&GAME_temp_TILESET_PALETTE);
+								HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
 								HARDWARE_reload_bg_textures();
 
 
@@ -987,10 +987,10 @@ void bobsgame_INTROBasement_Map_Run_Function(int MAP_just_loaded)
 	{
 
 
-				HARDWARE_create_brightened_palette(HARDWARE_map_palette,(int*)&GAME_temp_TILESET_PALETTE,0);
+				HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,0);
 				//GAME_temp_TILESET_PALETTE[246]=RGB(0,0,0);
 
-				HARDWARE_load_bg_palette((int*)&GAME_temp_TILESET_PALETTE);
+				HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
 				HARDWARE_reload_bg_textures();
 
 
