@@ -226,8 +226,7 @@ void NPC_create_car_if_within_range_else_delete(NPC** npcpp,int x,int y,int dire
 void NPC_create_car(NPC** npcpp,int x,int y,int direction)
 {//=========================================================================================================================
 
-	if(npcpp==NULL){ERROR_set_error("NPC_create_car()");return;}
-	if(*npcpp==NULL){ERROR_set_error("NPC_create_car()");return;}
+	if(npcpp==NULL){return;}
 	NPC* npc = *npcpp;
 
 
@@ -241,6 +240,7 @@ void NPC_create_car(NPC** npcpp,int x,int y,int direction)
 		if(type==2)NPC_create_npc(npcpp,GFX_CAR_truck,64,64,x,y);
 		if(type==3)NPC_create_npc(npcpp,GFX_CAR_suv,64,64,x,y);
 		if(type==4)NPC_create_npc(npcpp,GFX_CAR_minivan,64,64,x,y);
+		npc=*npcpp;
 		npc->randomcolorset[0]=r(13);
 		NPC_set_car_anim_frame_now(npcpp,direction);
 		npc->non_walkable=1;
@@ -266,6 +266,7 @@ void NPC_create_bicycle_if_within_range_else_delete(NPC** npcpp,int x,int y,int 
 		if(npc==NULL)
 		{
 			NPC_create_npc(npcpp,GFX_CAR_bicycle,64,64,x,y);
+			npc=*npcpp;
 			npc->randomcolorset[0]=r(13);
 			NPC_set_car_anim_frame_now(npcpp,direction);
 			npc->non_walkable=1;
