@@ -9,7 +9,7 @@ CAPTION* pause_CAPTION=NULL;
 int caption_vbl_var=0;
 
 //=========================================================================================================================
-int CAPTION_get_char_width(int font_height, int* font_pointer, int letter_index)
+int CAPTION_get_char_width(int font_height, unsigned char* font_pointer, int letter_index)
 {//=========================================================================================================================
 
 	if(letter_index==-1)return 0;
@@ -248,7 +248,7 @@ int CAPTION_get_pixel_length(const char* text,int font_id)
 {//=========================================================================================================================
 
 	int font_height=0;
-	int* font_pointer = NULL;
+	unsigned char* font_pointer = NULL;
 
 	if(font_id==FONT_OUTLINED_ID)	{font_pointer = FONT_OUTLINED_indexed_gfx_data; 	font_height = FONT_OUTLINED_HEIGHT;}
 	if(font_id==FONT_NORMAL_ID)		{font_pointer = FONT_NORMAL_indexed_gfx_data; 		font_height = FONT_NORMAL_HEIGHT;}
