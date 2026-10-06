@@ -148,8 +148,8 @@ void load_gametoy_fullscreen()
 //set cameraman_target to bottom half of the screen, so you can see yuu and friend talking above it.
 
 //zoom should be 1.5
-ZOOMto=1.5f;
-ZOOM=1.5f;
+ZOOMto=1.0f;
+ZOOM=1.0f;
 
 set_zoom();
 
@@ -226,8 +226,8 @@ void load_tv_fullscreen()
 //set cameraman_target to bottom half of the screen, so you can see yuu and friend talking above it.
 
 //zoom should be 1.5
-ZOOMto=1.5f;
-ZOOM=1.5f;
+ZOOMto=1.0f;
+ZOOM=1.0f;
 
 set_zoom();
 
@@ -271,8 +271,8 @@ void load_ping_tv_fullscreen()
 //set cameraman_target to bottom half of the screen, so you can see yuu and friend talking above it.
 
 //zoom should be 1.5
-ZOOMto=1.5f;
-ZOOM=1.5f;
+ZOOMto=1.0f;
+ZOOM=1.0f;
 
 set_zoom();
 
