@@ -256,8 +256,8 @@ void NPC_create_bicycle_if_within_range_else_delete(NPC** npcpp,int x,int y,int 
 {//=========================================================================================================================
 
 
-	if(npcpp==NULL){ERROR_set_error("NPC_create_bicycle_if_within_range_else_delete()");return;}
-	if(*npcpp==NULL){ERROR_set_error("NPC_create_bicycle_if_within_range_else_delete()");return;}
+	if(npcpp==NULL){return;}
+
 	NPC* npc = *npcpp;
 
 
@@ -638,8 +638,8 @@ bool NPC_car_clockwise(NPC** npcpp,int speed,int* hit_direction_x,int* hit_direc
 {//=========================================================================================================================
 
 
-	if(npcpp==NULL){ERROR_set_error("NPC_car_clockwise()");return 0;}
-	if(*npcpp==NULL){ERROR_set_error("NPC_car_clockwise()");return 0;}
+	if(npcpp==NULL){return 0;}
+	if(*npcpp==NULL){return 0;}
 	NPC* npc = *npcpp;
 
 	if(PLAYER_npc==NULL){ERROR_set_error("NPC_car_counterclockwise()");return 0;}
