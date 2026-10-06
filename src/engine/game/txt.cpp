@@ -8,13 +8,13 @@
 int GLOBAL_text_engine_state=0;
 
 
-int* FONT_NORMAL_indexed_gfx_data=NULL;
-int* FONT_HUGE_indexed_gfx_data=NULL;
-int* FONT_SMALL_indexed_gfx_data=NULL;
-int* FONT_TINY_indexed_gfx_data=NULL;
-int* FONT_OUTLINED_indexed_gfx_data=NULL;
-int* FONT_BOB_indexed_gfx_data=NULL;
-int* FONT_JAPANESE_indexed_gfx_data=NULL;
+unsigned char* FONT_NORMAL_indexed_gfx_data=NULL;
+unsigned char* FONT_HUGE_indexed_gfx_data=NULL;
+unsigned char* FONT_SMALL_indexed_gfx_data=NULL;
+unsigned char* FONT_TINY_indexed_gfx_data=NULL;
+unsigned char* FONT_OUTLINED_indexed_gfx_data=NULL;
+unsigned char* FONT_BOB_indexed_gfx_data=NULL;
+unsigned char* FONT_JAPANESE_indexed_gfx_data=NULL;
 
 char* TEXT_text = NULL;
 
@@ -434,12 +434,12 @@ void TEXT_init()
 	//-----------------------------
 	//load fonts
 	//-----------------------------
-	FONT_NORMAL_indexed_gfx_data=(int*)HARDWARE_load_file("/font/font_normal.bin");
-	FONT_HUGE_indexed_gfx_data=(int*)HARDWARE_load_file("/font/font_huge.bin");
-	FONT_SMALL_indexed_gfx_data=(int*)HARDWARE_load_file("/font/font_small.bin");
-	FONT_TINY_indexed_gfx_data=(int*)HARDWARE_load_file("/font/font_tiny.bin");
-	FONT_OUTLINED_indexed_gfx_data=(int*)HARDWARE_load_file("/font/font_outlined.bin");
-	FONT_BOB_indexed_gfx_data=(int*)HARDWARE_load_file("/font/font_bob.bin");
+	FONT_NORMAL_indexed_gfx_data=(unsigned char*)HARDWARE_load_file("/font/font_normal.bin");
+	FONT_HUGE_indexed_gfx_data=(unsigned char*)HARDWARE_load_file("/font/font_huge.bin");
+	FONT_SMALL_indexed_gfx_data=(unsigned char*)HARDWARE_load_file("/font/font_small.bin");
+	FONT_TINY_indexed_gfx_data=(unsigned char*)HARDWARE_load_file("/font/font_tiny.bin");
+	FONT_OUTLINED_indexed_gfx_data=(unsigned char*)HARDWARE_load_file("/font/font_outlined.bin");
+	FONT_BOB_indexed_gfx_data=(unsigned char*)HARDWARE_load_file("/font/font_bob.bin");
 	//FONT_JAPANESE_indexed_gfx_data=HARDWARE_load_file("/font/font_japanese.bin");
 
 
