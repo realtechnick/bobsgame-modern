@@ -499,8 +499,8 @@ void render()
 	extern int title_logo_x, title_logo_y;
 	extern int TITLESCREEN_running;
 	if(TITLESCREEN_running && title_logo_tex && glIsTexture(title_logo_tex)) {
-		//fprintf(stderr, "TITLE LOGO: Drawing at (%d,%d)\n", title_logo_x, title_logo_y);
-		draw_texture(title_logo_tex, ZOOM*title_logo_x, ZOOM*title_logo_y, ZOOM*256, ZOOM*256);
+		//Don't multiply by ZOOM - logo coords are already in screen space
+		draw_texture(title_logo_tex, title_logo_x, title_logo_y, 256, 256);
 	}
 
 	a=1;
