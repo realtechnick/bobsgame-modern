@@ -38,8 +38,8 @@ void bobsgame_CITYBobsAptInside_Map_Load_Function()
 
 HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,GAME_temp_SPRITE_PALETTE,0);
 
-HARDWARE_load_sprite_palette((int*)&GAME_temp_SPRITE_PALETTE);///FIX THIS
-//HARDWARE_load_sprite_palette(0,(int*)GAME_temp_SPRITE_PALETTE);
+HARDWARE_load_sprite_palette(GAME_temp_SPRITE_PALETTE);///FIX THIS
+//HARDWARE_load_sprite_palette(0,GAME_temp_SPRITE_PALETTE);
 
 }
 void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
@@ -135,14 +135,14 @@ void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 				{
 					if(TITLESCREEN_vbl_counter%3==0)
 					{
-						HARDWARE_create_brightened_palette(HARDWARE_map_palette,(int*)&GAME_temp_TILESET_PALETTE,p);
+						HARDWARE_create_brightened_palette(HARDWARE_map_palette,GAME_temp_TILESET_PALETTE,p);
 						//HARDWARE_create_brightened_palette(current_touchmap_302_palette,(int*)&tileset_palette_touchmap_302,p);
 						//HARDWARE_create_brightened_palette(current_touchmap_1_palette,(int*)&tileset_palette_touchmap_1,p);
-						//HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,(int*)&GAME_temp_SPRITE_PALETTE,p);
+						//HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,GAME_temp_SPRITE_PALETTE,p);
 
-						//HARDWARE_load_sprite_palette(1,0,(int*)&GAME_temp_SPRITE_PALETTE);
-						//HARDWARE_load_sprite_palette(0,0,(int*)&GAME_temp_SPRITE_PALETTE);
-						HARDWARE_load_bg_palette((int*)&GAME_temp_TILESET_PALETTE);
+						//HARDWARE_load_sprite_palette(1,0,GAME_temp_SPRITE_PALETTE);
+						//HARDWARE_load_sprite_palette(0,0,GAME_temp_SPRITE_PALETTE);
+						HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
 						HARDWARE_reload_bg_textures();
 
 
@@ -202,7 +202,7 @@ void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 				//=====================================================
 				//GAME_temp_SPRITE_PALETTE
 
-					HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,(int*)GAME_temp_SPRITE_PALETTE,2);
+					HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,GAME_temp_SPRITE_PALETTE,2);
 
 					GAME_temp_SPRITE_PALETTE[1]=HARDWARE_RGB(0,0,0);
 
@@ -227,8 +227,8 @@ void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 					GAME_temp_SPRITE_PALETTE[GENERICshirtpantsshoescolors[8]] = HARDWARE_RGB(3,3,3);//shoes
 					GAME_temp_SPRITE_PALETTE[GENERICshirtpantsshoescolors[9]] = HARDWARE_RGB(5,5,5);//shoes*/
 
-					HARDWARE_load_sprite_palette((int*)&GAME_temp_SPRITE_PALETTE);///FIX THIS
-					//HARDWARE_load_sprite_palette(0,(int*)&GAME_temp_SPRITE_PALETTE);
+					HARDWARE_load_sprite_palette(GAME_temp_SPRITE_PALETTE);///FIX THIS
+					//HARDWARE_load_sprite_palette(0,GAME_temp_SPRITE_PALETTE);
 
 
 
@@ -309,7 +309,7 @@ void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 				}
 
 
-				HARDWARE_load_bg_palette((int*)&GAME_temp_TILESET_PALETTE);
+				HARDWARE_load_bg_palette(GAME_temp_TILESET_PALETTE);
 				HARDWARE_reload_bg_textures();
 
 
@@ -361,10 +361,10 @@ void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 							HARDWARE_create_brightened_palette(GAME_temp_TILESET_PALETTE,(int*)&temp_palette,p);
 							//HARDWARE_create_brightened_palette(current_touchmap_302_palette,(int*)&tileset_palette_touchmap_302,p);
 							//HARDWARE_create_brightened_palette(current_touchmap_1_palette,(int*)&tileset_palette_touchmap_1,p);
-							//HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,(int*)&GAME_temp_SPRITE_PALETTE,p);
+							//HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,GAME_temp_SPRITE_PALETTE,p);
 
-							//HARDWARE_load_sprite_palette(1,0,(int*)&GAME_temp_SPRITE_PALETTE);
-							//HARDWARE_load_sprite_palette(0,0,(int*)&GAME_temp_SPRITE_PALETTE);
+							//HARDWARE_load_sprite_palette(1,0,GAME_temp_SPRITE_PALETTE);
+							//HARDWARE_load_sprite_palette(0,0,GAME_temp_SPRITE_PALETTE);
 							HARDWARE_load_bg_palette((int*)&temp_palette);
 							HARDWARE_reload_bg_textures();
 
@@ -470,10 +470,10 @@ void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 							HARDWARE_create_brightened_palette(GAME_temp_TILESET_PALETTE,(int*)&temp_palette,p);
 							//if(bottom_screen_on==1)HARDWARE_create_brightened_palette(current_touchmap_302_palette,(int*)&tileset_palette_touchmap_302,p);
 							//if(bottom_screen_on==1)HARDWARE_create_brightened_palette(current_touchmap_1_palette,(int*)&tileset_palette_touchmap_1,p);
-							//HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,(int*)&GAME_temp_SPRITE_PALETTE,p);
+							//HARDWARE_create_brightened_palette(GAME_original_SPRITE_PALETTE,GAME_temp_SPRITE_PALETTE,p);
 
-							//HARDWARE_load_sprite_palette(1,0,(int*)&GAME_temp_SPRITE_PALETTE);
-							//HARDWARE_load_sprite_palette(0,0,(int*)&GAME_temp_SPRITE_PALETTE);
+							//HARDWARE_load_sprite_palette(1,0,GAME_temp_SPRITE_PALETTE);
+							//HARDWARE_load_sprite_palette(0,0,GAME_temp_SPRITE_PALETTE);
 
 							HARDWARE_load_bg_palette((int*)&temp_palette);
 							HARDWARE_reload_bg_textures();
@@ -487,10 +487,10 @@ void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 					}
 
 
-				//HARDWARE_load_bg_palette(1,3,(int*)&GAME_temp_TILESET_PALETTE);
-				//HARDWARE_load_bg_palette(1,2,(int*)&GAME_temp_TILESET_PALETTE);
-				//HARDWARE_load_bg_palette(1,1,(int*)&GAME_temp_TILESET_PALETTE);
-				//HARDWARE_load_bg_palette(1,0,(int*)&GAME_temp_TILESET_PALETTE);
+				//HARDWARE_load_bg_palette(1,3,GAME_temp_TILESET_PALETTE);
+				//HARDWARE_load_bg_palette(1,2,GAME_temp_TILESET_PALETTE);
+				//HARDWARE_load_bg_palette(1,1,GAME_temp_TILESET_PALETTE);
+				//HARDWARE_load_bg_palette(1,0,GAME_temp_TILESET_PALETTE);
 
 
 				//HARDWARE_play_music("scary",64);
