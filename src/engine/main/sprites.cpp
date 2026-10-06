@@ -1179,7 +1179,7 @@ void HARDWARE_init_gfx_data()
 
 	HARDWARE_set_sprite_texture_filename_and_maybe_preload_texture(TEXT_button_icon_GFX,"/miscgfx/text_button_icon.bin",8,8,NO_SHADOW,0);
 	HARDWARE_set_sprite_texture_filename_and_maybe_preload_texture(TEXT_button_icon_underneath_GFX,"/miscgfx/text_button_icon_underneath.bin",8,8,NO_SHADOW,0);
-	HARDWARE_set_sprite_texture_filename_and_maybe_preload_texture(TEXTANSWER_cursor_GFX,"/miscgfx/answercursor.bin",8,8,NO_SHADOW,0);
+	HARDWARE_set_sprite_texture_filename_and_maybe_preload_texture(TEXTANSWER_cursor_GFX,"/miscgfx/answer_cursor.bin",8,8,NO_SHADOW,0);
 
 
 	HARDWARE_set_sprite_texture_filename_and_maybe_preload_texture(RAMIO_boba_gfx_GFX,"/minigame/ramio/ramiobob_Sprite.bin",16,16,NO_SHADOW,0);
