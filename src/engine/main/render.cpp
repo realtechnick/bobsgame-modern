@@ -573,24 +573,14 @@ void render()
 
 		//#ifdef ND gl_draw_flipped(screen,0,0,(HARDWARE_SCREEN_WIDTH_PIXELS*ZOOM),(HARDWARE_SCREEN_HEIGHT_PIXELS*ZOOM));
 
-		//Window is 2x the 640x480 game coordinates (see main.cpp). Switch the
-		//projection to window pixels for the blit so the 640x480 texture scales
-		//up cleanly, then restore it for overlays below.
-		glMatrixMode(GL_PROJECTION);
-		glPushMatrix();
-		glLoadIdentity();
-		glOrtho(0, 1280, 960, 0, -1, 1);
-		glMatrixMode(GL_MODELVIEW);
-
-		//Draw the 640x480 framebuffer texture scaled 2x to fill the 1280x960 window.
+		//Window is 1280x960 (2x) but the game draws at 640x480 (see main.cpp).
+		//The OpenGL viewport automatically scales 640x480 ortho coordinates to
+		//fill the 1280x960 window. Draw the texture at native 640x480 and let
+		//the GPU handle the upscale.
 		gl_draw_flipped(screen,0,0,
-						1280,
-						960
+						HARDWARE_SCREEN_WIDTH_PIXELS,
+						HARDWARE_SCREEN_HEIGHT_PIXELS
 						);
-
-		glMatrixMode(GL_PROJECTION);
-		glPopMatrix();
-		glMatrixMode(GL_MODELVIEW);
 	}
 
 
