@@ -17,11 +17,6 @@ int intro_vbl_counter2 = 0;
 
 int TITLESCREEN_running = 0;
 
-//Direct logo texture (bypasses AUX system which isn't displaying)
-GLuint title_logo_tex = 0;
-int title_logo_x = 0;
-int title_logo_y = 0;
-
 unsigned short* intro_top_palette =  NULL;
 unsigned char* intro_top_tileset =  NULL;
 unsigned short* intro_top_map     =  NULL;
@@ -70,38 +65,13 @@ void load_title_screen()
 
 				intro_top_palette[(int)intro_top_tileset[(8*8)*intro_top_map[5+(31*32)]]]=HARDWARE_RGB(0,0,0);
 
-				//Build logo texture directly (bypass AUX system)
-				{
-					int tw = 256, th = 256; // power of two
-					unsigned char* rgba = (unsigned char*)calloc(tw * th * 4, 1);
-					for(int y=0; y<192; y++) for(int x=0; x<256; x++) {
-						int tile_idx = intro_top_map[(x/8) + 32*(y/8)];
-						int pix_idx = (x%8) + (y%8)*8;
-						unsigned char pal_idx = intro_top_tileset[64*tile_idx + pix_idx];
-						int z = x + y*tw;
-						if(pal_idx == 0) {
-							rgba[z*4+0]=0; rgba[z*4+1]=0; rgba[z*4+2]=0; rgba[z*4+3]=0;
-						} else {
-							unsigned short pv = intro_top_palette[pal_idx];
-							rgba[z*4+2] = (pv%32)*8;         // R (byte 2)
-							rgba[z*4+1] = ((pv/32)%32)*8;     // G (byte 1)
-							rgba[z*4+0] = (((pv/32)/32)%32)*8; // B (byte 0)
-							rgba[z*4+3] = 255;
-						}
-					}
-					if(title_logo_tex) glDeleteTextures(1, &title_logo_tex);
-					glGenTextures(1, &title_logo_tex);
-					glBindTexture(GL_TEXTURE_2D, title_logo_tex);
-					glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, tw, th, 0, GL_BGRA, GL_UNSIGNED_BYTE, rgba);
-					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-					glBindTexture(GL_TEXTURE_2D, 0);
-					free(rgba);
-					title_logo_x = fromx;
-					title_logo_y = fromy;
-				}
+				//AUX draw multiplies by ZOOM, so divide to get correct screen pos
+				extern float ZOOM;
+				int aux_x = (int)(fromx / ZOOM);
+				int aux_y = (int)(fromy / ZOOM);
+				float aux_zoom = (float)(1.0f / ZOOM);
 
-				HARDWARE_load_AUX_map_to_xy_xy(1,intro_top_map,intro_top_tileset,intro_top_palette,256,192,fromx,fromy,aspectratio,0);
+				HARDWARE_load_AUX_map_to_xy_xy(1,intro_top_map,intro_top_tileset,intro_top_palette,256,192,aux_x,aux_y,aux_zoom,0);
 
 
 

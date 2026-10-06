@@ -494,15 +494,6 @@ void render()
 
 	if(fade_alpha>0&&fade_layer==4)draw_black_overlay();
 
-	//Direct title logo draw (bypasses AUX system)
-	extern GLuint title_logo_tex;
-	extern int title_logo_x, title_logo_y;
-	extern int TITLESCREEN_running;
-	if(TITLESCREEN_running && title_logo_tex && glIsTexture(title_logo_tex)) {
-		//Don't multiply by ZOOM - logo coords are already in screen space
-		draw_texture(title_logo_tex, title_logo_x, title_logo_y, 256, 256);
-	}
-
 	a=1;
 	if(AUX_bg_is_on[a])if(glIsTexture(GLTex_AUX_bg[a]))draw_texture(GLTex_AUX_bg[a],ZOOM*AUX_bg_x[a],ZOOM*AUX_bg_y[a],ZOOM*AUX_bg_zoom[a]*AUX_bg_texture_size_x[a], ZOOM*AUX_bg_zoom[a]*AUX_bg_texture_size_y[a]);
 	gl_draw_sprites(5);
