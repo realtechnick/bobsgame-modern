@@ -61,6 +61,8 @@ Bob's camera is **intentional and elaborate**. Key lessons:
 
 Per Boss (2026-10-06): The game is "fully playable start to finish" but not "finished." There are rooms that feel like sketches, systems that trail off. The restoration goal is to understand Bob's intent well enough to finish it *his* way, not ours.
 
+**Critical historical context** (Boss, 2026-10-06): What we have is Bob's *PC port attempt* of the original DS game. The DS version had a working bottom screen — the "?????" tab was the nD/game console, a major feature. Bob was frustrated to lose the bottom screen in the PC port. The placeholders we see (hardcoded status stats, unimplemented third tab) aren't just unfinished — they're *casualties of the port*. The DS original is lost; this PC codebase is all that survives.
+
 ## Trust Hierarchy
 
 1. **Bob's original logic** — especially camera, game feel. Don't "improve" it.
