@@ -65,7 +65,7 @@ void load_title_screen()
 
 
 				float aspectratio = 1;//((float)((float)(GAME_VIEWPORT_HEIGHT_PIXELS)/2.0f)/192.0f);
-				int fromx = ((GAME_VIEWPORT_WIDTH_PIXELS-(aspectratio*256.0f))/2);
+				int fromx = (640-256)/2; // Center on 640-wide screen
 				int fromy = 22;
 
 				intro_top_palette[(int)intro_top_tileset[(8*8)*intro_top_map[5+(31*32)]]]=HARDWARE_RGB(0,0,0);
