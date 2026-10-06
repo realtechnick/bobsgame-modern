@@ -349,6 +349,12 @@ GLuint HARDWARE_preload_sprite_texture_frame(GFX* gfx, int frame, int IndexInCac
 
 			if(gfx_data_is_file==1)sprite_indexed_gfx_data = (unsigned char*)HARDWARE_load_file(gfx->FileName);
 
+			//if the sprite file could not be loaded, return an empty texture
+			if(sprite_indexed_gfx_data==NULL)
+			{
+				return 0;
+			}
+
 
 			//-----------------------------
 			//make the surface
