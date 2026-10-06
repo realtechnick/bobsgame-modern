@@ -180,6 +180,14 @@ target_link_libraries(bobsgame
     ${SDL3_TTF_LIBRARY}
 )
 
+# Copy shaders where the game expects them (loads from ./shaders/ relative to CWD)
+add_custom_command(TARGET bobsgame POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/src/shaders $<TARGET_FILE_DIR:bobsgame>/shaders
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+    ${CMAKE_SOURCE_DIR}/src/shaders ${CMAKE_SOURCE_DIR}/shaders
+    COMMENT "Copying shaders")
+
 # OpenGL
 if(APPLE)
     find_library(OPENGL_LIBRARY OpenGL)
