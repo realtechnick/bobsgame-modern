@@ -148,6 +148,11 @@ static int tetridchallenge=0;
 
 	}
 
+	if(GAMESTATE==GAMETOY&&tetridchallenge==0)
+	{
+		tetridchallenge=1;
+	}
+
 	if(tetridchallenge==1&&GLOBAL_text_engine_state==0)
 	{
 		HARDWARE_play_sound("gtbling",127,44100,0);
