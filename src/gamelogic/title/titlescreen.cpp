@@ -65,6 +65,10 @@ void load_title_screen()
 
 				intro_top_palette[(int)intro_top_tileset[(8*8)*intro_top_map[5+(31*32)]]]=HARDWARE_RGB(0,0,0);
 
+				//Initialize the shine-effect palette from the real palette.
+				//Without this the logo renders black (intro_palette_1 starts zeroed).
+				memcpy(intro_palette_1, intro_top_palette, sizeof(intro_palette_1));
+
 				HARDWARE_load_AUX_map_to_xy_xy(1,intro_top_map,intro_top_tileset,intro_top_palette,256,192,fromx,fromy,aspectratio,0);
 
 
