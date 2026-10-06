@@ -1934,11 +1934,11 @@ void bobsgame_SCHOOLGymHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]!=NULL)if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=2;
-			if(randomkids_npcs[c]!=NULL)if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI=2;
-			if(randomkids_npcs[c]!=NULL)if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI++;}
+			if(randomkids_npcs[c]!=NULL)if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=2;
+			if(randomkids_npcs[c]!=NULL)if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI=2;
+			if(randomkids_npcs[c]!=NULL)if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI++;}
 
-			if(randomkids_npcs[c]!=NULL)if(randomkids_npcs[c]->AI==3)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL)if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(randomkids_npcs[c]!=NULL)if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -1983,8 +1983,8 @@ void bobsgame_SCHOOLGymHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=1;
-			if(randomkids_npcs[c]->AI==1)if(randomkids_npcs[c]->MAP_x>=153*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 155*8, (46+(c%3))*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=1;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(randomkids_npcs[c]->MAP_x>=153*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 155*8, (46+(c%3))*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -2029,8 +2029,8 @@ void bobsgame_SCHOOLGymHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(randomkids_npcs[c]->MAP_x<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 10*8, randomkids_npcs[c]->MAP_y+randomkids_npcs[c]->size_y-randomkids_npcs[c]->hitsize_y)==1)randomkids_npcs[c]->AI=1;
-			if(randomkids_npcs[c]->AI==1)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 10*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(randomkids_npcs[c]->MAP_x<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 10*8, randomkids_npcs[c]->MAP_y+randomkids_npcs[c]->size_y-randomkids_npcs[c]->hitsize_y)==1)randomkids_npcs[c]->AI=1;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 10*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -2075,15 +2075,15 @@ void bobsgame_SCHOOLGymHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(4))+1;
-			if(randomkids_npcs[c]->AI==1)if((randomkids_npcs[c]->MAP_x>=153*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 155*8, randomkids_npcs[c]->MAP_y+randomkids_npcs[c]->size_y-randomkids_npcs[c]->hitsize_y)==1)randomkids_npcs[c]->AI+=4;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=116*8&&randomkids_npcs[c]->MAP_x<=122*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 119*8, randomkids_npcs[c]->MAP_y+randomkids_npcs[c]->size_y-randomkids_npcs[c]->hitsize_y)==1)randomkids_npcs[c]->AI+=4;
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=78*8&&randomkids_npcs[c]->MAP_x<=84*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 81*8, randomkids_npcs[c]->MAP_y+randomkids_npcs[c]->size_y-randomkids_npcs[c]->hitsize_y)==1)randomkids_npcs[c]->AI+=4;
-			if(randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=38*8&&randomkids_npcs[c]->MAP_x<=44*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 41*8, randomkids_npcs[c]->MAP_y+randomkids_npcs[c]->size_y-randomkids_npcs[c]->hitsize_y)==1)randomkids_npcs[c]->AI+=4;
-			if(randomkids_npcs[c]->AI==5)if((randomkids_npcs[c]->MAP_x>=153*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 155*8, 47*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==6)if((randomkids_npcs[c]->MAP_y<=37*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 119*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==7)if((randomkids_npcs[c]->MAP_y<=37*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 81*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==8)if((randomkids_npcs[c]->MAP_y<=37*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 41*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(4))+1;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if((randomkids_npcs[c]->MAP_x>=153*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 155*8, randomkids_npcs[c]->MAP_y+randomkids_npcs[c]->size_y-randomkids_npcs[c]->hitsize_y)==1)randomkids_npcs[c]->AI+=4;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=116*8&&randomkids_npcs[c]->MAP_x<=122*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 119*8, randomkids_npcs[c]->MAP_y+randomkids_npcs[c]->size_y-randomkids_npcs[c]->hitsize_y)==1)randomkids_npcs[c]->AI+=4;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=78*8&&randomkids_npcs[c]->MAP_x<=84*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 81*8, randomkids_npcs[c]->MAP_y+randomkids_npcs[c]->size_y-randomkids_npcs[c]->hitsize_y)==1)randomkids_npcs[c]->AI+=4;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=38*8&&randomkids_npcs[c]->MAP_x<=44*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 41*8, randomkids_npcs[c]->MAP_y+randomkids_npcs[c]->size_y-randomkids_npcs[c]->hitsize_y)==1)randomkids_npcs[c]->AI+=4;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if((randomkids_npcs[c]->MAP_x>=153*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 155*8, 47*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==6)if((randomkids_npcs[c]->MAP_y<=37*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 119*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==7)if((randomkids_npcs[c]->MAP_y<=37*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 81*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==8)if((randomkids_npcs[c]->MAP_y<=37*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 41*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -2184,11 +2184,11 @@ void bobsgame_SCHOOLGymHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(2))+1;
-			if(randomkids_npcs[c]->AI==1)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 10*8, 48*8)==1)randomkids_npcs[c]->AI+=2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=107*8&&randomkids_npcs[c]->MAP_x>=100*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 104*8, 48*8)==1)randomkids_npcs[c]->AI+=2;
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_y>=47*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 10*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_y>=47*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 104*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(2))+1;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 10*8, 48*8)==1)randomkids_npcs[c]->AI+=2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=107*8&&randomkids_npcs[c]->MAP_x>=100*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 104*8, 48*8)==1)randomkids_npcs[c]->AI+=2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_y>=47*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 10*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_y>=47*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 104*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -2382,19 +2382,19 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=85*8&&randomkids_npcs[c]->MAP_x<=93*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 88+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=125*8&&randomkids_npcs[c]->MAP_x<=134*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (128+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=166*8&&randomkids_npcs[c]->MAP_x<=174*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==5)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==6)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=85*8&&randomkids_npcs[c]->MAP_x<=93*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 88+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=125*8&&randomkids_npcs[c]->MAP_x<=134*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (128+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=166*8&&randomkids_npcs[c]->MAP_x<=174*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==6)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=5;}
 
-			if(randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 88+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==8)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (128+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==9)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==10)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 88+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==8)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (128+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==9)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==10)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -2472,13 +2472,13 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI+=2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI+=2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=2;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI+=2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI+=2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
 
-			if(randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -2538,19 +2538,19 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=85*8&&randomkids_npcs[c]->MAP_x<=93*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 88+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=125*8&&randomkids_npcs[c]->MAP_x<=134*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (128+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=166*8&&randomkids_npcs[c]->MAP_x<=174*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==5)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==6)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=85*8&&randomkids_npcs[c]->MAP_x<=93*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 88+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=125*8&&randomkids_npcs[c]->MAP_x<=134*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (128+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=166*8&&randomkids_npcs[c]->MAP_x<=174*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==6)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
 
-			if(randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 88+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==8)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (128+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==9)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==10)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 88+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==8)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (128+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==9)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==10)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -2627,13 +2627,13 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI+=2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI+=2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=2;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI+=2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI+=2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
 
-			if(randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -2693,19 +2693,19 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=85*8&&randomkids_npcs[c]->MAP_x<=93*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 88+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=125*8&&randomkids_npcs[c]->MAP_x<=134*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (128+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=166*8&&randomkids_npcs[c]->MAP_x<=174*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==5)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==6)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=85*8&&randomkids_npcs[c]->MAP_x<=93*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 88+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=125*8&&randomkids_npcs[c]->MAP_x<=134*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (128+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=166*8&&randomkids_npcs[c]->MAP_x<=174*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==6)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=5;}
 
-			if(randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 88+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==8)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (128+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==9)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==10)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 88+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==8)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (128+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==9)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (169+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==10)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -2785,13 +2785,13 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI+=2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI+=2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=2;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI+=2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI+=2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
 
-			if(randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=9*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -2847,15 +2847,15 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 			for(c=0;c<randamount;c++)
 			if(randomkids_npcs[c]!=NULL)
 			{
-				if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(3))+2;
-				if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI=(r(3))+2;
-				if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=36*8&&randomkids_npcs[c]->MAP_x<=42*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 39+(c%3))*8, 40*8)==1){randomkids_npcs[c]->AI+=3;}
-				if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=3;}
-				if(randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=3;}
+				if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(3))+2;
+				if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI=(r(3))+2;
+				if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=36*8&&randomkids_npcs[c]->MAP_x<=42*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 39+(c%3))*8, 40*8)==1){randomkids_npcs[c]->AI+=3;}
+				if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=3;}
+				if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=3;}
 
-				if(randomkids_npcs[c]->AI==5) if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 39+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-				if(randomkids_npcs[c]->AI==6)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-				if(randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+				if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5) if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 39+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+				if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==6)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+				if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 				if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 			}
 		}
@@ -2911,13 +2911,13 @@ void bobsgame_SCHOOLClassHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=2;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 47*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
 
-			if(randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -3125,15 +3125,15 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(3))+2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(3))+2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=36*8&&randomkids_npcs[c]->MAP_x<=42*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 38+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=3;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=76*8&&randomkids_npcs[c]->MAP_x<=82*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (78+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=3;}
-			if(randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=148*8&&randomkids_npcs[c]->MAP_x<=153*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=3;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(3))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(3))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=36*8&&randomkids_npcs[c]->MAP_x<=42*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 38+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=3;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=76*8&&randomkids_npcs[c]->MAP_x<=82*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (78+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=3;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=148*8&&randomkids_npcs[c]->MAP_x<=153*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=3;}
 
-			if(randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 38+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==6)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (78+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 38+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==6)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (78+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -3201,13 +3201,13 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=100*8&&randomkids_npcs[c]->MAP_x<=104*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 103+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=118*8&&randomkids_npcs[c]->MAP_x<=122*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (120+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=100*8&&randomkids_npcs[c]->MAP_x<=104*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 103+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=118*8&&randomkids_npcs[c]->MAP_x<=122*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (120+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
 
-			if(randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y<=10*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (105+(c%3))*8, 13*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=10*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (117+(c%3))*8, 13*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y<=10*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (105+(c%3))*8, 13*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=10*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (117+(c%3))*8, 13*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -3259,19 +3259,19 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=36*8&&randomkids_npcs[c]->MAP_x<=42*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 38+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=76*8&&randomkids_npcs[c]->MAP_x<=82*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (78+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=148*8&&randomkids_npcs[c]->MAP_x<=153*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==5)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=5;}
-			if(randomkids_npcs[c]->AI==6)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(5))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=36*8&&randomkids_npcs[c]->MAP_x<=42*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 38+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=76*8&&randomkids_npcs[c]->MAP_x<=82*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (78+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=148*8&&randomkids_npcs[c]->MAP_x<=153*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=5;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==6)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=5;}
 
-			if(randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 38+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==8)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (78+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==9)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==10)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 38+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==8)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (78+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==9)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==10)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -3337,13 +3337,13 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=2;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
 
-			if(randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -3395,15 +3395,15 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(3))+2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(3))+2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=36*8&&randomkids_npcs[c]->MAP_x<=42*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 38+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=3;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=76*8&&randomkids_npcs[c]->MAP_x<=82*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (78+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=3;}
-			if(randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=148*8&&randomkids_npcs[c]->MAP_x<=153*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=3;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(3))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(3))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=36*8&&randomkids_npcs[c]->MAP_x<=42*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 38+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=3;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=76*8&&randomkids_npcs[c]->MAP_x<=82*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (78+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=3;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if((randomkids_npcs[c]->MAP_x>=148*8&&randomkids_npcs[c]->MAP_x<=153*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 49*8)==1){randomkids_npcs[c]->AI+=3;}
 
-			if(randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 38+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==6)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (78+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 38+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==6)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (78+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==7)if(randomkids_npcs[c]->MAP_y<=37*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (149+(c%3))*8, 40*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -3471,13 +3471,13 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=100*8&&randomkids_npcs[c]->MAP_x<=104*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 103+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=118*8&&randomkids_npcs[c]->MAP_x<=122*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (120+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 48*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x>=100*8&&randomkids_npcs[c]->MAP_x<=104*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 103+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=118*8&&randomkids_npcs[c]->MAP_x<=122*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (120+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
 
-			if(randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y<=10*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (105+(c%3))*8, 13*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=10*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (117+(c%3))*8, 13*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y<=10*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (105+(c%3))*8, 13*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y<=10*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (117+(c%3))*8, 13*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -3529,13 +3529,13 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=2;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
 
-			if(randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -3601,13 +3601,13 @@ void bobsgame_SCHOOLBackHallway_Map_Run_Function(int MAP_just_loaded)
 		for(c=0;c<randamount;c++)
 		if(randomkids_npcs[c]!=NULL)
 		{
-			if(randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
-			if(randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
-			if(randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=2;}
-			if(randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1)if(NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, randomkids_npcs[c]->MAP_x+8, 49*8)==1)randomkids_npcs[c]->AI=(r(2))+2;
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2)if((randomkids_npcs[c]->MAP_x<=9*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 8+(c%3))*8, 47*8)==1){randomkids_npcs[c]->AI+=2;}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3)if((randomkids_npcs[c]->MAP_x>=194*8)||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 48*8)==1){randomkids_npcs[c]->AI+=2;}
 
-			if(randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-			if(randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, ( 10+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+			if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5)if(randomkids_npcs[c]->MAP_y>=47*8||NPC_walk_to_xy_intelligenthit_avoidothers_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, (196+(c%3))*8, 52*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 			if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 		}
 	}
@@ -4572,23 +4572,23 @@ void bobsgame_SCHOOLGymCafeteria_Map_Run_Function(int MAP_just_loaded)
 	for(c=0;c<randamount;c++)
 	if(randomkids_npcs[c]!=NULL)
 	{
-		if(randomkids_npcs[c]->AI==0) if(randomkids_npcs[c]->MAP_y>=17*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 41*8, 20*8)==1)randomkids_npcs[c]->AI+=2;//from door to line
-		if(randomkids_npcs[c]->AI==1) if(randomkids_npcs[c]->MAP_y<=21*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,  3*8, 24*8)==1)randomkids_npcs[c]->AI+=2;
-		if(randomkids_npcs[c]->AI==2) if(randomkids_npcs[c]->MAP_x<= 4*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,    3*8, 20*8)==1){randomkids_npcs[c]->AI+=2;}
-		if(randomkids_npcs[c]->AI==3) if(randomkids_npcs[c]->MAP_x>=29*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,   30*8, 20*8)==1){randomkids_npcs[c]->AI+=2;}
+		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==0) if(randomkids_npcs[c]->MAP_y>=17*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 41*8, 20*8)==1)randomkids_npcs[c]->AI+=2;//from door to line
+		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==1) if(randomkids_npcs[c]->MAP_y<=21*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,  3*8, 24*8)==1)randomkids_npcs[c]->AI+=2;
+		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==2) if(randomkids_npcs[c]->MAP_x<= 4*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,    3*8, 20*8)==1){randomkids_npcs[c]->AI+=2;}
+		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==3) if(randomkids_npcs[c]->MAP_x>=29*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,   30*8, 20*8)==1){randomkids_npcs[c]->AI+=2;}
 
-		if(randomkids_npcs[c]->AI==4) if((randomkids_npcs[c]->MAP_y>=37*8&&randomkids_npcs[c]->MAP_x>=8*8)||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,    10*8, 40*8)==1){randomkids_npcs[c]->AI+=2;}
-		if(randomkids_npcs[c]->AI==5) if(randomkids_npcs[c]->MAP_x<= 4*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,    3*8, 20*8)==1){randomkids_npcs[c]->AI+=2;}
-		if(randomkids_npcs[c]->AI==6) if(randomkids_npcs[c]->MAP_x>=23*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,   24*8, 40*8)==1){randomkids_npcs[c]->AI+=2;}
-		if(randomkids_npcs[c]->AI==7) if((randomkids_npcs[c]->MAP_y>=37*8&&randomkids_npcs[c]->MAP_x>=8*8)||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,    10*8, 40*8)==1){randomkids_npcs[c]->AI+=2;}
+		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==4) if((randomkids_npcs[c]->MAP_y>=37*8&&randomkids_npcs[c]->MAP_x>=8*8)||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,    10*8, 40*8)==1){randomkids_npcs[c]->AI+=2;}
+		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==5) if(randomkids_npcs[c]->MAP_x<= 4*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,    3*8, 20*8)==1){randomkids_npcs[c]->AI+=2;}
+		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==6) if(randomkids_npcs[c]->MAP_x>=23*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,   24*8, 40*8)==1){randomkids_npcs[c]->AI+=2;}
+		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==7) if((randomkids_npcs[c]->MAP_y>=37*8&&randomkids_npcs[c]->MAP_x>=8*8)||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,    10*8, 40*8)==1){randomkids_npcs[c]->AI+=2;}
 
-		if(randomkids_npcs[c]->AI==8) if(randomkids_npcs[c]->MAP_y>=46*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,   26*8, 49*8)==1){randomkids_npcs[c]->AI+=2;}
-		if(randomkids_npcs[c]->AI==9) if(randomkids_npcs[c]->MAP_x>=23*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,   24*8, 40*8)==1){randomkids_npcs[c]->AI+=2;}
+		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==8) if(randomkids_npcs[c]->MAP_y>=46*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,   26*8, 49*8)==1){randomkids_npcs[c]->AI+=2;}
+		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==9) if(randomkids_npcs[c]->MAP_x>=23*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,   24*8, 40*8)==1){randomkids_npcs[c]->AI+=2;}
 
-		if(randomkids_npcs[c]->AI==10)if(randomkids_npcs[c]->MAP_x<=8*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,   7*8, 50*8)==1){randomkids_npcs[c]->AI+=2;}
-		if(randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_x>=48*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,   49*8, 40*8)==1){randomkids_npcs[c]->AI+=2;}
-		if(randomkids_npcs[c]->AI==12)if(randomkids_npcs[c]->MAP_x<= 3*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 	3*8,42*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
-		if(randomkids_npcs[c]->AI==13)if(randomkids_npcs[c]->MAP_y<= 9*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 	42*8,12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==10)if(randomkids_npcs[c]->MAP_x<=8*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,   7*8, 50*8)==1){randomkids_npcs[c]->AI+=2;}
+		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==11)if(randomkids_npcs[c]->MAP_x>=48*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed,   49*8, 40*8)==1){randomkids_npcs[c]->AI+=2;}
+		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==12)if(randomkids_npcs[c]->MAP_x<= 3*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 	3*8,42*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
+		if(randomkids_npcs[c]!=NULL&&randomkids_npcs[c]->AI==13)if(randomkids_npcs[c]->MAP_y<= 9*8||NPC_walk_to_xy_nohit_pushmain(&randomkids_npcs[c], randomkids_npcs[c]->walking_speed, 	42*8,12*8)==1){NPC_delete_npc(&randomkids_npcs[c]);}
 		if(MAP_is_xy_within_screen_by_64px(randomkids_npcs[c]->MAP_x,randomkids_npcs[c]->MAP_y)==0){NPC_delete_npc(&randomkids_npcs[c]);}
 	}
 
