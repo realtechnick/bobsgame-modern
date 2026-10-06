@@ -44,7 +44,7 @@ void TEXTANSWER_draw_column(int letter_index,int x_in_letter)
 	int chunk=TEXTANSWER_chunk;
 	int tile=TEXTANSWER_tile;
 	int x_in_tile=TEXTANSWER_x_in_tile;
-	int* font_pointer = FONT_NORMAL_indexed_gfx_data;
+	unsigned char* font_pointer = FONT_NORMAL_indexed_gfx_data;
 	int y=0;
 	int h=TEXT_font_height;
 
