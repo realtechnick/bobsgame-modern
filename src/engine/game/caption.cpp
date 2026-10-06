@@ -19,7 +19,7 @@ int CAPTION_get_char_width(int font_height, int* font_pointer, int letter_index)
 	int w=0;
 	for(x=15;x>=0;x--)
 		for(y=0;y<font_height;y++)
-			if(font_pointer[(letter_index*16*16)+(y*16)+x]!=0)
+			if(((unsigned char*)font_pointer)[(letter_index*16*16)+(y*16)+x]!=0)
 			{
 				w=x+1;
 				x=-1;
@@ -77,8 +77,8 @@ void CAPTION_draw_column(CAPTION* c,int x_in_letter, int letter_index)
 		int y;
 		int h = c->font_height;
 										gfxdata[((8*0)+(8*(0-0))+c->x_in_tile)+(c->tile*64)+(64*8*0)]=c->colors[0];
-		for(y=0; y<7&&y<h+1; y++)gfxdata[((8*1)+(8*(y-0))+c->x_in_tile)+(c->tile*64)+(64*8*0)]=c->colors[(int)c->font_pointer[(letter_index*16*16)+((16*y)+x_in_letter)]];
-		for(y=7; y<12&&y<h+1;y++)gfxdata[((8*0)+(8*(y-7))+c->x_in_tile)+(c->tile*64)+(64*8*1)]=c->colors[(int)c->font_pointer[(letter_index*16*16)+((16*y)+x_in_letter)]];
+		for(y=0; y<7&&y<h+1; y++)gfxdata[((8*1)+(8*(y-0))+c->x_in_tile)+(c->tile*64)+(64*8*0)]=c->colors[(int)((unsigned char*)c->font_pointer)[(letter_index*16*16)+((16*y)+x_in_letter)]];
+		for(y=7; y<12&&y<h+1;y++)gfxdata[((8*0)+(8*(y-7))+c->x_in_tile)+(c->tile*64)+(64*8*1)]=c->colors[(int)((unsigned char*)c->font_pointer)[(letter_index*16*16)+((16*y)+x_in_letter)]];
 								if(h==12)gfxdata[((8*5)+(8*(0-0))+c->x_in_tile)+(c->tile*64)+(64*8*1)]=c->colors[0];
 	}
 	else
@@ -87,18 +87,18 @@ void CAPTION_draw_column(CAPTION* c,int x_in_letter, int letter_index)
 		int h = c->font_height;
 		if(c->line==0)
 		{
-			for(y=0; y<8&&y<h; y++)gfxdata[((8*0)+(8*(y-0))+c->x_in_tile)+(c->tile*64)+(64*8*0)]=c->colors[(int)c->font_pointer[(letter_index*16*16)+((16*y)+x_in_letter)]];
-			for(y=8; y<10&&y<h;y++)gfxdata[((8*0)+(8*(y-8))+c->x_in_tile)+(c->tile*64)+(64*8*1)]=c->colors[(int)c->font_pointer[(letter_index*16*16)+((16*y)+x_in_letter)]];
+			for(y=0; y<8&&y<h; y++)gfxdata[((8*0)+(8*(y-0))+c->x_in_tile)+(c->tile*64)+(64*8*0)]=c->colors[(int)((unsigned char*)c->font_pointer)[(letter_index*16*16)+((16*y)+x_in_letter)]];
+			for(y=8; y<10&&y<h;y++)gfxdata[((8*0)+(8*(y-8))+c->x_in_tile)+(c->tile*64)+(64*8*1)]=c->colors[(int)((unsigned char*)c->font_pointer)[(letter_index*16*16)+((16*y)+x_in_letter)]];
 		}
 		if(c->line==1)
 		{
-			for(y=0; y<5&&y<h; y++)gfxdata[((8*3)+(8*(y-0))+c->x_in_tile)+(c->tile*64)+(64*8*1)]=c->colors[(int)c->font_pointer[(letter_index*16*16)+((16*y)+x_in_letter)]];
-			for(y=5; y<10&&y<h;y++)gfxdata[((8*0)+(8*(y-5))+c->x_in_tile)+(c->tile*64)+(64*8*2)]=c->colors[(int)c->font_pointer[(letter_index*16*16)+((16*y)+x_in_letter)]];
+			for(y=0; y<5&&y<h; y++)gfxdata[((8*3)+(8*(y-0))+c->x_in_tile)+(c->tile*64)+(64*8*1)]=c->colors[(int)((unsigned char*)c->font_pointer)[(letter_index*16*16)+((16*y)+x_in_letter)]];
+			for(y=5; y<10&&y<h;y++)gfxdata[((8*0)+(8*(y-5))+c->x_in_tile)+(c->tile*64)+(64*8*2)]=c->colors[(int)((unsigned char*)c->font_pointer)[(letter_index*16*16)+((16*y)+x_in_letter)]];
 		}
 		if(c->line==2)
 		{
-			for(y=0; y<2&&y<h; y++)gfxdata[((8*6)+(8*(y-0))+c->x_in_tile)+(c->tile*64)+(64*8*2)]=c->colors[(int)c->font_pointer[(letter_index*16*16)+((16*y)+x_in_letter)]];
-			for(y=2; y<10&&y<h;y++)gfxdata[((8*0)+(8*(y-2))+c->x_in_tile)+(c->tile*64)+(64*8*3)]=c->colors[(int)c->font_pointer[(letter_index*16*16)+((16*y)+x_in_letter)]];
+			for(y=0; y<2&&y<h; y++)gfxdata[((8*6)+(8*(y-0))+c->x_in_tile)+(c->tile*64)+(64*8*2)]=c->colors[(int)((unsigned char*)c->font_pointer)[(letter_index*16*16)+((16*y)+x_in_letter)]];
+			for(y=2; y<10&&y<h;y++)gfxdata[((8*0)+(8*(y-2))+c->x_in_tile)+(c->tile*64)+(64*8*3)]=c->colors[(int)((unsigned char*)c->font_pointer)[(letter_index*16*16)+((16*y)+x_in_letter)]];
 		}
 	}
 
