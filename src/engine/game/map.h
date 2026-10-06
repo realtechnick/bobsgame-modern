@@ -44,13 +44,13 @@ extern int MAP_fx_border_height;
 
 extern int HARDWARE_map_id;
 
-extern int* HARDWARE_map_0;
-extern int* HARDWARE_map_1;
-extern int* HARDWARE_map_2;
-extern int* HARDWARE_map_3;
+extern unsigned short* HARDWARE_map_0;
+extern unsigned short* HARDWARE_map_1;
+extern unsigned short* HARDWARE_map_2;
+extern unsigned short* HARDWARE_map_3;
 
-extern int* HARDWARE_map_hit_layer; //was bool before condensed separate bins into 1 single bin
-extern int* HARDWARE_map_fx_layer;
+extern unsigned short* HARDWARE_map_hit_layer; //was bool before condensed separate bins into 1 single bin
+extern unsigned short* HARDWARE_map_fx_layer;
 
 
 extern char HARDWARE_map_0_filename[256];
@@ -80,8 +80,8 @@ extern int HARDWARE_map_height_tiles;
 extern int HARDWARE_map_width;
 extern int HARDWARE_map_height;
 
-extern int* HARDWARE_map_palette;
-extern int* HARDWARE_map_tileset;
+extern unsigned short* HARDWARE_map_palette;
+extern unsigned char* HARDWARE_map_tileset;
 
 //================
 //prototypes
