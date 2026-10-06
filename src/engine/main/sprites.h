@@ -497,7 +497,7 @@ SPRITE* HARDWARE_create_sprite(GFX* gfx, int gfx_index, int layer, float scale, 
 void HARDWARE_update_sprite_texture(SPRITE* sprite, int gfx_index);
 void HARDWARE_set_sprite_xy(SPRITE* sprite, int screen_x, int screen_y);
 void HARDWARE_delete_sprite(SPRITE* sprite);
-void HARDWARE_load_sprite_palette(int* palette);
+void HARDWARE_load_sprite_palette(unsigned short* palette);
 
 void HARDWARE_init_arrays();
 void HARDWARE_init_gfx_data();
