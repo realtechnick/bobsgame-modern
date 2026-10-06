@@ -32,7 +32,7 @@ unsigned char * filtered_rgba_fbo_data = NULL;
 //-----------------------------
 //render flags
 //-----------------------------
-int framebuffer=1;
+int framebuffer=0; //disabled on macOS - EXT framebuffer not working
 
 int GLOBAL_bg_layer_enabled[4] = {1,1,1,1};
 int GLOBAL_sprite_layer_enabled=1;
@@ -71,7 +71,7 @@ void draw_texture_alpha(GLuint textureid, int x, int y, int w, int h, int tw, in
 
 		glBindTexture(GL_TEXTURE_2D,textureid);
 
-		glActiveTexture(textureid);
+		glActiveTexture(GL_TEXTURE0);
 
 		//have to copy from negative y inside the texture, otherwise its flipped upside down
 		GLint param[4] = {0,0,0,0};
