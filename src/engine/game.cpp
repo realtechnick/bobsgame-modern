@@ -426,6 +426,20 @@ void GAME_init()
 		//MAP_change_map(MAP_bobsgame_CITYCasinoBackroom,6,18);
 		//MAP_change_map(MAP_bobsgame_CITYHourlyMotel,22,64);
 
+
+		CLOCK_unknown=0;
+		CLOCK_init();
+
+
+		CLOCK_hour=7;//12+4;
+		CLOCK_minute=0;
+		CLOCK_day=MONDAY;
+
+
+		CLOCK_moving=true;
+		CLOCK_update_clock();
+
+		CLOCK_paused=0;
 	}
 
 
