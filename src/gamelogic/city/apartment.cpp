@@ -44,6 +44,11 @@ HARDWARE_load_sprite_palette(GAME_temp_SPRITE_PALETTE);///FIX THIS
 }
 void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 {
+	//Ensure zoom stays 1.0x (scene transitions set ZOOMto=2.0x; same approach as
+	//the house fixes until the zoom root cause is found. Note: this overrides
+	//Bob's intended 2x cutscene framing for now.)
+	ZOOM=1.0f;
+	ZOOMto=1.0f;
 	if(MAP_just_loaded==1)
 	{
 
