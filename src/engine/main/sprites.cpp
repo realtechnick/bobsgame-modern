@@ -354,7 +354,7 @@ GLuint HARDWARE_preload_sprite_texture_frame(GFX* gfx, int frame, int IndexInCac
 			{sprite_indexed_gfx_data = (unsigned char*)TEXT_textbox[1].sprite_window_indexed_gfx_data;gfx_data_is_file=0;if(GLOBAL_hq2x_is_on)palette = HARDWARE_HQ2X_SPRITE_PALETTE_ENHANCED_RGB;}
 
 			if(	gfx==PINGPADDLE_GFX)
-			{sprite_indexed_gfx_data = (unsigned char*)PING_paddle_gfx;gfx_data_is_file=0;palette = HARDWARE_HQ2X_SPRITE_PALETTE_ENHANCED_RGB;}
+			{sprite_indexed_gfx_data = (unsigned char*)PING_paddle_gfx;gfx_data_is_file=0;}//Use standard palette (index 2=white), not HQ2X (which flickers/darkens)
 
 			if(	gfx==PINGBALL_GFX)
 			{sprite_indexed_gfx_data = (unsigned char*)PING_ball_gfx;gfx_data_is_file=0;}
