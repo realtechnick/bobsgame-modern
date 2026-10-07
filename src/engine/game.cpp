@@ -5,7 +5,7 @@
 //#include "game.h"
 
 
-int GAMESTATE= 5;
+int GAMESTATE= 6;
 
 int GLOBAL_debug_level_select=78;
 
@@ -335,6 +335,29 @@ void GAME_init()
 	}
 
 
+
+	if(GAMESTATE==BOB3DBG)
+	{
+		//Debug: jump to Bob's trashed apartment (post scene 3, "two years ago...")
+		//This is where load_bob_scene_3() lands after the dad "world record" sequence.
+		//Normal path: beat Ping -> 7:15 kick-out -> scene 2 -> replay Monday ->
+		//beat RAMIO upstairs -> dad rushes in -> scene 3.
+		PLAYER_npc->visible=1;
+		ZOOM=1.0f;
+		ZOOMto=1.0f;
+		MAP_set_map_cam_to_cameraman();
+		MAP_change_map(MAP_bobsgame_CITYBobsAptInsideTrashed,32,9);
+		//Set clock to 12:00 PM Monday
+		//Init clock HUD captions (same lesson as PINGDBG: without this the clock is invisible)
+		CLOCK_unknown=0;
+		CLOCK_init();
+		CLOCK_hour=12;
+		CLOCK_minute=0;
+		CLOCK_day=MONDAY;
+		CLOCK_moving=true;
+		CLOCK_update_clock();
+		CLOCK_paused=0;
+	}
 
 	if(GAMESTATE==CITY)
 	{
