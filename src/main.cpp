@@ -528,9 +528,7 @@ int main(int argc, char *argv[])//int argc, char **argv)
 		audiospec.freq = 44100;
 		audiospec.format = SDL_AUDIO_S16;
 		audiospec.channels = 2;
-		if(Mix_OpenAudio(0, &audiospec)!=0){fprintf(stderr,"couldn't set up audio
-%s
-",SDL_GetError());}
+		if(Mix_OpenAudio(0, &audiospec)!=0){fprintf(stderr,"couldn't set up audio\n%s\n",SDL_GetError());}
 		Mix_AllocateChannels(32);
 
 
