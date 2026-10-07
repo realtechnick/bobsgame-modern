@@ -343,7 +343,7 @@ void PING_update_score()
 
 if(easymode==1)
 {
-	PING_high_score=66;
+	PING_high_score=30;//TEMP DEBUG: lowered from Bob's 66 for faster playtesting (revert before release)
 	PING_max_ball_speed = 9;
 
 }
