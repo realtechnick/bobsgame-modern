@@ -392,9 +392,8 @@ PING_screen_y = TV_fromy + 15+3+10;
 		PINGBALL_GFX->content_size_x = PING_BALL_SIZE;
 		PINGBALL_GFX->content_size_y = PING_BALL_SIZE;
 
-		//Load Ping palette for sprites (index 2 = white for paddles/ball)
-		//Note: Main game overwrites this per-frame, so we also reload in PING_run
-		HARDWARE_load_sprite_palette(PING_palette);
+		//Note: Index 2 is forced to white in the default HQ2X palette
+		//(see sprites.cpp), so no custom palette load needed here.
 
 		//create paddle sprites, ball sprite
 
@@ -442,8 +441,6 @@ PING_screen_y = TV_fromy + 15+3+10;
 //=========================================================================================================================
 void PING_main()
 {
-	//Reload Ping palette every frame (main game overwrites sprite palette, causing dark paddles)
-	if(PING_palette!=NULL)HARDWARE_load_sprite_palette(PING_palette);
 //=========================================================================================================================
 
 
