@@ -53,7 +53,7 @@ int debug=1;
 
 int fullscreen=0;
 int skiptext=0;
-int easymode=0;
+int easymode=1; // TEMP: Demo 2 easy mode for testing (revert before release)
 int cheater=0;
 
 //-----------------------------
