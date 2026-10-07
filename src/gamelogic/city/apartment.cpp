@@ -42,7 +42,12 @@ HARDWARE_load_sprite_palette(GAME_temp_SPRITE_PALETTE);///FIX THIS
 //HARDWARE_load_sprite_palette(0,GAME_temp_SPRITE_PALETTE);
 
 }
-void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
+void //Debug: allows a debug GAMESTATE to jump directly to a specific apartment stage
+//(past RAMIO/dad). Set to the desired stage before MAP_change_map; the run
+//function consumes it on entry and resets to -1.
+int BOB_debug_apartment_stage = -1;
+
+bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 {
 	//Ensure zoom stays 1.0x (scene transitions set ZOOMto=2.0x; same approach as
 	//the house fixes until the zoom root cause is found. Note: this overrides
@@ -62,6 +67,14 @@ void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 	static NPC* bob_npc=NULL;
 
 	static int stage=0;//0;
+
+	//Debug stage override (BOB3DBG): jump past RAMIO/dad directly to scary Bob.
+	if(BOB_debug_apartment_stage!=-1)
+	{
+		stage=BOB_debug_apartment_stage;
+		BOB_debug_apartment_stage=-1;
+		if(bob_npc!=NULL){NPC_delete_npc(&bob_npc);bob_npc=NULL;}
+	}
 
 		if(bob_npc==NULL)
 		{
