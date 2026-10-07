@@ -573,6 +573,9 @@ void render()
 		//clear the screen
 		glClear(GL_COLOR_BUFFER_BIT);
 
+		// PORT: WINDOW_SCALE — upscale blit to the full window (ortho stays 640x480).
+		glViewport(0, 0, HARDWARE_SCREEN_WIDTH_PIXELS*WINDOW_SCALE, HARDWARE_SCREEN_HEIGHT_PIXELS*WINDOW_SCALE);
+
 
 		/*GLint loc;
 		loc = glGetUniformLocation(p[1], "Tex0");
