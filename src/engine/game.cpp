@@ -336,9 +336,12 @@ void GAME_init()
 
 
 
+	extern int BOB_debug_apartment_stage;
 	if(GAMESTATE==BOB3DBG)
 	{
-		//Debug: jump to Bob's trashed apartment (post scene 3, "two years ago...")
+		//Debug: jump to Bob's trashed apartment, past RAMIO/dad (stage 3, scary Bob).
+		//Sets the apartment stage override so we land directly at "two years ago..."
+		//without playing through upbeat Bob stages 0-2.
 		//This is where load_bob_scene_3() lands after the dad "world record" sequence.
 		//Normal path: beat Ping -> 7:15 kick-out -> scene 2 -> replay Monday ->
 		//beat RAMIO upstairs -> dad rushes in -> scene 3.
@@ -352,6 +355,7 @@ void GAME_init()
 		//scene 3 replays, and the trashed apartment then runs stages 3-6 (finale).
 		//Without this, testing the finale takes a full RAMIO playthrough.
 		RAMIO_won=1;
+		BOB_debug_apartment_stage=3; //skip upbeat Bob, land at scary Bob
 		//Set clock to 12:00 PM Monday
 		//Init clock HUD captions (same lesson as PINGDBG: without this the clock is invisible)
 		CLOCK_unknown=0;
