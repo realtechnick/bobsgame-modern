@@ -11,6 +11,8 @@
 
 
 SDL_Window *window;
+int WINDOW_DRAWABLE_W = 0;
+int WINDOW_DRAWABLE_H = 0;
 SDL_Renderer *renderer;
 
 
@@ -331,6 +333,10 @@ int main(int argc, char *argv[])//int argc, char **argv)
 	}
 
 	SDL_GL_MakeCurrent(window, context);
+
+	// PORT: cache the true drawable size (differs from window size on HiDPI/Retina).
+	SDL_GetWindowSizeInPixels(window, &WINDOW_DRAWABLE_W, &WINDOW_DRAWABLE_H);
+	fprintf(stderr, "Window drawable size: %dx%d\n", WINDOW_DRAWABLE_W, WINDOW_DRAWABLE_H);
 
 
 
