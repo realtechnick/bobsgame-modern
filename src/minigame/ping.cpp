@@ -380,6 +380,9 @@ PING_screen_y = TV_fromy + 15+3+10;
 		for(f=0;f<PING_PADDLE_SIZE_X*PING_PADDLE_SIZE_Y;f++)PING_paddle_gfx[f]=2;
 		for(f=0;f<PING_BALL_SIZE*PING_BALL_SIZE;f++)PING_ball_gfx[f]=2;
 
+		//Load Ping palette for sprites (index 2 = white for paddles/ball)
+		HARDWARE_load_sprite_palette(PING_palette);
+
 		//create paddle sprites, ball sprite
 
 		//PING_lpaddle_gfx_slot = HARDWARE_create_sprite_gfxslot(1,PINGPADDLE_GFX,0,16,32,1,0);
