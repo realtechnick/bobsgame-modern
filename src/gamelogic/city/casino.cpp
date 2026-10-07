@@ -796,6 +796,7 @@ void bobsgame_CITYCasinoMain_Map_Run_Function(int MAP_just_loaded)
 }
 void bobsgame_CITYCasinoMain_Map_Stop_Function()
 {
+	HARDWARE_stop_sound("murmur");
 	NPC_delete_all_npcs();
 }
 void bobsgame_CITYCasinoMain_Map_VBL_Function()
