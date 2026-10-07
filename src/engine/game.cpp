@@ -311,18 +311,21 @@ void GAME_init()
 
 	if(GAMESTATE==PINGDBG)
 	{
-		//Debug: jump to Yuu's room at 6:31 AM for Ping testing
-		//Dad leaves at 6:31, Ping becomes available
+		//Debug: jump downstairs at 6:31 AM for Ping testing
+		//Dad leaves at 6:31, Ping becomes available on TV
 		PLAYER_npc->visible=1;
 		ZOOM=1.0f;
 		ZOOMto=1.0f;
 		MAP_set_map_cam_to_cameraman();
-		//Yuu's upstairs room (where Ping TV is)
-		MAP_change_map(MAP_bobsgame_TOWNYUUUpstairsYuusRoom,16,14);
+		//Yuu's house downstairs (Ping TV is here)
+		MAP_change_map(MAP_bobsgame_TOWNYUUDownstairs,31,10);
 		//Set clock to 6:31 AM Monday
+		//Note: sleeping logic in upstairs room may override this;
+		//downstairs should respect it
 		CLOCK_hour=6;
 		CLOCK_minute=31;
 		CLOCK_day=1; //Monday
+		CLOCK_paused=0;
 	}
 
 
