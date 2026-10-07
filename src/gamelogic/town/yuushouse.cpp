@@ -207,6 +207,10 @@ void bobsgame_TOWNYUUDownstairs_Map_Load_Function()
 
 void bobsgame_TOWNYUUDownstairs_Map_Run_Function(int MAP_just_loaded)
 {
+	//Ensure zoom stays 1.0x downstairs (apartment cutscene sets ZOOMto=2.0x;
+	//same approach as the bedroom fix in d54ff6b until the zoom root cause is found)
+	ZOOM=1.0f;
+	ZOOMto=1.0f;
 
 	if(MAP_just_loaded==1)
 	{
