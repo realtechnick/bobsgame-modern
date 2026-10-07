@@ -384,9 +384,13 @@ PING_screen_y = TV_fromy + 15+3+10;
 		PINGPADDLE_GFX->indexed_gfx_data = PING_paddle_gfx;
 		PINGPADDLE_GFX->data_size_x = PING_PADDLE_SIZE_X;
 		PINGPADDLE_GFX->data_size_y = PING_PADDLE_SIZE_Y;
+		PINGPADDLE_GFX->content_size_x = PING_PADDLE_SIZE_X;
+		PINGPADDLE_GFX->content_size_y = PING_PADDLE_SIZE_Y;
 		PINGBALL_GFX->indexed_gfx_data = PING_ball_gfx;
 		PINGBALL_GFX->data_size_x = PING_BALL_SIZE;
 		PINGBALL_GFX->data_size_y = PING_BALL_SIZE;
+		PINGBALL_GFX->content_size_x = PING_BALL_SIZE;
+		PINGBALL_GFX->content_size_y = PING_BALL_SIZE;
 
 		//Load Ping palette for sprites (index 2 = white for paddles/ball)
 		HARDWARE_load_sprite_palette(PING_palette);
