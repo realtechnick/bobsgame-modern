@@ -21,7 +21,7 @@ Added for systematic testing. **Remove before public release.**
 |-------|------|-------------|
 | 4 | BOBAPT | Jump directly to Bob's apartment (post-Tetrid cutscene) |
 | 5 | PINGDBG | Jump downstairs at 6:31 AM Monday (Ping TV available) |
-| 6 | BOB3DBG | Jump to Bob's trashed apartment. Stages 0-2 play, then bedroom: dad rushes in (RAMIO_won preset), scene 3 replays, stages 3-6 finale -> demo end screen |
+| 6 | BOB3DBG | Jump to Bob's trashed apartment at stage 3 (scary Bob, "two years ago..."), past RAMIO/dad. Stages 3-6 finale -> demo end screen |
 
 ## Usage
 
