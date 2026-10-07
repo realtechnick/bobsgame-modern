@@ -42,11 +42,12 @@ HARDWARE_load_sprite_palette(GAME_temp_SPRITE_PALETTE);///FIX THIS
 //HARDWARE_load_sprite_palette(0,GAME_temp_SPRITE_PALETTE);
 
 }
-void //Debug: allows a debug GAMESTATE to jump directly to a specific apartment stage
+//Debug: allows a debug GAMESTATE to jump directly to a specific apartment stage
 //(past RAMIO/dad). Set to the desired stage before MAP_change_map; the run
 //function consumes it on entry and resets to -1.
 int BOB_debug_apartment_stage = -1;
 
+void
 bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 {
 	//Ensure zoom stays 1.0x (scene transitions set ZOOMto=2.0x; same approach as
