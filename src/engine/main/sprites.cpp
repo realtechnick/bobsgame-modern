@@ -64,8 +64,9 @@ void HARDWARE_load_sprite_palette(unsigned short* palette)//HARDWARE_LoadSpriteP
 
 	if(palette==NULL)return;
 
-	//Convert RGB555 palette to RGB888 and store in global sprite palette
+	//Convert RGB555 palette to RGB888 and store in global sprite palettes
 	//This is used for sprites like Ping paddles that need a custom palette
+	//Write to BOTH standard and HQ2X palettes (Ping uses HQ2X explicitly)
 	for(int i=0;i<256;i++)
 	{
 		unsigned short val = palette[i];
@@ -79,6 +80,9 @@ void HARDWARE_load_sprite_palette(unsigned short* palette)//HARDWARE_LoadSpriteP
 		HARDWARE_ORIGINAL_SPRITE_PALETTE_ENHANCED_RGB[i*3+0]=r;
 		HARDWARE_ORIGINAL_SPRITE_PALETTE_ENHANCED_RGB[i*3+1]=g;
 		HARDWARE_ORIGINAL_SPRITE_PALETTE_ENHANCED_RGB[i*3+2]=b;
+		HARDWARE_HQ2X_SPRITE_PALETTE_ENHANCED_RGB[i*3+0]=r;
+		HARDWARE_HQ2X_SPRITE_PALETTE_ENHANCED_RGB[i*3+1]=g;
+		HARDWARE_HQ2X_SPRITE_PALETTE_ENHANCED_RGB[i*3+2]=b;
 	}
 
 }
