@@ -531,9 +531,9 @@ void bobsgame_TOWNTown_Map_Run_Function(int MAP_just_loaded)
 
 	//crossing guard 242,276 7:00 comes from inside school,
 	//walks to road 239,353
-	if(CLOCK_hour==7)
+	if(DEBUG_UNLOCK_SCHEDULES||CLOCK_hour==7)
 	{
-		if(CLOCK_minute==0)
+		if(CLOCK_minute==0||crossingguard_npc==NULL)
 		{
 			HARDWARE_play_sound("doorsound",127,44100,0);
 			if(crossingguard_npc==NULL)
@@ -543,7 +543,7 @@ void bobsgame_TOWNTown_Map_Run_Function(int MAP_just_loaded)
 				CLOCK_minute++;
 			}
 		}
-		if(CLOCK_hour==7&&CLOCK_minute>0&&CLOCK_minute<35)
+		if(DEBUG_UNLOCK_SCHEDULES||(CLOCK_hour==7&&CLOCK_minute>0&&CLOCK_minute<35))
 		{
 			if(crossingguard_npc==NULL)
 			{
@@ -649,7 +649,7 @@ void bobsgame_TOWNTown_Map_Run_Function(int MAP_just_loaded)
 
 			}
 		}
-		if(CLOCK_hour==7&&CLOCK_minute>=35)// at 7:35 walk back into school, delete.
+		if(!DEBUG_UNLOCK_SCHEDULES&&(CLOCK_hour==7&&CLOCK_minute>=35))// at 7:35 walk back into school, delete.
 		{
 			if(randomcrosswalkkid1_npc!=NULL){if(NPC_walk_to_xy_nohit_avoidothers_pushmain(&randomcrosswalkkid1_npc, SPEED_NORMAL, 234*8, 276*8)==(1))NPC_fade_out_and_delete(&randomcrosswalkkid1_npc);}
 			if(randomcrosswalkkid2_npc!=NULL){if(NPC_walk_to_xy_nohit_avoidothers_pushmain(&randomcrosswalkkid2_npc, SPEED_NORMAL, 242*8, 276*8)==(1))NPC_fade_out_and_delete(&randomcrosswalkkid2_npc);}
@@ -1013,7 +1013,7 @@ static NPC* exitkids[30] = {NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NU
 
 
 
-	if(CLOCK_hour==12+4)
+	if(!DEBUG_UNLOCK_SCHEDULES&&CLOCK_hour==12+4)
 	{
 
 		if(CLOCK_hour==12+4&&CLOCK_minute>=30&&CLOCK_minute<55)
@@ -1289,9 +1289,9 @@ static NPC* pickupcar_npc=NULL;
 
 
 
-	if(CLOCK_hour==10&&CLOCK_minute>0&&CLOCK_minute<30)
+	if(DEBUG_UNLOCK_SCHEDULES||(CLOCK_hour==10&&CLOCK_minute>0&&CLOCK_minute<30))
 	{
-		if(mailman_npc==NULL&&MAP_is_xy_within_screen_by_amt(492*8,540*8,64)==0&&mailman_came_today==0&&CLOCK_day!=SUNDAY)//only weekdays, only once a day
+		if(mailman_npc==NULL&&MAP_is_xy_within_screen_by_amt(492*8,540*8,64)==0&&(DEBUG_UNLOCK_SCHEDULES||(mailman_came_today==0&&CLOCK_day!=SUNDAY)))//only weekdays, only once a day
 		{
 			NPC_create_npc_xy_feet(&mailman_npc,GFX_ADULT_mailman, 16, 40,492*8,540*8);
 			mailman_npc->non_walkable=1;
@@ -1300,7 +1300,7 @@ static NPC* pickupcar_npc=NULL;
 			mailman_came_today=1;
 			mailman_npc->layer=1;
 		}
-		if(mailman_npc==NULL&&MAP_is_xy_within_screen_by_amt(492*8,540*8,64)&&mailman_came_today==0&&CLOCK_day!=SUNDAY)//only weekdays, only once a day
+		if(mailman_npc==NULL&&MAP_is_xy_within_screen_by_amt(492*8,540*8,64)&&(DEBUG_UNLOCK_SCHEDULES||(mailman_came_today==0&&CLOCK_day!=SUNDAY)))//only weekdays, only once a day
 		{
 			NPC_create_npc_xy_feet(&mailman_npc,GFX_ADULT_mailman, 16, 40,MAP_cam_x+GAME_VIEWPORT_WIDTH_PIXELS+16, 531*8);
 			mailman_npc->non_walkable=1;
@@ -1353,9 +1353,9 @@ static NPC* pickupcar_npc=NULL;
 	//"hey buddy what can i get you?"
 		//left street top lane 83*8 546*8
 	//right street top lane 1524*8,546*8
-	if(CLOCK_hour==12+5&&CLOCK_minute>0&&CLOCK_minute<30)
+	if(DEBUG_UNLOCK_SCHEDULES||(CLOCK_hour==12+5&&CLOCK_minute>0&&CLOCK_minute<30))
 	{
-		if(icecreamtruck_npc==NULL&&MAP_is_xy_within_screen_by_amt(1524*8,540*8,64)==0&&icecreamman_came_today==0&&CLOCK_day!=SUNDAY)//only weekdays, only once a day
+		if(icecreamtruck_npc==NULL&&MAP_is_xy_within_screen_by_amt(1524*8,540*8,64)==0&&(DEBUG_UNLOCK_SCHEDULES||(icecreamman_came_today==0&&CLOCK_day!=SUNDAY)))//only weekdays, only once a day
 		{
 			NPC_create_npc(&icecreamtruck_npc,GFX_CAR_icecreamtruck,64,64,1524*8,540*8);
 			NPC_set_car_anim_frame_now(&icecreamtruck_npc,2);
@@ -1401,9 +1401,9 @@ static NPC* pickupcar_npc=NULL;
 //===================================================================================================
 		//support jogger
 	//6:00 am-6:30
-	if(CLOCK_hour==6&&CLOCK_minute>0&&CLOCK_minute<30)
+	if(DEBUG_UNLOCK_SCHEDULES||(CLOCK_hour==6&&CLOCK_minute>0&&CLOCK_minute<30))
 	{
-		if(jogger_npc==NULL&&MAP_is_xy_within_screen_by_amt(492*8,531*8,64)&&jogger_came_today==0&&CLOCK_day!=SUNDAY)//only weekdays, only once a day
+		if(jogger_npc==NULL&&MAP_is_xy_within_screen_by_amt(492*8,531*8,64)&&(DEBUG_UNLOCK_SCHEDULES||(jogger_came_today==0&&CLOCK_day!=SUNDAY)))//only weekdays, only once a day
 		{
 			NPC_create_npc_xy_feet(&jogger_npc,GFX_ADULT_spandexjogger, 16, 40,MAP_cam_x+GAME_VIEWPORT_WIDTH_PIXELS+16, 531*8);
 			jogger_npc->non_walkable=1;
@@ -1433,10 +1433,10 @@ static NPC* dogwalker_npc = NULL;
 static NPC* bigdog_npc = NULL;
 
 	//dog walker 7:00 am-7:30
-	if(CLOCK_hour==7&&CLOCK_minute>0&&CLOCK_minute<30)
+	if(DEBUG_UNLOCK_SCHEDULES||(CLOCK_hour==7&&CLOCK_minute>0&&CLOCK_minute<30))
 	{
 
-		if(dogwalker_npc==NULL&&MAP_is_xy_within_screen_by_amt(492*8,530*8,64)&&dogwalker_came_today==0&&CLOCK_day!=SUNDAY)//only weekdays, only once a day
+		if(dogwalker_npc==NULL&&MAP_is_xy_within_screen_by_amt(492*8,530*8,64)&&(DEBUG_UNLOCK_SCHEDULES||(dogwalker_came_today==0&&CLOCK_day!=SUNDAY)))//only weekdays, only once a day
 		{
 			NPC_create_npc_xy_feet(&dogwalker_npc,GFX_ADULT_dogwalker, 16, 40,MAP_cam_x-32, 530*8);
 			dogwalker_npc->non_walkable=1;
