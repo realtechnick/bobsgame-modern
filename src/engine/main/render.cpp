@@ -40,7 +40,7 @@ int GLOBAL_sprite_layer_enabled=1;
 int fade_alpha=0;
 int fade_layer=0;
 
-int GLOBAL_FRAMEBUFFER_FILTER_TYPE=GL_LINEAR;
+int GLOBAL_FRAMEBUFFER_FILTER_TYPE=GL_NEAREST; // PORT: crisp pixels (F key toggles back to GL_LINEAR)
 
 int fade_vbl_counter=0;
 
@@ -444,6 +444,15 @@ void render()
 
 	set_zoom();
 
+	// PORT: WINDOW_SCALE support. Game draws at native 640x480 into the
+	// window's bottom-left; the final blit below upscales with GL_NEAREST.
+	glViewport(0, 0, HARDWARE_SCREEN_WIDTH_PIXELS, HARDWARE_SCREEN_HEIGHT_PIXELS);
+	glMatrixMode(GL_PROJECTION);
+	glLoadIdentity();
+	glOrtho(0, HARDWARE_SCREEN_WIDTH_PIXELS, HARDWARE_SCREEN_HEIGHT_PIXELS, 0, -1, 1);
+	glMatrixMode(GL_MODELVIEW);
+	glLoadIdentity();
+
 	float tempZOOM=ZOOM;
 
 	if(framebuffer)
@@ -547,6 +556,9 @@ void render()
 		glCopyTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 0,HARDWARE_SCREEN_HEIGHT_PIXELS/2-GAME_VIEWPORT_HEIGHT_PIXELS,pw, ph, 0);
 		//clear back buffer
 		glClear( GL_COLOR_BUFFER_BIT );
+		// PORT: upscale to the full window. Ortho stays 640x480 so the GPU
+		// performs a crisp integer upscale (GL_NEAREST set on the texture).
+		glViewport(0, 0, HARDWARE_SCREEN_WIDTH_PIXELS*WINDOW_SCALE, HARDWARE_SCREEN_HEIGHT_PIXELS*WINDOW_SCALE);
 		//draw screen to back buffer, but flipped because its upside down for some reason
 		gl_draw_flipped(screen,0,-(phdiff*ZOOM),HARDWARE_SCREEN_WIDTH_PIXELS/2+(pwdiff*ZOOM),HARDWARE_SCREEN_HEIGHT_PIXELS/2+(phdiff*ZOOM));
 	}
