@@ -174,6 +174,10 @@ extern int skiptext;
 extern int easymode;
 extern int cheater;
 
+// DEBUG: 1 = schedule-bound NPCs (crossing guard, mailman, ice cream man, jogger, dog walker)
+// stay present and talkable around the clock. Revert to 0 before release.
+#define DEBUG_UNLOCK_SCHEDULES 1
+
 //-----------------------------
 //SDL variables
 //-----------------------------
