@@ -84,3 +84,11 @@ Per Boss (2026-10-06): The game is "fully playable start to finish" but not "fin
 
 ---
 *Last updated: 2026-10-06. Add patterns as discovered.*
+
+## Sprite Shadows (Baked-In, Clipped by Map)
+
+- NPC shadows are NOT separate sprites — they're baked into the sprite texture (mirrored, darkened copy of the upper body drawn below the feet, see HARDWARE_set_sprite_texture_filename_and_maybe_preload_texture).
+- When an NPC goes behind furniture (feet under tiles on a bg layer drawn after the sprite), Bob CLIPS the shadow: sets sprite->draw_size_y = size_y (feet) instead of full content_size_y (feet+shadow).
+- The check is in the per-frame sprite (re)creation in npc.cpp: if layer==3 and map_1/map_2 have tiles at feet, or layer==2 and map_1 has tile at feet → clip.
+- NPC sprites are deleted/recreated every frame, so this check runs per-frame (not a one-time setup).
+- **2026-10-07:** This was disabled on 2026-10-06 as 'misfiring', but the cause was a typo in Bob's original: MAP_x/2 instead of MAP_x in the layer==3 branch (sampled wrong tile). Fixed and re-enabled. If shadows vanish in open areas, the map check (not the layer) is suspect.
