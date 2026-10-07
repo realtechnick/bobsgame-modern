@@ -20,7 +20,7 @@ Added for systematic testing. **Remove before public release.**
 | Value | Name | Description |
 |-------|------|-------------|
 | 4 | BOBAPT | Jump directly to Bob's apartment (post-Tetrid cutscene) |
-| 5 | PINGDBG | Jump to Yuu's room at 6:31 AM Monday (Ping available) |
+| 5 | PINGDBG | Jump downstairs at 6:31 AM Monday (Ping TV available) |
 
 ## Usage
 
