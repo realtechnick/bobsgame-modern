@@ -15,6 +15,7 @@
 #define CITY 2
 #define GAMETOY 3
 #define BOBAPT 4 //Debug: jump directly to Bob's apartment
+#define PINGDBG 5 //Debug: jump to Ping (6:31 AM, Dad leaves)
 
 
 #define FIRST_SPRITE_ID 0
