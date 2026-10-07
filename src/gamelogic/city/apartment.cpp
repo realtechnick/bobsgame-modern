@@ -240,6 +240,8 @@ void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 
 					NPC_animate_stand_dir(&PLAYER_npc,DOWN);
 
+					//Re-show Yuu (was hidden during Bob's apartment transition)
+					PLAYER_npc->visible=1;
 
 					MAP_change_map(MAP_bobsgame_TOWNYUUUpstairsYuusRoom,16,14);
 
