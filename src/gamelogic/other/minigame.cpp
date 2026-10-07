@@ -286,8 +286,8 @@ cameraman_target=dummy_camera_target;
 
 
 TV_aspectratio = 1.0f;//((float)(((float)(GAME_VIEWPORT_HEIGHT_PIXELS)/1.6f))/192.0f);
-TV_fromx = ((GAME_VIEWPORT_WIDTH_PIXELS*2-(TV_aspectratio*256.0f))/2);
-TV_fromy = (GAME_VIEWPORT_HEIGHT_PIXELS*2/3.5f)-20;
+TV_fromx = ((GAME_VIEWPORT_WIDTH_PIXELS-(TV_aspectratio*256.0f))/2);
+TV_fromy = (GAME_VIEWPORT_HEIGHT_PIXELS/3.5f)-20;
 
 
 tv_palette =         (short unsigned int*)HARDWARE_load_file("/minigame/tv/tv_fullscreen_v01_Pal.bin");
