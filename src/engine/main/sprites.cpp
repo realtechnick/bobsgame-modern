@@ -62,9 +62,24 @@ void HARDWARE_init_arrays()
 void HARDWARE_load_sprite_palette(unsigned short* palette)//HARDWARE_LoadSpritePal
 {//==========================================================================================================================
 
-	palette=NULL;
+	if(palette==NULL)return;
 
-	ERROR_set_error("need to fix palette loading");
+	//Convert RGB555 palette to RGB888 and store in global sprite palette
+	//This is used for sprites like Ping paddles that need a custom palette
+	for(int i=0;i<256;i++)
+	{
+		unsigned short val = palette[i];
+		int r = (val & 0x1F) * 8;
+		int g = ((val >> 5) & 0x1F) * 8;
+		int b = ((val >> 10) & 0x1F) * 8;
+		//Clamp to 255
+		if(r>255)r=255;
+		if(g>255)g=255;
+		if(b>255)b=255;
+		HARDWARE_ORIGINAL_SPRITE_PALETTE_ENHANCED_RGB[i*3+0]=r;
+		HARDWARE_ORIGINAL_SPRITE_PALETTE_ENHANCED_RGB[i*3+1]=g;
+		HARDWARE_ORIGINAL_SPRITE_PALETTE_ENHANCED_RGB[i*3+2]=b;
+	}
 
 }
 
