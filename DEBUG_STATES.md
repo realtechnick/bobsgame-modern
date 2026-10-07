@@ -21,6 +21,7 @@ Added for systematic testing. **Remove before public release.**
 |-------|------|-------------|
 | 4 | BOBAPT | Jump directly to Bob's apartment (post-Tetrid cutscene) |
 | 5 | PINGDBG | Jump downstairs at 6:31 AM Monday (Ping TV available) |
+| 6 | BOB3DBG | Jump to Bob's trashed apartment (post scene 3, "two years ago...") |
 
 ## Usage
 
