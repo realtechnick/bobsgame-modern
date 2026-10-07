@@ -247,7 +247,6 @@ void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 					//Set both ZOOM and ZOOMto to snap immediately (no animation)
 					ZOOM=1.0f;
 					ZOOMto=1.0f;
-					fprintf(stderr, "DEBUG: Reset ZOOM to 1.0f before bedroom\n");
 
 					MAP_change_map(MAP_bobsgame_TOWNYUUUpstairsYuusRoom,16,14);
 
