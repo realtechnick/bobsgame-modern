@@ -623,7 +623,7 @@ void HARDWARE_play_music(const char* name,int vol)//HARDWARE_PlayFSMod(mod);
 
 		//load the new one
 		if(strcmp(name,"nice")==0)						song_playing=Mix_LoadMUS("data/bgm/snappy_nice_v01.s3m");
-		//if(strcmp(name,"simple")==0)					song_playing=Mix_LoadMUS("data/bgm/simple_v00.mod");
+		if(strcmp(name,"simple")==0)					song_playing=Mix_LoadMUS("data/bgm/simple_v00.mod");
 		if(strcmp(name,"g65_theme")==0)				song_playing=Mix_LoadMUS("data/bgm/g65_theme_v00.mod");
 		if(strcmp(name,"birds_horns")==0)				song_playing=Mix_LoadMUS("data/bgm/birds_horns_v00.mod");
 		if(strcmp(name,"snappy")==0)					song_playing=Mix_LoadMUS("data/bgm/snappy_v08.mod");
@@ -632,8 +632,17 @@ void HARDWARE_play_music(const char* name,int vol)//HARDWARE_PlayFSMod(mod);
 		if(strcmp(name,"tetrid_death")==0)			song_playing=Mix_LoadMUS("data/bgm/tetrid_death_v00.mod");
 		if(strcmp(name,"s31")==0)						song_playing=Mix_LoadMUS("data/bgm/s31_v07.mod");
 		if(strcmp(name,"k")==0)						song_playing=Mix_LoadMUS("data/bgm/k_v01.mod");
-		//if(strcmp(name,"casino")==0)					song_playing=Mix_LoadMUS("data/bgm/casino_v00.mod");
-		//if(strcmp(name,"disko")==0)					song_playing=Mix_LoadMUS("data/bgm/disko_v04.mod");
+		if(strcmp(name,"casino")==0)					song_playing=Mix_LoadMUS("data/bgm/casino_v00.mod");
+		if(strcmp(name,"disko")==0)					song_playing=Mix_LoadMUS("data/bgm/disko_v04.mod");
+
+		//PORT: casino_v00.mod and disko_v04.mod were never recovered, so the loads
+		//above always fail for those names. Substitute the closest existing tracks
+		//so these areas play music instead of flashing an error. Swap these two
+		//lines to audition alternatives.
+		if(strcmp(name,"casino")==0&&song_playing==NULL)
+					song_playing=Mix_LoadMUS("data/bgm/k_v01.mod");
+		if(strcmp(name,"disko")==0&&song_playing==NULL)
+					song_playing=Mix_LoadMUS("data/bgm/snappy_v08.mod");
 		if(strcmp(name,"dinnertime")==0)				song_playing=Mix_LoadMUS("data/bgm/dinnertime_v00.s3m");
 		if(strcmp(name,"ramio")==0)				song_playing=Mix_LoadMUS("data/bgm/ramio_v00.s3m");
 		if(strcmp(name,"scary")==0)				song_playing=Mix_LoadMUS("data/bgm/scary_v01.mod");
