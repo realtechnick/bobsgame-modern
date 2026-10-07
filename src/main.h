@@ -183,6 +183,13 @@ extern int cheater;
 // Set to 1 to revert to the original 640x480 window.
 #define WINDOW_SCALE 2
 
+// PORT: HiDPI support. On Retina/HiDPI displays the drawable (back buffer)
+// is larger than the window by the OS scale factor (2x on Retina).
+// Initialized after window creation; render() uses these for viewports.
+extern SDL_Window *window;
+extern int WINDOW_DRAWABLE_W;
+extern int WINDOW_DRAWABLE_H;
+
 //-----------------------------
 //SDL variables
 //-----------------------------
