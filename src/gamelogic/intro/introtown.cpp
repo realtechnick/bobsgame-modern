@@ -253,6 +253,8 @@ static int tetridchallenge=0;
 
 		GLOBAL_main_sprite_input_off=1;
 		//PLAYER_npc->gfx_filename=bob;
+		//Hide Yuu during transition to Bob's apartment (he should not be visible in his room)
+		PLAYER_npc->visible=0;
 		MAP_change_map(MAP_bobsgame_CITYBobsAptInside,32,9);
 
 		return;
