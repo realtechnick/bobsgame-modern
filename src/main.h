@@ -178,6 +178,11 @@ extern int cheater;
 // stay present and talkable around the clock. Revert to 0 before release.
 #define DEBUG_UNLOCK_SCHEDULES 1
 
+// PORT: integer window scale. The game renders internally at 640x480;
+// render() upscales the final blit with GL_NEAREST for crisp pixels.
+// Set to 1 to revert to the original 640x480 window.
+#define WINDOW_SCALE 2
+
 //-----------------------------
 //SDL variables
 //-----------------------------
