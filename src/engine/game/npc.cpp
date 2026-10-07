@@ -1829,10 +1829,11 @@ void NPC_vbl()
 				bottom_npc->sprite = HARDWARE_create_sprite(bottom_npc->gfx,bottom_npc->gfx_index,bottom_npc->layer,bottom_npc->scale,bottom_npc->screen_x,bottom_npc->screen_y,bottom_npc->alpha);
 
 				//if any part of the feet are under a tile on the above layer, dont draw the shadow
-				//DISABLED 2026-10-06: This was clipping the shadow incorrectly in the SDL3 port.
-				//The map layer check misfires, causing the shadow to disappear when it shouldn't.
-				//TODO: Investigate why the map check is wrong, or reimplement properly.
-				#if 0
+				//REENABLED 2026-10-07: Bob's original shadow clipping. The layer==3 branch had a
+				//typo (MAP_x/2 instead of MAP_x) that sampled the wrong tile, causing the misfires
+				//that got this disabled on 2026-10-06. Fixed to match the layer==2 branch and the
+				//FX layer check formula. This hides Yuu's baked-in texture shadow when walking
+				//behind furniture, so it doesn't draw over the furniture's front face.
 					//3
 					//0
 					//2
@@ -1843,9 +1844,9 @@ void NPC_vbl()
 							bottom_npc->layer==3
 							&&
 							(
-								HARDWARE_map_1[((((bottom_npc->MAP_y+bottom_npc->size_y-2)/8)*HARDWARE_map_width_tiles)+((bottom_npc->MAP_x/2+bottom_npc->size_x/2)/8))]!=0
+								HARDWARE_map_1[((((bottom_npc->MAP_y+bottom_npc->size_y-2)/8)*HARDWARE_map_width_tiles)+((bottom_npc->MAP_x+bottom_npc->size_x/2)/8))]!=0
 								||
-								HARDWARE_map_2[((((bottom_npc->MAP_y+bottom_npc->size_y-2)/8)*HARDWARE_map_width_tiles)+((bottom_npc->MAP_x/2+bottom_npc->size_x/2)/8))]!=0
+								HARDWARE_map_2[((((bottom_npc->MAP_y+bottom_npc->size_y-2)/8)*HARDWARE_map_width_tiles)+((bottom_npc->MAP_x+bottom_npc->size_x/2)/8))]!=0
 							)
 						)
 						||
@@ -1859,7 +1860,6 @@ void NPC_vbl()
 					//dont draw past the feet
 					bottom_npc->sprite->draw_size_y=bottom_npc->size_y;
 				}
-				#endif
 
 
 				//-----------------------------
