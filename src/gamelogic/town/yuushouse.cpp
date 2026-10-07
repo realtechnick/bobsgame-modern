@@ -2887,7 +2887,7 @@ void bobsgame_TOWNYUUUpstairsYuusRoom_Map_Load_Function()
 
 void bobsgame_TOWNYUUUpstairsYuusRoom_Map_Run_Function(int MAP_just_loaded)
 {
-	//DEBUG: Force zoom to 1.0x (investigating stuck zoom bug)
+	//Ensure zoom is 1.0x (apartment cutscene sets 2.0x, must reset for Demo 2 chapter)
 	ZOOM=1.0f;
 	ZOOMto=1.0f;
 	if(MAP_just_loaded==1)
