@@ -429,10 +429,12 @@ void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 					GLOBAL_main_sprite_standing=1;
 					//Restore free-play state: the cutscene leaves cameraman_target
 					//on bob_npc (stale map) and the bedroom sleep sequence can leave
-					//actions_off set on cutscene/debug paths (blocks doors/ACTION).
+					//actions_off/fx_off set on cutscene/debug paths (blocks doors/ACTION
+					//and the FX-layer depth check that puts Yuu behind furniture).
 					//Mirrors the stage 2->3 bedroom dump's input_off restore.
 					cameraman_target=PLAYER_npc;
 					GLOBAL_main_sprite_actions_off=0;
+					GLOBAL_main_sprite_fx_off=0;
 					MAP_set_map_cam_to_cameraman();
 
 					PLAYER_npc->walk_dir=DOWN;
