@@ -322,9 +322,15 @@ void GAME_init()
 		//Set clock to 6:31 AM Monday
 		//Note: sleeping logic in upstairs room may override this;
 		//downstairs should respect it
+		//Init clock HUD captions (mirrors TOWN block); without this the
+		//time/day/money captions are never created and the clock is invisible
+		CLOCK_unknown=0;
+		CLOCK_init();
 		CLOCK_hour=6;
 		CLOCK_minute=31;
-		CLOCK_day=1; //Monday
+		CLOCK_day=MONDAY;
+		CLOCK_moving=true;
+		CLOCK_update_clock();
 		CLOCK_paused=0;
 	}
 
