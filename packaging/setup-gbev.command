@@ -73,14 +73,9 @@ else
     echo "✓ bgrun already set up"
 fi
 
-# --- 5. Data check ---
-if [ ! -d "$REPO_DIR/data" ]; then
-    echo ""
-    echo "⚠️  WARNING: Game data not found at $REPO_DIR/data"
-    echo "   Ask Nick for the data files (68MB) and place them in:"
-    echo "   $REPO_DIR/data/"
-    echo ""
-fi
+# --- 5. Data ---
+# Game data/ is in the git repo, cloned automatically above.
+echo "✓ Game data included via git"
 
 echo ""
 echo "=========================================="
