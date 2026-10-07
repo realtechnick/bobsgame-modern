@@ -243,6 +243,9 @@ void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 					//Re-show Yuu (was hidden during Bob's apartment transition)
 					PLAYER_npc->visible=1;
 
+					//Reset zoom from apartment cutscene (was 2.0x)
+					ZOOMto=1.0f;
+
 					MAP_change_map(MAP_bobsgame_TOWNYUUUpstairsYuusRoom,16,14);
 
 					MAP_set_map_cam_to_cameraman();
