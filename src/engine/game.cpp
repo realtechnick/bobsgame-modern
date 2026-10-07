@@ -301,6 +301,14 @@ void GAME_init()
 		// For direct testing, walk to the trigger point in town
 	}
 
+	if(GAMESTATE==BOBAPT)
+	{
+		//Debug: jump directly to Bob's apartment (post-Tetrid)
+		PLAYER_npc->visible=0;
+		MAP_set_map_cam_to_cameraman();
+		MAP_change_map(MAP_bobsgame_CITYBobsAptInside,32,9);
+	}
+
 
 
 	if(GAMESTATE==CITY)
