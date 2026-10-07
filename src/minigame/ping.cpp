@@ -392,8 +392,9 @@ PING_screen_y = TV_fromy + 15+3+10;
 		PINGBALL_GFX->content_size_x = PING_BALL_SIZE;
 		PINGBALL_GFX->content_size_y = PING_BALL_SIZE;
 
-		//Load Ping palette for sprites (index 2 = white for paddles/ball)
-		HARDWARE_load_sprite_palette(PING_palette);
+		//Note: Don't load Ping palette here - it fights with the main game's
+		//per-frame palette reloads, causing flicker. Index 2 is white in the
+		//default sprite palette too, so paddles/ball work without it.
 
 		//create paddle sprites, ball sprite
 
