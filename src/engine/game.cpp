@@ -347,6 +347,11 @@ void GAME_init()
 		ZOOMto=1.0f;
 		MAP_set_map_cam_to_cameraman();
 		MAP_change_map(MAP_bobsgame_CITYBobsAptInsideTrashed,32,9);
+		//Bob's own debug shortcut (cf. commented //RAMIO_won=1; in yuushouse.cpp):
+		//after stages 0-2 dump Yuu at the bedroom, dad rushes in immediately,
+		//scene 3 replays, and the trashed apartment then runs stages 3-6 (finale).
+		//Without this, testing the finale takes a full RAMIO playthrough.
+		RAMIO_won=1;
 		//Set clock to 12:00 PM Monday
 		//Init clock HUD captions (same lesson as PINGDBG: without this the clock is invisible)
 		CLOCK_unknown=0;
