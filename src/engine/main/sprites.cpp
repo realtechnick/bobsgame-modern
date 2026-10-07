@@ -1117,7 +1117,6 @@ void HARDWARE_init_gfx_data()
 
 				//int HARDWARE_ORIGINAL_SPRITE_PALETTE_ENHANCED_RGB[256*3];
 				//int HARDWARE_HQ2X_SPRITE_PALETTE_ENHANCED_RGB[256*3];
-			}
 
 		//-----------------------------
 		//set color 1 to black
