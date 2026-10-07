@@ -558,7 +558,9 @@ void render()
 		glClear( GL_COLOR_BUFFER_BIT );
 		// PORT: upscale to the full window. Ortho stays 640x480 so the GPU
 		// performs a crisp integer upscale (GL_NEAREST set on the texture).
-		glViewport(0, 0, HARDWARE_SCREEN_WIDTH_PIXELS*WINDOW_SCALE, HARDWARE_SCREEN_HEIGHT_PIXELS*WINDOW_SCALE);
+		// PORT: blit to the true drawable size (== window size on 1x, 2x on Retina).
+		// Ortho stays 640x480 so the GPU does a crisp integer upscale.
+		glViewport(0, 0, WINDOW_DRAWABLE_W, WINDOW_DRAWABLE_H);
 		//draw screen to back buffer, but flipped because its upside down for some reason
 		gl_draw_flipped(screen,0,-(phdiff*ZOOM),HARDWARE_SCREEN_WIDTH_PIXELS/2+(pwdiff*ZOOM),HARDWARE_SCREEN_HEIGHT_PIXELS/2+(phdiff*ZOOM));
 	}
@@ -573,8 +575,8 @@ void render()
 		//clear the screen
 		glClear(GL_COLOR_BUFFER_BIT);
 
-		// PORT: WINDOW_SCALE — upscale blit to the full window (ortho stays 640x480).
-		glViewport(0, 0, HARDWARE_SCREEN_WIDTH_PIXELS*WINDOW_SCALE, HARDWARE_SCREEN_HEIGHT_PIXELS*WINDOW_SCALE);
+		// PORT: blit to the true drawable size (ortho stays 640x480 for crisp upscale).
+		glViewport(0, 0, WINDOW_DRAWABLE_W, WINDOW_DRAWABLE_H);
 
 
 		/*GLint loc;
