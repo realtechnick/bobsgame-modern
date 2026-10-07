@@ -36,3 +36,4 @@ Then run `bgrun` (pulls, builds, runs).
 
 - `easymode` in `src/main.cpp` enables Demo 2 easy mode for Tetrid (lowers level thresholds). Set to 1 for testing, revert to 0 before release.
 - Debug states are scaffolding, not part of Bob's design. They let us crawl through the game moment-by-moment to find and fix bugs systematically.
+- `CITY` (2) initializes the clock to 7:00 AM Monday, moving (mirrors TOWN). Without this the clock sat at its midnight default and `load_bg_pals_based_on_time()` rendered the whole city dark -- no brightening layer was missing, it was Bob's day/night palette system fed the wrong time. (`cae37ad`)
