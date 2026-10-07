@@ -180,9 +180,12 @@ void bobsgame_TOWNYUUDownstairs_Map_Load_Function()
 	{
 		//dad playing ping
 		if(CLOCK_hour==12+8||CLOCK_minute<55)
+		{
 			NPC_create_npc_xy_feet(&dad_npc,GFX_ADULT_dad, 16, 40, YUUDownstairs_Ping);
-
-		dad_npc->non_walkable=1;
+			//(fix: deref must stay inside the conditional create; at 9:55pm+
+			//dad isn't created and the old unconditional deref segfaulted)
+			dad_npc->non_walkable=1;
+		}
 
 		//mom upstairs
 	}
