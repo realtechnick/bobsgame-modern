@@ -277,7 +277,7 @@ int main(int argc, char *argv[])//int argc, char **argv)
 	//init sdl
 	//-----------------------------
 
-		if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK | SDL_INIT_EVENTS)<0){fprintf(stderr,"couldn't init SDL: %s\n",SDL_GetError());exit(2);}
+		if (!SDL_Init(SDL_INIT_VIDEO | SDL_INIT_AUDIO | SDL_INIT_JOYSTICK | SDL_INIT_EVENTS)){fprintf(stderr,"couldn't init SDL: %s\n",SDL_GetError());exit(2);}
 		atexit(SDL_Quit);
 
 	//-----------------------------
@@ -421,7 +421,7 @@ int main(int argc, char *argv[])//int argc, char **argv)
 		{vsync=0;fprintf(stderr,"Vsync Failed.\n");}
 #else
 		// Linux/other: use SDL for vsync control
-		if(SDL_GL_SetSwapInterval(1) != 0)
+		if(!SDL_GL_SetSwapInterval(1))
 		{vsync=0;fprintf(stderr,"Vsync Failed.\n");}
 #endif
 		ERROR_check_SDL_and_GL_errors("framebuffer");
