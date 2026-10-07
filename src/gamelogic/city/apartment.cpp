@@ -244,6 +244,8 @@ void bobsgame_CITYBobsAptInside_Map_Run_Function(int MAP_just_loaded)
 					PLAYER_npc->visible=1;
 
 					//Reset zoom from apartment cutscene (was 2.0x)
+					//Set both ZOOM and ZOOMto to snap immediately (no animation)
+					ZOOM=1.0f;
 					ZOOMto=1.0f;
 
 					MAP_change_map(MAP_bobsgame_TOWNYUUUpstairsYuusRoom,16,14);
