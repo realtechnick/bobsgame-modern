@@ -5,7 +5,7 @@
 //#include "game.h"
 
 
-int GAMESTATE= 4;
+int GAMESTATE= 5;
 
 int GLOBAL_debug_level_select=78;
 
