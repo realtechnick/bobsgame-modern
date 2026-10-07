@@ -14,6 +14,7 @@
 #define TOWN 1
 #define CITY 2
 #define GAMETOY 3
+#define BOBAPT 4 //Debug: jump directly to Bob's apartment
 
 
 #define FIRST_SPRITE_ID 0
