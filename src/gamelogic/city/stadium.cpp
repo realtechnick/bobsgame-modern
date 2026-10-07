@@ -149,10 +149,13 @@ void bobsgame_CITYStadiumLobby_Map_Run_Function(int MAP_just_loaded)
 			if(gfx==NULL)NPC_create_random_ADULT_xy_feet(&stadiumcashier_npcs[c],x,y);
 			else NPC_create_npc_xy_feet(&stadiumcashier_npcs[c],gfx,16,40,x,y);
 
-			NPC_animate_stand_dir(&stadiumcashier_npcs[c],dir);
-			stadiumcashier_npcs[c]->non_walkable=1;
-			stadiumcashier_npcs[c]->walk_dir=dir;
-			stadiumcashier_npcs[c]->layer=bgp;
+			if(stadiumcashier_npcs[c]!=NULL)
+			{
+				NPC_animate_stand_dir(&stadiumcashier_npcs[c],dir);
+				stadiumcashier_npcs[c]->non_walkable=1;
+				stadiumcashier_npcs[c]->walk_dir=dir;
+				stadiumcashier_npcs[c]->layer=bgp;
+			}
 			//NPC_animate_increment_direction_frame_now(&stadiumcashier_npcs[c],dir);
 		}
 
