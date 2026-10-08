@@ -419,8 +419,11 @@ void set_zoom()
 
 		if(ZOOM!=ZOOMto)
 		{
-			if(ZOOM>ZOOMto)ZOOM-=0.05f;
-			if(ZOOM<ZOOMto)ZOOM+=0.05f;
+			//PORT: snap on overshoot so the zoom settles exactly. Float steps of
+			//0.05 don't land exactly on 0.25/0.5/0.75 and would oscillate forever,
+			//causing permanent sub-pixel shimmer when zoomed out.
+			if(ZOOM>ZOOMto){ZOOM-=0.05f;if(ZOOM<ZOOMto)ZOOM=ZOOMto;}
+			if(ZOOM<ZOOMto){ZOOM+=0.05f;if(ZOOM>ZOOMto)ZOOM=ZOOMto;}
 		}
 
 		GAME_VIEWPORT_WIDTH_PIXELS=HARDWARE_SCREEN_WIDTH_PIXELS/2/ZOOM;//256
@@ -609,11 +612,17 @@ void render()
 
 		//#ifdef ND gl_draw_flipped(screen,0,0,(HARDWARE_SCREEN_WIDTH_PIXELS*ZOOM),(HARDWARE_SCREEN_HEIGHT_PIXELS*ZOOM));
 
-		gl_draw_flipped(screen,0,0//-(((HARDWARE_SCREEN_HEIGHT_PIXELS/4)*((float)((float)(HARDWARE_SCREEN_HEIGHT_PIXELS*2)/(float)(GAME_VIEWPORT_HEIGHT_PIXELS*2)))))
+		//PORT: when zoomed out the FBO already holds the full 640x480 zoomed-out scene
+		//(drawn at 2x*ZOOM above), so blit it full-screen. Blitting at 640*ZOOM
+		//would shrink it into the top-left quarter.
+		float blit_zoom=ZOOM;
+		if(blit_zoom<1.0f)blit_zoom=1.0f;
+
+		gl_draw_flipped(screen,0,0
 						,
-						(HARDWARE_SCREEN_WIDTH_PIXELS*ZOOM)//*2*((float)((float)(HARDWARE_SCREEN_WIDTH_PIXELS*2)/(float)(GAME_VIEWPORT_WIDTH_PIXELS*2))))
+						(HARDWARE_SCREEN_WIDTH_PIXELS*blit_zoom)
 						,
-						(HARDWARE_SCREEN_HEIGHT_PIXELS*ZOOM)//*2*((float)((float)(HARDWARE_SCREEN_HEIGHT_PIXELS*2)/(float)(GAME_VIEWPORT_HEIGHT_PIXELS*2))))
+						(HARDWARE_SCREEN_HEIGHT_PIXELS*blit_zoom)
 						);
 	}
 
