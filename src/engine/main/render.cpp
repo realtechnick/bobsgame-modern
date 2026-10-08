@@ -462,7 +462,11 @@ void render()
 	}
 	glClear( GL_COLOR_BUFFER_BIT );
 
-	ZOOM=2.0f;
+	//PORT: when zoomed out (ZOOM<1) the camera view is wider than 320x240, so draw
+	//at 2x*ZOOM to fill the viewport 1:1 instead of overflowing it. At ZOOM>=1
+	//this is exactly 2.0 as before.
+	if(tempZOOM<1.0f)ZOOM=2.0f*tempZOOM;
+	else ZOOM=2.0f;
 
 	//confusingly, the game scales everything by 2x at ZOOM 1x. the internal game engine thinks it is running at half the rendered resolution.
 
@@ -538,6 +542,23 @@ void render()
 		//Copy texture from back buffer manually (slow)
 		//=====================
 
+		//bind screen texture to 2d
+		glBindTexture(GL_TEXTURE_2D, screen);
+
+		if(tempZOOM<1.0f)
+		{
+			//PORT: zoomed out: the draw phase rendered the expanded camera view
+			//across the whole 640x480 viewport, so copy it whole and blit it
+			//full-screen. (The POT-sized copy below only works for ZOOM>=1.)
+			glCopyTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 0, 0,HARDWARE_SCREEN_WIDTH_PIXELS,HARDWARE_SCREEN_HEIGHT_PIXELS, 0);
+			//clear back buffer
+			glClear( GL_COLOR_BUFFER_BIT );
+			glViewport(0, 0, WINDOW_DRAWABLE_W, WINDOW_DRAWABLE_H);
+			//draw screen to back buffer, but flipped because its upside down for some reason
+			gl_draw_flipped(screen,0,0,HARDWARE_SCREEN_WIDTH_PIXELS,HARDWARE_SCREEN_HEIGHT_PIXELS);
+		}
+		else
+		{
 		int pw=GAME_VIEWPORT_WIDTH_PIXELS;
 		int ph=GAME_VIEWPORT_HEIGHT_PIXELS;
 		if(IsNPOT(pw,ph))
@@ -548,9 +569,6 @@ void render()
 
 		int pwdiff = pw-GAME_VIEWPORT_WIDTH_PIXELS;
 		int phdiff = ph-GAME_VIEWPORT_HEIGHT_PIXELS;
-
-		//bind screen texture to 2d
-		glBindTexture(GL_TEXTURE_2D, screen);
 
 		//copy back buffer image into screen texture
 		glCopyTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, 0,HARDWARE_SCREEN_HEIGHT_PIXELS/2-GAME_VIEWPORT_HEIGHT_PIXELS,pw, ph, 0);
@@ -563,6 +581,7 @@ void render()
 		glViewport(0, 0, WINDOW_DRAWABLE_W, WINDOW_DRAWABLE_H);
 		//draw screen to back buffer, but flipped because its upside down for some reason
 		gl_draw_flipped(screen,0,-(phdiff*ZOOM),HARDWARE_SCREEN_WIDTH_PIXELS/2+(pwdiff*ZOOM),HARDWARE_SCREEN_HEIGHT_PIXELS/2+(phdiff*ZOOM));
+		}
 	}
 
 
