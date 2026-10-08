@@ -92,11 +92,11 @@ void HARDWARE_load_sprite_palette(unsigned short* palette)//HARDWARE_LoadSpriteP
 
 //==========================================================================================================================
 void HARDWARE_set_sprite_texture_filename_and_maybe_preload_texture(GFX* gfx, const char* gfx_filename,int data_size_x, int data_size_y, int shadow, int preload)//HARDWARE_UpdateSpriteGfx
+{//==========================================================================================================================
 	//PORT 2026-10-08: disable baked-in elongated drop shadows per Boss. The mirrored-pixel
 	//shadow caused clipping issues under poles/archways/furniture. shadow.bin (circular)
 	//exists but isn't wired up yet.
 	shadow=0;
-{//==========================================================================================================================
 
 
 	//-----------------------------
