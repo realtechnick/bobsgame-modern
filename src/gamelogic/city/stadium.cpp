@@ -543,16 +543,19 @@ void bobsgame_CITYStadiumBathroomLeftMens_Map_Run_Function(int MAP_just_loaded)
 	if(stallman1_npc==NULL)
 	{
 		NPC_create_random_MAN_xy_feet(&stallman1_npc,32*8,11*8);
-		//NPC_create_npc_xy_feet(&stallman1_npc,SPRITE,16,40,7*8,27*8);
-		//PORT: creation can fail (missing sprite) — was a null-deref crash on map load.
 		if(stallman1_npc!=NULL)
 		{
-			stallman1_npc->non_walkable=1;
-			stallman1_npc->layer=2;
-			NPC_animate_stand_dir(&stallman1_npc,DOWN);
-			stallman1_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
-			stallman1_npc->walk_dir=stallman1_npc->anim_dir;
-			//NPC_animate_increment_direction_frame_now(&stallman1_npc, stallman1_npc->anim_direction);
+			//NPC_create_npc_xy_feet(&stallman1_npc,SPRITE,16,40,7*8,27*8);
+			//PORT: creation can fail (missing sprite) — was a null-deref crash on map load.
+			if(stallman1_npc!=NULL)
+			{
+				stallman1_npc->non_walkable=1;
+				stallman1_npc->layer=2;
+				NPC_animate_stand_dir(&stallman1_npc,DOWN);
+				stallman1_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
+				stallman1_npc->walk_dir=stallman1_npc->anim_dir;
+				//NPC_animate_increment_direction_frame_now(&stallman1_npc, stallman1_npc->anim_direction);
+			}
 		}
 	}
 	if(stallman1_npc!=NULL)
