@@ -148,9 +148,9 @@ void DEBUG_main()
 
 
 		/*PORT: debug warp menu re-enabled per Boss*/
-		if(BUTTON_START_HELD)
+		if(BUTTON_R_HELD)/*PORT: R, since START is the pause menu*/
 		{
-			while(BUTTON_START_HELD&&MAIN_QUIT==false)whilefix();
+			while(BUTTON_R_HELD&&MAIN_QUIT==false)whilefix();
 
 			if(GLOBAL_text_engine_state==0&&GLOBAL_main_sprite_input_off==0)
 			{
@@ -283,12 +283,12 @@ void DEBUG_main()
 		//}
 
 		/*
-		if(BUTTON_SELECT_HELD) //delete all npcs
+		/*PORT: disabled, too dangerous live*/if(0)//(BUTTON_SELECT_HELD) //delete all npcs
 		{
 			while(BUTTON_SELECT_HELD&&MAIN_QUIT==false)whilefix();
 		 NPC_delete_all_npcs();
 		}
-		if(BUTTON_X_HELD) //delete last npc
+		/*PORT: disabled, too dangerous live*/if(0)//(BUTTON_X_HELD) //delete last npc
 		{
 			while(BUTTON_X_HELD&&MAIN_QUIT==false){whilefix();}
 			NPC *last_npc = PLAYER_npc;
