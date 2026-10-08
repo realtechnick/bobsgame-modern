@@ -24,6 +24,7 @@
 
 
 void DEBUG_init();
+void DEBUG_main();/*PORT: was missing*/
 void DEBUG_vbl();
 void calculate_fps();
 
