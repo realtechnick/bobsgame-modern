@@ -330,7 +330,12 @@ z axis left trigger - right trigger
                     {
                         if(ZOOMlock==0)
 						{
-							if(ZOOMto>MINZOOM)ZOOMto-=ZOOMINCREMENT;
+							//PORT: zoom-out stops are 1.0, 0.5, 0.25 only (draw scales
+							//2.0, 1.0, 0.5 - all integer). 0.75 would be 1.5x which
+							//can never render integer-clean, so skip it.
+							if(ZOOMto>1.0f)ZOOMto-=ZOOMINCREMENT;
+							else if(ZOOMto>0.5f)ZOOMto=0.5f;
+							else if(ZOOMto>MINZOOM)ZOOMto=MINZOOM;
 							if(ZOOMto<MINZOOM)ZOOMto=MINZOOM;
 						}
                         //HARDWARE_brightness--;
@@ -343,7 +348,10 @@ z axis left trigger - right trigger
                     {
                         if(ZOOMlock==0)
 						{
-							if(ZOOMto<MAXZOOM)ZOOMto+=ZOOMINCREMENT;
+							//PORT: match the zoom-out stops above, skip 0.75.
+							if(ZOOMto<0.5f)ZOOMto=0.5f;
+							else if(ZOOMto<1.0f)ZOOMto=1.0f;
+							else if(ZOOMto<MAXZOOM)ZOOMto+=ZOOMINCREMENT;
 							if(ZOOMto>MAXZOOM)ZOOMto=MAXZOOM;
 						}
                         //HARDWARE_brightness++;
