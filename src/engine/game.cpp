@@ -5,7 +5,7 @@
 //#include "game.h"
 
 
-int GAMESTATE= 2;
+int GAMESTATE= 1;//TOWN sandbox
 
 int GLOBAL_debug_level_select=78;
 
