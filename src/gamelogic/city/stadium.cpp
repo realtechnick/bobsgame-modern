@@ -579,16 +579,19 @@ void bobsgame_CITYStadiumBathroomLeftMens_Map_Run_Function(int MAP_just_loaded)
 	if(stallman2_npc==NULL)
 	{
 		NPC_create_random_MAN_xy_feet(&stallman2_npc,42*8,11*8);
-		//NPC_create_npc_xy_feet(&stallman2_npc,SPRITE,16,40,7*8,27*8);
-		//PORT: creation can fail (missing sprite) — was a null-deref crash on map load.
 		if(stallman2_npc!=NULL)
 		{
-			stallman2_npc->non_walkable=1;
-			stallman2_npc->layer=2;
-			NPC_animate_stand_dir(&stallman2_npc,DOWN);
-			stallman2_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
-			stallman2_npc->walk_dir=stallman2_npc->anim_dir;
-			//NPC_animate_increment_direction_frame_now(&stallman2_npc, stallman2_npc->anim_direction);
+			//NPC_create_npc_xy_feet(&stallman2_npc,SPRITE,16,40,7*8,27*8);
+			//PORT: creation can fail (missing sprite) — was a null-deref crash on map load.
+			if(stallman2_npc!=NULL)
+			{
+				stallman2_npc->non_walkable=1;
+				stallman2_npc->layer=2;
+				NPC_animate_stand_dir(&stallman2_npc,DOWN);
+				stallman2_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
+				stallman2_npc->walk_dir=stallman2_npc->anim_dir;
+				//NPC_animate_increment_direction_frame_now(&stallman2_npc, stallman2_npc->anim_direction);
+			}
 		}
 	}
 	if(stallman2_npc!=NULL)
@@ -612,16 +615,19 @@ void bobsgame_CITYStadiumBathroomLeftMens_Map_Run_Function(int MAP_just_loaded)
 	if(stallman3_npc==NULL)
 	{
 		NPC_create_random_MAN_xy_feet(&stallman3_npc,47*8,11*8);
-		//NPC_create_npc_xy_feet(&stallman3_npc,SPRITE,16,40,7*8,27*8);
-		//PORT: creation can fail (missing sprite) — was a null-deref crash on map load.
 		if(stallman3_npc!=NULL)
 		{
-			stallman3_npc->non_walkable=1;
-			stallman3_npc->layer=2;
-			NPC_animate_stand_dir(&stallman3_npc,DOWN);
-			stallman3_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
-			stallman3_npc->walk_dir=stallman3_npc->anim_dir;
-			//NPC_animate_increment_direction_frame_now(&stallman3_npc, stallman3_npc->anim_direction);
+			//NPC_create_npc_xy_feet(&stallman3_npc,SPRITE,16,40,7*8,27*8);
+			//PORT: creation can fail (missing sprite) — was a null-deref crash on map load.
+			if(stallman3_npc!=NULL)
+			{
+				stallman3_npc->non_walkable=1;
+				stallman3_npc->layer=2;
+				NPC_animate_stand_dir(&stallman3_npc,DOWN);
+				stallman3_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
+				stallman3_npc->walk_dir=stallman3_npc->anim_dir;
+				//NPC_animate_increment_direction_frame_now(&stallman3_npc, stallman3_npc->anim_direction);
+			}
 		}
 	}
 	if(stallman3_npc!=NULL)
@@ -645,13 +651,16 @@ void bobsgame_CITYStadiumBathroomLeftMens_Map_Run_Function(int MAP_just_loaded)
 	if(stallman4_npc==NULL)
 	{
 		NPC_create_random_MAN_xy_feet(&stallman4_npc,57*8,11*8);
-		//NPC_create_npc_xy_feet(&stallman4_npc,SPRITE,16,40,7*8,27*8);
-		stallman4_npc->non_walkable=1;
-		stallman4_npc->layer=2;
-		NPC_animate_stand_dir(&stallman4_npc,DOWN);
-		stallman4_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
-		stallman4_npc->walk_dir=stallman4_npc->anim_dir;
-		//NPC_animate_increment_direction_frame_now(&stallman4_npc, stallman4_npc->anim_direction);
+		if(stallman4_npc!=NULL)
+		{
+			//NPC_create_npc_xy_feet(&stallman4_npc,SPRITE,16,40,7*8,27*8);
+			stallman4_npc->non_walkable=1;
+			stallman4_npc->layer=2;
+			NPC_animate_stand_dir(&stallman4_npc,DOWN);
+			stallman4_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
+			stallman4_npc->walk_dir=stallman4_npc->anim_dir;
+			//NPC_animate_increment_direction_frame_now(&stallman4_npc, stallman4_npc->anim_direction);
+		}
 	}
 	if(stallman4_npc!=NULL)
 	{
@@ -717,13 +726,16 @@ void bobsgame_CITYStadiumBathroomRightWomens_Map_Run_Function(int MAP_just_loade
 	if(stallwoman1_npc==NULL)
 	{
 		NPC_create_random_WOMAN_xy_feet(&stallwoman1_npc,4*8,11*8);
-		//NPC_create_npc_xy_feet(&stallwoman1_npc,SPRITE,16,40,7*8,27*8);
-		stallwoman1_npc->non_walkable=1;
-		stallwoman1_npc->layer=2;
-		NPC_animate_stand_dir(&stallwoman1_npc,DOWN);
-		stallwoman1_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
-		stallwoman1_npc->walk_dir=stallwoman1_npc->anim_dir;
-		//NPC_animate_increment_direction_frame_now(&stallwoman1_npc, stallwoman1_npc->anim_direction);
+		if(stallwoman1_npc!=NULL)
+		{
+			//NPC_create_npc_xy_feet(&stallwoman1_npc,SPRITE,16,40,7*8,27*8);
+			stallwoman1_npc->non_walkable=1;
+			stallwoman1_npc->layer=2;
+			NPC_animate_stand_dir(&stallwoman1_npc,DOWN);
+			stallwoman1_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
+			stallwoman1_npc->walk_dir=stallwoman1_npc->anim_dir;
+			//NPC_animate_increment_direction_frame_now(&stallwoman1_npc, stallwoman1_npc->anim_direction);
+		}
 	}
 	if(stallwoman1_npc!=NULL)
 	{
@@ -746,13 +758,16 @@ void bobsgame_CITYStadiumBathroomRightWomens_Map_Run_Function(int MAP_just_loade
 	if(stallwoman2_npc==NULL)
 	{
 		NPC_create_random_WOMAN_xy_feet(&stallwoman2_npc,9*8,11*8);
-		//NPC_create_npc_xy_feet(&stallwoman2_npc,SPRITE,16,40,7*8,27*8);
-		stallwoman2_npc->non_walkable=1;
-		stallwoman2_npc->layer=2;
-		NPC_animate_stand_dir(&stallwoman2_npc,DOWN);
-		stallwoman2_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
-		stallwoman2_npc->walk_dir=stallwoman2_npc->anim_dir;
-		//NPC_animate_increment_direction_frame_now(&stallwoman2_npc, stallwoman2_npc->anim_direction);
+		if(stallwoman2_npc!=NULL)
+		{
+			//NPC_create_npc_xy_feet(&stallwoman2_npc,SPRITE,16,40,7*8,27*8);
+			stallwoman2_npc->non_walkable=1;
+			stallwoman2_npc->layer=2;
+			NPC_animate_stand_dir(&stallwoman2_npc,DOWN);
+			stallwoman2_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
+			stallwoman2_npc->walk_dir=stallwoman2_npc->anim_dir;
+			//NPC_animate_increment_direction_frame_now(&stallwoman2_npc, stallwoman2_npc->anim_direction);
+		}
 	}
 	if(stallwoman2_npc!=NULL)
 	{
@@ -775,13 +790,16 @@ void bobsgame_CITYStadiumBathroomRightWomens_Map_Run_Function(int MAP_just_loade
 	if(stallwoman3_npc==NULL)
 	{
 		NPC_create_random_WOMAN_xy_feet(&stallwoman3_npc,19*8,11*8);
-		//NPC_create_npc_xy_feet(&stallwoman3_npc,SPRITE,16,40,7*8,27*8);
-		stallwoman3_npc->non_walkable=1;
-		stallwoman3_npc->layer=2;
-		NPC_animate_stand_dir(&stallwoman3_npc,DOWN);
-		stallwoman3_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
-		stallwoman3_npc->walk_dir=stallwoman3_npc->anim_dir;
-		//NPC_animate_increment_direction_frame_now(&stallwoman3_npc, stallwoman3_npc->anim_direction);
+		if(stallwoman3_npc!=NULL)
+		{
+			//NPC_create_npc_xy_feet(&stallwoman3_npc,SPRITE,16,40,7*8,27*8);
+			stallwoman3_npc->non_walkable=1;
+			stallwoman3_npc->layer=2;
+			NPC_animate_stand_dir(&stallwoman3_npc,DOWN);
+			stallwoman3_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
+			stallwoman3_npc->walk_dir=stallwoman3_npc->anim_dir;
+			//NPC_animate_increment_direction_frame_now(&stallwoman3_npc, stallwoman3_npc->anim_direction);
+		}
 	}
 	if(stallwoman3_npc!=NULL)
 	{
@@ -804,13 +822,16 @@ void bobsgame_CITYStadiumBathroomRightWomens_Map_Run_Function(int MAP_just_loade
 	if(stallwoman4_npc==NULL)
 	{
 		NPC_create_random_WOMAN_xy_feet(&stallwoman4_npc,29*8,11*8);
-		//NPC_create_npc_xy_feet(&stallwoman4_npc,SPRITE,16,40,7*8,27*8);
-		stallwoman4_npc->non_walkable=1;
-		stallwoman4_npc->layer=2;
-		NPC_animate_stand_dir(&stallwoman4_npc,DOWN);
-		stallwoman4_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
-		stallwoman4_npc->walk_dir=stallwoman4_npc->anim_dir;
-		//NPC_animate_increment_direction_frame_now(&stallwoman4_npc, stallwoman4_npc->anim_direction);
+		if(stallwoman4_npc!=NULL)
+		{
+			//NPC_create_npc_xy_feet(&stallwoman4_npc,SPRITE,16,40,7*8,27*8);
+			stallwoman4_npc->non_walkable=1;
+			stallwoman4_npc->layer=2;
+			NPC_animate_stand_dir(&stallwoman4_npc,DOWN);
+			stallwoman4_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
+			stallwoman4_npc->walk_dir=stallwoman4_npc->anim_dir;
+			//NPC_animate_increment_direction_frame_now(&stallwoman4_npc, stallwoman4_npc->anim_direction);
+		}
 	}
 	if(stallwoman4_npc!=NULL)
 	{
@@ -833,13 +854,16 @@ void bobsgame_CITYStadiumBathroomRightWomens_Map_Run_Function(int MAP_just_loade
 	if(stallwoman5_npc==NULL)
 	{
 		NPC_create_random_WOMAN_xy_feet(&stallwoman5_npc,39*8,11*8);
-		//NPC_create_npc_xy_feet(&stallwoman5_npc,SPRITE,16,40,7*8,27*8);
-		stallwoman5_npc->non_walkable=1;
-		stallwoman5_npc->layer=2;
-		NPC_animate_stand_dir(&stallwoman5_npc,DOWN);
-		stallwoman5_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
-		stallwoman5_npc->walk_dir=stallwoman5_npc->anim_dir;
-		//NPC_animate_increment_direction_frame_now(&stallwoman5_npc, stallwoman5_npc->anim_direction);
+		if(stallwoman5_npc!=NULL)
+		{
+			//NPC_create_npc_xy_feet(&stallwoman5_npc,SPRITE,16,40,7*8,27*8);
+			stallwoman5_npc->non_walkable=1;
+			stallwoman5_npc->layer=2;
+			NPC_animate_stand_dir(&stallwoman5_npc,DOWN);
+			stallwoman5_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
+			stallwoman5_npc->walk_dir=stallwoman5_npc->anim_dir;
+			//NPC_animate_increment_direction_frame_now(&stallwoman5_npc, stallwoman5_npc->anim_direction);
+		}
 	}
 	if(stallwoman5_npc!=NULL)
 	{
