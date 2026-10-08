@@ -627,8 +627,9 @@ int main(int argc, char *argv[])//int argc, char **argv)
 				if(target>now)
 				{
 					Uint64 ns_wait = (target-now)*1000000000ULL/hires_ticks_per_second;
-					// sleep most of it, spin the final 1ms for precision
-					if(ns_wait>2000000)SDL_DelayNS(ns_wait-1000000);
+					// PORT: SDL_DelayPrecise busy-waits for rock-solid frametime.
+					// Burns a CPU core vs SDL_DelayNS, but precision wins.
+					if(ns_wait>0)SDL_DelayPrecise(ns_wait);
 				}
 			}
 		}
