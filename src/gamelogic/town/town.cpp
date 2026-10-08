@@ -554,7 +554,7 @@ void bobsgame_TOWNTown_Map_Run_Function(int MAP_just_loaded)
 				crossingguard_npc->AI=1;
 			}}
 			//she says "move along kids"
-			if(crossingguard_npc!=NULL&&ACTION_npc(&crossingguard_npc,"Talk To Crossing Guard")//PORT: npc can be null (deleted/failed)&&GLOBAL_text_engine_state==0)
+			if(crossingguard_npc!=NULL&&ACTION_npc(&crossingguard_npc,"Talk To Crossing Guard")/*PORT: null-safe*/&&GLOBAL_text_engine_state==0)
 			{
 				TEXT_set_sprite_window(0,crossingguard_npc,NULL);
 				TEXT_set_sprite_window(1,PLAYER_npc,NULL);
@@ -1033,7 +1033,7 @@ static NPC* exitkids[30] = {NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NU
 
 
 			//she says "move along kids"
-			if(crossingguard_npc!=NULL&&ACTION_npc(&crossingguard_npc,"Talk To Crossing Guard")//PORT: npc can be null (deleted/failed)&&GLOBAL_text_engine_state==0)
+			if(crossingguard_npc!=NULL&&ACTION_npc(&crossingguard_npc,"Talk To Crossing Guard")/*PORT: null-safe*/&&GLOBAL_text_engine_state==0)
 			{
 				TEXT_set_sprite_window(0,crossingguard_npc,NULL);
 				TEXT_set_sprite_window(1,PLAYER_npc,NULL);
@@ -1326,7 +1326,7 @@ static NPC* pickupcar_npc=NULL;
 			if(mailman_npc->AI==10&&GLOBAL_text_engine_state==0)if(NPC_walk_to_xy_nohit_avoidothers_pushmain(&mailman_npc, SPEED_SLOW, 386*8, 540*8)){mailman_npc->layer=1;NPC_animate_stand_dir(&mailman_npc, UP);mailman_npc->AI++;mailman_npc->vbls=0;}
 			if(mailman_npc->AI==11)if(MAP_is_xy_within_screen_by_amt(mailman_npc->MAP_x,mailman_npc->MAP_y,64)==0){NPC_delete_npc(&mailman_npc);}
 
-			if(mailman_npc!=NULL&&ACTION_npc(&mailman_npc,"Talk To Pizza Ad Delivery Man")//PORT: npc can be null (deleted/failed)&&GLOBAL_text_engine_state==0)
+			if(mailman_npc!=NULL&&ACTION_npc(&mailman_npc,"Talk To Pizza Ad Delivery Man")/*PORT: null-safe*/&&GLOBAL_text_engine_state==0)
 			{
 				TEXT_set_sprite_window(0,mailman_npc,NULL);
 				TEXT_set_sprite_window(1,PLAYER_npc,NULL);
@@ -1385,7 +1385,7 @@ static NPC* pickupcar_npc=NULL;
 			if(!NPC_in_range_of_npc_by_amount(&PLAYER_npc,&icecreamtruck_npc,64))NPC_walk_to_xy_nohit_pushmain(&icecreamtruck_npc, SPEED_SLOW, 83*8, 540*8);
 			else
 			{
-				if(icecreamtruck_npc!=NULL&&ACTION_npc(&icecreamtruck_npc,"Talk To Ice Cream Man")//PORT: npc can be null (deleted/failed)&&GLOBAL_text_engine_state==0)
+				if(icecreamtruck_npc!=NULL&&ACTION_npc(&icecreamtruck_npc,"Talk To Ice Cream Man")/*PORT: null-safe*/&&GLOBAL_text_engine_state==0)
 				{
 					TEXT_set_sprite_window(0,PLAYER_npc,NULL);
 					TEXT_set_sprite_window(1,PLAYER_npc,NULL);
@@ -1490,7 +1490,7 @@ static NPC* bigdog_npc = NULL;
 			}
 
 
-			if(dogwalker_npc!=NULL&&ACTION_npc(&dogwalker_npc,"Talk To Dog Walker")//PORT: npc can be null (deleted/failed)&&GLOBAL_text_engine_state==0)
+			if(dogwalker_npc!=NULL&&ACTION_npc(&dogwalker_npc,"Talk To Dog Walker")/*PORT: null-safe*/&&GLOBAL_text_engine_state==0)
 			{
 				TEXT_set_sprite_window(0,dogwalker_npc,NULL);
 				TEXT_set_sprite_window(1,PLAYER_npc,NULL);
