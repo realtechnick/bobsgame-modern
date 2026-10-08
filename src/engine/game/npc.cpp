@@ -1847,7 +1847,11 @@ void NPC_vbl()
 					//2
 					//1
 
-				//PORT 2026-10-08: only clip shadow when fully inside WIDE layer-1 objects (furniture).
+				//PORT 2026-10-08: shadow clipping DISABLED. Bob's original hack can't distinguish
+//'behind furniture' (should hide) from 'under archway/pole' (should show). Width heuristic
+//still broke archways. Proper fix needs draw-order, not clipping. Shadows always draw.
+#if 0
+//PORT 2026-10-08: only clip shadow when fully inside WIDE layer-1 objects (furniture).
 				//Requires BOTH neighbors solid (AND) so the edge tile doesn't pop; thin poles/wires never trigger.
 				{
 					int _stx=((bottom_npc->MAP_x+bottom_npc->size_x/2)/8);
@@ -1880,7 +1884,9 @@ void NPC_vbl()
 				}
 
 
-				//-----------------------------
+				#endif
+
+//-----------------------------
 				//here we optimise the z list
 				//-----------------------------
 				if(bottom_npc==zstart)
