@@ -350,7 +350,8 @@ void bobsgame_CITYCasinoMain_Map_Load_Function()
 			HARDWARE_play_music("casino",64);
 
 		//murmur
-		{HARDWARE_play_sound("murmur",64,40000,1);}
+		/*PORT: murmur ambience muted per Boss*/
+		//{HARDWARE_play_sound("murmur",64,40000,1);}
 
 }
 void bobsgame_CITYCasinoMain_Map_Run_Function(int MAP_just_loaded)
