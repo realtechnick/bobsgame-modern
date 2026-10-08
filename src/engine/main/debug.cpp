@@ -264,6 +264,19 @@ void DEBUG_main()
 
 				default: break;
 				}
+				/*PORT: show warp number bottom-left*/
+				{
+					static CAPTION* warpcaption=NULL;
+					static char warptext[32];
+					static int lastwarp=-1;
+					if(GLOBAL_debug_level_select!=lastwarp)
+					{
+						lastwarp=GLOBAL_debug_level_select;
+						sprintf(warptext,"WARP %d/82",GLOBAL_debug_level_select);
+						if(warpcaption==NULL)CAPTION_make_caption(&warpcaption,0,10,HARDWARE_SCREEN_HEIGHT_PIXELS-10,-1,warptext,FONT_TINY_ID,WHITE,BLACK,1,1);
+						else CAPTION_replace_text(warpcaption,warptext);
+					}
+				}
 			}/*PORT: close inner if*/
 		}/*PORT: close outer if*/
 	//==========DEBUG===============================================================================================================
