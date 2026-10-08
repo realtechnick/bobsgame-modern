@@ -301,25 +301,25 @@ void bobsgame_CITYStadiumLobby_Map_Run_Function(int MAP_just_loaded)
 			if(lobbyline_npcs[c]->AI==13){if(MAP_is_xy_within_screen_by_64px(198*8,21*8))lobbyline_npcs[c]->AI+=14; else lobbyline_npcs[c]->AI=8+r(6);}
 
 			if(lobbyline_npcs[c]->AI==14)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed, 37*8,-1)==1)lobbyline_npcs[c]->AI=28;
-			if(lobbyline_npcs[c]->AI==15)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed, 50*8,-1)==1)lobbyline_npcs[c]->AI=28;
-			if(lobbyline_npcs[c]->AI==16)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed, 69*8,-1)==1)lobbyline_npcs[c]->AI=28;
-			if(lobbyline_npcs[c]->AI==17)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed, 82*8,-1)==1)lobbyline_npcs[c]->AI=28;
-			if(lobbyline_npcs[c]->AI==18)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,129*8,-1)==1)lobbyline_npcs[c]->AI=28;
-			if(lobbyline_npcs[c]->AI==19)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,144*8,-1)==1)lobbyline_npcs[c]->AI=28;
-			if(lobbyline_npcs[c]->AI==20)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,163*8,-1)==1)lobbyline_npcs[c]->AI=28;
-			if(lobbyline_npcs[c]->AI==21)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,176*8,-1)==1)lobbyline_npcs[c]->AI=28;
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==15)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed, 50*8,-1)==1)lobbyline_npcs[c]->AI=28;
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==16)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed, 69*8,-1)==1)lobbyline_npcs[c]->AI=28;
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==17)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed, 82*8,-1)==1)lobbyline_npcs[c]->AI=28;
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==18)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,129*8,-1)==1)lobbyline_npcs[c]->AI=28;
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==19)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,144*8,-1)==1)lobbyline_npcs[c]->AI=28;
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==20)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,163*8,-1)==1)lobbyline_npcs[c]->AI=28;
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==21)if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,176*8,-1)==1)lobbyline_npcs[c]->AI=28;
 
-			if(lobbyline_npcs[c]->AI==22){if(MAP_is_xy_within_screen_by_64px(lobbyline_npcs[c]->MAP_x,lobbyline_npcs[c]->MAP_y)==0){NPC_delete_npc(&lobbyline_npcs[c]);}else if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,  5*8,-1)==1)lobbyline_npcs[c]->AI=30;}
-			if(lobbyline_npcs[c]->AI==23){if(MAP_is_xy_within_screen_by_64px(lobbyline_npcs[c]->MAP_x,lobbyline_npcs[c]->MAP_y)==0){NPC_delete_npc(&lobbyline_npcs[c]);}else if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed, 12*8,-1)==1)lobbyline_npcs[c]->AI=30;}
-			if(lobbyline_npcs[c]->AI==24){if(MAP_is_xy_within_screen_by_64px(lobbyline_npcs[c]->MAP_x,lobbyline_npcs[c]->MAP_y)==0){NPC_delete_npc(&lobbyline_npcs[c]);}else if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed, 98*8,-1)==1)lobbyline_npcs[c]->AI=30;}
-			if(lobbyline_npcs[c]->AI==25){if(MAP_is_xy_within_screen_by_64px(lobbyline_npcs[c]->MAP_x,lobbyline_npcs[c]->MAP_y)==0){NPC_delete_npc(&lobbyline_npcs[c]);}else if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,105*8,-1)==1)lobbyline_npcs[c]->AI=30;}
-			if(lobbyline_npcs[c]->AI==26){if(MAP_is_xy_within_screen_by_64px(lobbyline_npcs[c]->MAP_x,lobbyline_npcs[c]->MAP_y)==0){NPC_delete_npc(&lobbyline_npcs[c]);}else if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,191*8,-1)==1)lobbyline_npcs[c]->AI=30;}
-			if(lobbyline_npcs[c]->AI==27){if(MAP_is_xy_within_screen_by_64px(lobbyline_npcs[c]->MAP_x,lobbyline_npcs[c]->MAP_y)==0){NPC_delete_npc(&lobbyline_npcs[c]);}else if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,198*8,-1)==1)lobbyline_npcs[c]->AI=30;}
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==22){if(MAP_is_xy_within_screen_by_64px(lobbyline_npcs[c]->MAP_x,lobbyline_npcs[c]->MAP_y)==0){NPC_delete_npc(&lobbyline_npcs[c]);}else if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,  5*8,-1)==1)lobbyline_npcs[c]->AI=30;}
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==23){if(MAP_is_xy_within_screen_by_64px(lobbyline_npcs[c]->MAP_x,lobbyline_npcs[c]->MAP_y)==0){NPC_delete_npc(&lobbyline_npcs[c]);}else if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed, 12*8,-1)==1)lobbyline_npcs[c]->AI=30;}
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==24){if(MAP_is_xy_within_screen_by_64px(lobbyline_npcs[c]->MAP_x,lobbyline_npcs[c]->MAP_y)==0){NPC_delete_npc(&lobbyline_npcs[c]);}else if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed, 98*8,-1)==1)lobbyline_npcs[c]->AI=30;}
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==25){if(MAP_is_xy_within_screen_by_64px(lobbyline_npcs[c]->MAP_x,lobbyline_npcs[c]->MAP_y)==0){NPC_delete_npc(&lobbyline_npcs[c]);}else if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,105*8,-1)==1)lobbyline_npcs[c]->AI=30;}
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==26){if(MAP_is_xy_within_screen_by_64px(lobbyline_npcs[c]->MAP_x,lobbyline_npcs[c]->MAP_y)==0){NPC_delete_npc(&lobbyline_npcs[c]);}else if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,191*8,-1)==1)lobbyline_npcs[c]->AI=30;}
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==27){if(MAP_is_xy_within_screen_by_64px(lobbyline_npcs[c]->MAP_x,lobbyline_npcs[c]->MAP_y)==0){NPC_delete_npc(&lobbyline_npcs[c]);}else if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,198*8,-1)==1)lobbyline_npcs[c]->AI=30;}
 
-			if(lobbyline_npcs[c]->AI==28)if(NPC_in_range_of_area_xyxy_in_direction_by_amount(&PLAYER_npc,lobbyline_npcs[c]->MAP_x-16,20*8,lobbyline_npcs[c]->MAP_x+16+16,23*8,UP,0)==0){if(NPC_walk_to_xy_intelligenthit_stopforothers_pushmain(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,  -1, 21*8+4)==1){lobbyline_npcs[c]->AI++;lobbyline_npcs[c]->vbls=r(40);}}
-			if(lobbyline_npcs[c]->AI==29)if(lobbyline_npcs[c]->vbls>200)lobbyline_npcs[c]->AI=8+r(6);
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==28)if(NPC_in_range_of_area_xyxy_in_direction_by_amount(&PLAYER_npc,lobbyline_npcs[c]->MAP_x-16,20*8,lobbyline_npcs[c]->MAP_x+16+16,23*8,UP,0)==0){if(NPC_walk_to_xy_intelligenthit_stopforothers_pushmain(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed,  -1, 21*8+4)==1){lobbyline_npcs[c]->AI++;lobbyline_npcs[c]->vbls=r(40);}}
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==29)if(lobbyline_npcs[c]->vbls>200)lobbyline_npcs[c]->AI=8+r(6);
 
-			if(lobbyline_npcs[c]->AI==30){if(MAP_is_xy_within_screen_by_64px(lobbyline_npcs[c]->MAP_x,lobbyline_npcs[c]->MAP_y)==0){NPC_delete_npc(&lobbyline_npcs[c]);}else if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed, -1, 2*8)==1){NPC_delete_npc(&lobbyline_npcs[c]);}}
+			if(lobbyline_npcs[c]!=NULL&&lobbyline_npcs[c]->AI==30){if(MAP_is_xy_within_screen_by_64px(lobbyline_npcs[c]->MAP_x,lobbyline_npcs[c]->MAP_y)==0){NPC_delete_npc(&lobbyline_npcs[c]);}else if(NPC_walk_to_xy_intelligenthit_pushothers(&lobbyline_npcs[c],lobbyline_npcs[c]->walking_speed, -1, 2*8)==1){NPC_delete_npc(&lobbyline_npcs[c]);}}
 
 		}
 	}
