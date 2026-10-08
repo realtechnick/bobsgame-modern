@@ -473,6 +473,13 @@ static Uint32 st_sec_start=0;
 static DEBUG_overlay_STRUCT* stutter_overlay_stats=NULL;
 static DEBUG_overlay_STRUCT* stutter_overlay_spark=NULL;
 static FILE* stutter_logfile=NULL;
+static DEBUG_overlay_STRUCT* stutter_overlay_cam=NULL;
+// PORT: camera-step tracker statics. Per game-tick MAP_cam deltas, to test
+// whether the camera ever moves 2px in one tick.
+static int cam_init=0;
+static int last_cam_x=0, last_cam_y=0;
+static int cam_dx0=0, cam_dx1=0, cam_dx2=0, cam_dxbig=0;
+static int cam_dy0=0, cam_dy1=0, cam_dy2=0, cam_dybig=0;
 
 static char stutter_sparkline_char(float ms)
 {
@@ -485,6 +492,31 @@ static char stutter_sparkline_char(float ms)
 
 void DEBUG_stutter_frame(float total_ms, float logic_ms, float vbl_ms, float wait_ms)
 {
+	// PORT: camera-step tracker. vbl_ms>0 means this iteration ran a game
+	// tick (main_vbl only runs on ticks), so this measures camera movement
+	// per tick: the "does the camera ever jump 2px in one tick" test.
+	if(vbl_ms>0.0f)
+	{
+		if(cam_init==0){last_cam_x=MAP_cam_x;last_cam_y=MAP_cam_y;cam_init=1;}
+		else
+		{
+			int sdx=MAP_cam_x-last_cam_x;
+			int sdy=MAP_cam_y-last_cam_y;
+			last_cam_x=MAP_cam_x; last_cam_y=MAP_cam_y;
+			int dx=sdx<0?-sdx:sdx;
+			int dy=sdy<0?-sdy:sdy;
+			if(dx==0)cam_dx0++; else if(dx==1)cam_dx1++; else if(dx==2)cam_dx2++; else cam_dxbig++;
+			if(dy==0)cam_dy0++; else if(dy==1)cam_dy1++; else if(dy==2)cam_dy2++; else cam_dybig++;
+			if(dx>1||dy>1)
+			{
+				char cline[160];
+				sprintf(cline,"[CAMSTEP] dx=%d dy=%d cam=(%d,%d)\n",sdx,sdy,MAP_cam_x,MAP_cam_y);
+				fprintf(stderr,"%s",cline);
+				if(stutter_logfile!=NULL){fprintf(stutter_logfile,"%s",cline);fflush(stutter_logfile);}
+			}
+		}
+	}
+
 	stutter_ring[stutter_ring_i]=total_ms;
 	stutter_ring_i=(stutter_ring_i+1)%STUTTER_RING;
 	if(stutter_ring_n<STUTTER_RING)stutter_ring_n++;
@@ -518,6 +550,7 @@ void DEBUG_stutter_frame(float total_ms, float logic_ms, float vbl_ms, float wai
 	{
 		if(stutter_overlay_stats!=NULL){DEBUG_delete_overlay(stutter_overlay_stats);stutter_overlay_stats=NULL;}
 		if(stutter_overlay_spark!=NULL){DEBUG_delete_overlay(stutter_overlay_spark);stutter_overlay_spark=NULL;}
+		if(stutter_overlay_cam!=NULL){DEBUG_delete_overlay(stutter_overlay_cam);stutter_overlay_cam=NULL;}
 		return;
 	}
 
@@ -546,6 +579,12 @@ void DEBUG_stutter_frame(float total_ms, float logic_ms, float vbl_ms, float wai
 		else DEBUG_update_overlay(stutter_overlay_stats,stats,8,8);
 		if(stutter_overlay_spark==NULL)stutter_overlay_spark=DEBUG_make_overlay(spark,8,20);
 		else DEBUG_update_overlay(stutter_overlay_spark,spark,8,20);
+
+		char camline[160];
+		sprintf(camline,"cam/tick dx 0/1/2/2+:%d/%d/%d/%d dy 0/1/2/2+:%d/%d/%d/%d",
+			cam_dx0,cam_dx1,cam_dx2,cam_dxbig,cam_dy0,cam_dy1,cam_dy2,cam_dybig);
+		if(stutter_overlay_cam==NULL)stutter_overlay_cam=DEBUG_make_overlay(camline,8,32);
+		else DEBUG_update_overlay(stutter_overlay_cam,camline,8,32);
 
 		st_sec_worst=0.0f; st_sec_sum=0.0; st_sec_n=0; st_sec_hitches=0;
 		st_sec_logic=0.0; st_sec_vbl=0.0; st_sec_wait=0.0;
