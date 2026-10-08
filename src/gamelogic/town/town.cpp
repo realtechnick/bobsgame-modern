@@ -538,8 +538,12 @@ void bobsgame_TOWNTown_Map_Run_Function(int MAP_just_loaded)
 			HARDWARE_play_sound("doorsound",127,44100,0);
 			if(crossingguard_npc==NULL)
 			{
-				NPC_create_npc_xy_feet(&crossingguard_npc,GFX_ADULT_crossingguard, 16, 40,242*8, 276*8);crossingguard_npc->non_walkable=1;
-				crossingguard_npc->AI=1;
+				NPC_create_npc_xy_feet(&crossingguard_npc,GFX_ADULT_crossingguard, 16, 40,242*8, 276*8);
+				if(crossingguard_npc!=NULL)/*PORT: creation can fail*/
+				{
+					crossingguard_npc->non_walkable=1;
+					crossingguard_npc->AI=1;
+				}
 				CLOCK_minute++;
 			}
 		}
