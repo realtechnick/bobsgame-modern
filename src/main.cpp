@@ -615,10 +615,10 @@ int main(int argc, char *argv[])//int argc, char **argv)
 				if(newtimer-lasttimer >= tick_interval)lasttimer=newtimer;
 
 				Uint64 st_t1 = SDL_GetPerformanceCounter();
-				// PORT: wobble test: 21 substeps/frame (was 20). 21/7 divides evenly, so the
-				// 7-substep movement gate lands exactly 3px per rendered frame instead of
-				// the 2,3,3,3,3,3,3 wobble. All substep timers run ~5% faster. Revert to 20
-				// to restore Bob's original rhythm.
+				// PORT: wobble test — GAME_main() runs 21 substeps on cardinal frames
+				// (21/7 = exactly 3px/frame) and 20 on diagonal frames (20/10 = exactly
+				// 2px/frame); see the PORT block at the top of GAME_main(). Revert to
+				// GAME_main(20) and delete that block to restore Bob's original rhythm.
 				GAME_main(21); //kodenermaschiniene
 				Uint64 st_t2 = SDL_GetPerformanceCounter();
 
@@ -665,10 +665,10 @@ int main(int argc, char *argv[])//int argc, char **argv)
 			if(newtimer-lasttimer>=(16*(hires_ticks_per_second/1000)))
 			{
 				lasttimer=newtimer;
-				// PORT: wobble test: 21 substeps/frame (was 20). 21/7 divides evenly, so the
-				// 7-substep movement gate lands exactly 3px per rendered frame instead of
-				// the 2,3,3,3,3,3,3 wobble. All substep timers run ~5% faster. Revert to 20
-				// to restore Bob's original rhythm.
+				// PORT: wobble test — GAME_main() runs 21 substeps on cardinal frames
+				// (21/7 = exactly 3px/frame) and 20 on diagonal frames (20/10 = exactly
+				// 2px/frame); see the PORT block at the top of GAME_main(). Revert to
+				// GAME_main(20) and delete that block to restore Bob's original rhythm.
 				GAME_main(21); //kodenermaschiniene
 
 				ERROR_check_SDL_and_GL_errors("GAME_main");
