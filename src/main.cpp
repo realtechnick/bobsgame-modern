@@ -598,10 +598,17 @@ int main(int argc, char *argv[])//int argc, char **argv)
 			// Vsync alone follows the display refresh, so on a 120Hz+ screen the
 			// whole simulation runs fast. Gate logic to 60Hz; vsync still gives
 			// tear-free presentation.
+			// PORT: use a fixed timestep (lasttimer+=interval, not =newtimer) so the
+			// gate can't drift from the vsync grid, and sleep precisely with
+			// SDL_DelayNS. SDL_Delay(1) overshoots and misses the vsync deadline,
+			// dropping frames (58-59fps stutter).
 			newtimer = SDL_GetPerformanceCounter();
-			if(newtimer-lasttimer >= hires_ticks_per_second/60)
+			Uint64 tick_interval = hires_ticks_per_second/60;
+			if(newtimer-lasttimer >= tick_interval)
 			{
-				lasttimer=newtimer;
+				lasttimer+=tick_interval;
+			// if badly behind (e.g. breakpoint), resync instead of spiral of death
+			if(newtimer-lasttimer >= tick_interval)lasttimer=newtimer;
 
 				GAME_main(20); //kodenermaschiniene
 
@@ -615,7 +622,14 @@ int main(int argc, char *argv[])//int argc, char **argv)
 			}
 			else
 			{
-				SDL_Delay(1);
+				Uint64 target = lasttimer+tick_interval;
+				Uint64 now = SDL_GetPerformanceCounter();
+				if(target>now)
+				{
+					Uint64 ns_wait = (target-now)*1000000000ULL/hires_ticks_per_second;
+					// sleep most of it, spin the final 1ms for precision
+					if(ns_wait>2000000)SDL_DelayNS(ns_wait-1000000);
+				}
 			}
 		}
 		else
