@@ -575,6 +575,16 @@ void GAME_timer()
 void GAME_main(int gamespeed) //kodenermaschiniene
 {//=========================================================================================================================
 
+	// PORT: wobble test — run 20 substeps on diagonal frames, 21 otherwise, so
+	// per-frame movement divides evenly: 20/10 = exactly 2px/frame on diagonals
+	// (1.5x gate), 21/7 = exactly 3px/frame on cardinals. Uses last frame's
+	// walk_dir (one frame of lag, imperceptible); Yuu and camera share the same
+	// substep stream so they stay in lockstep. NPCs/clock run ~5% slower while
+	// holding diagonal. Delete this block to restore a flat substep count.
+	{
+		int _wd = (PLAYER_npc!=NULL) ? PLAYER_npc->walk_dir : 0;
+		if(_wd==UPLEFT||_wd==UPRIGHT||_wd==DOWNLEFT||_wd==DOWNRIGHT) gamespeed=20;
+	}
 
 
 	reset_controls();//this really only needs to happen once per frame
