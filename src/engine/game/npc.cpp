@@ -822,6 +822,7 @@ bool NPC_check_collide_fx_xy(int x,int y)
 	index = ((y/8)*HARDWARE_map_width_tiles) + (x/8);
 
 	int hit=0;
+	if(HARDWARE_map_fx_layer==NULL)return 0;/*PORT: no FX layer*/
 	int t = HARDWARE_map_fx_layer[index];
 	if(t==1||t==2)hit=1;
 
