@@ -1,6 +1,7 @@
 
 
 #include "../../main.h"
+extern float ZOOM;/*PORT: render zoom for camera alignment*/
 //#include "map.h"
 
 
@@ -62,6 +63,9 @@ void MAP_set_map_cam_to_cameraman()
 
 	MAP_cam_x=x-(GAME_VIEWPORT_WIDTH_PIXELS/2);
 	MAP_cam_y=y-(GAME_VIEWPORT_HEIGHT_PIXELS/2);
+	//PORT: at 0.25 zoom the world draws at 0.5x; keep the camera on even pixels
+	//so it lands on integer screen pixels instead of half-pixel jitter.
+	if(ZOOM<1.0f){MAP_cam_x&=~1;MAP_cam_y&=~1;}
 }
 
 
