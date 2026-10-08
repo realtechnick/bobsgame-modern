@@ -45,7 +45,7 @@ void bobsgame_TOWNChurch_Map_Run_Function(int MAP_just_loaded)
 	}
 	else if(priest_npc!=NULL)
 	{
-		if(ACTION_range_xy_xy(19*8,21*8,24*8,22*8,"Repent"))
+		if(ACTION_range_xy_xy(18*8,20*8,25*8,24*8,"Repent"))/*PORT: widened, was unreachable 40x8*/
 		{
 			TEXT_set_sprite_window(0,priest_npc,NULL);
 			TEXT_set_sprite_window(1,PLAYER_npc,NULL);
