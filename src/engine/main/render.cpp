@@ -378,8 +378,10 @@ void draw_black_overlay()
 
 	int x=0;
 	int y=0;
-	int w=HARDWARE_SCREEN_WIDTH_PIXELS;
-	int h=HARDWARE_SCREEN_HEIGHT_PIXELS;
+	//PORT: cover the actual render viewport (1280x960 when direct 1:1 at 0.25).
+	GLint vp[4];glGetIntegerv(GL_VIEWPORT,vp);
+	int w=vp[2];
+	int h=vp[3];
 	float r=0;
 	float g=0;
 	float b=0;
@@ -447,6 +449,29 @@ void render()
 
 	set_zoom();
 
+	float tempZOOM=ZOOM;
+
+	//PORT: at 0.25 the camera view (1280x960) matches the window: render directly
+	//at 1:1 for pixel-perfect sharpness instead of minifying into the 640x480
+	//FBO and upscaling (which throws away 3/4 of the pixels).
+	bool direct_1to1=(tempZOOM<0.5f&&
+		GAME_VIEWPORT_WIDTH_PIXELS==WINDOW_DRAWABLE_W&&
+		GAME_VIEWPORT_HEIGHT_PIXELS==WINDOW_DRAWABLE_H);
+
+	if(direct_1to1)
+	{
+		if(framebuffer)glBindFramebufferEXT(GL_FRAMEBUFFER_EXT,0);
+		glViewport(0, 0, WINDOW_DRAWABLE_W, WINDOW_DRAWABLE_H);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(0, WINDOW_DRAWABLE_W, WINDOW_DRAWABLE_H, 0, -1, 1);
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+		glClear( GL_COLOR_BUFFER_BIT );
+		ZOOM=1.0f;
+	}
+	else
+	{
 	// PORT: WINDOW_SCALE support. Game draws at native 640x480 into the
 	// window's bottom-left; the final blit below upscales with GL_NEAREST.
 	glViewport(0, 0, HARDWARE_SCREEN_WIDTH_PIXELS, HARDWARE_SCREEN_HEIGHT_PIXELS);
@@ -455,8 +480,6 @@ void render()
 	glOrtho(0, HARDWARE_SCREEN_WIDTH_PIXELS, HARDWARE_SCREEN_HEIGHT_PIXELS, 0, -1, 1);
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
-
-	float tempZOOM=ZOOM;
 
 	if(framebuffer)
 	{
@@ -470,6 +493,7 @@ void render()
 	//this is exactly 2.0 as before.
 	if(tempZOOM<1.0f)ZOOM=2.0f*tempZOOM;
 	else ZOOM=2.0f;
+	}
 
 	//confusingly, the game scales everything by 2x at ZOOM 1x. the internal game engine thinks it is running at half the rendered resolution.
 
@@ -539,6 +563,18 @@ void render()
 	//i think i wanted to double the resolution and draw everything at 2x
 
 
+	if(direct_1to1)
+	{
+		//already rendered to the window at 1:1, nothing to blit.
+		//draw overlays at the usual 640x480 scale so they stay readable.
+		glViewport(0, 0, WINDOW_DRAWABLE_W, WINDOW_DRAWABLE_H);
+		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
+		glOrtho(0, HARDWARE_SCREEN_WIDTH_PIXELS, HARDWARE_SCREEN_HEIGHT_PIXELS, 0, -1, 1);
+		glMatrixMode(GL_MODELVIEW);
+		glLoadIdentity();
+	}
+	else
 	if(!framebuffer)
 	{
 		//=====================
