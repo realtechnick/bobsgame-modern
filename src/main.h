@@ -181,6 +181,15 @@ extern int cheater;
 // PORT: integer window scale. The game renders internally at 640x480;
 // render() upscales the final blit with GL_NEAREST for crisp pixels.
 // Set to 1 to revert to the original 640x480 window.
+//WINDOW_SCALE: integer upscale factor for the SDL window.
+//The game renders internally at 640x480; the final blit upscales by this factor.
+//- Blit filter defaults to GL_NEAREST (crisp pixels, not bilinear blur).
+//  Press F at runtime to toggle NEAREST/LINEAR live for A/B comparison.
+//- Window sizes: 1=640x480, 2=1280x960, 3=1920x1440, 4=2560x1920.
+//- Revert to 1 to get back to the original 640x480 build behavior.
+//NOTE (2026-10-08): gBev tests on a 2560x1600 display at 1x, so SCALE 4
+//(2560x1920) will NOT fit vertically on his screen. Ship his test builds
+//at SCALE 2 (1280x960) or lower.
 #define WINDOW_SCALE 2
 
 // PORT: HiDPI support. On Retina/HiDPI displays the drawable (back buffer)
