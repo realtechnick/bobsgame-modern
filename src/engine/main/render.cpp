@@ -49,8 +49,8 @@ SDL_Surface* SDLSurface_screen = NULL;
 
 bool ZOOMlock=0;
 
-float ZOOM=1.0f;
-float ZOOMto=1.0f;
+float ZOOM=0.5f;
+float ZOOMto=0.5f;
 
 int HARDWARE_SCREEN_WIDTH_PIXELS=640;//1920;//256
 int HARDWARE_SCREEN_HEIGHT_PIXELS=480;//1080;//192
