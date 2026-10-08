@@ -1853,7 +1853,7 @@ void NPC_vbl()
 					int _stx=((bottom_npc->MAP_x+bottom_npc->size_x/2)/8);
 					int _sty=(((bottom_npc->MAP_y+bottom_npc->size_y-2)/8)*HARDWARE_map_width_tiles);
 					int _sti=_sty+_stx;
-					int _wide=(HARDWARE_map_1[_sti-1]!=0||HARDWARE_map_1[_sti+1]!=0);
+					int _wide=((_stx>0&&HARDWARE_map_1[_sti-1]!=0)||HARDWARE_map_1[_sti+1]!=0);
 					if(
 						(
 							bottom_npc->layer==3
