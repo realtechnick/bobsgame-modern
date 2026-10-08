@@ -3,6 +3,7 @@
 
 
 #include "../../main.h"
+#include <unistd.h> // PORT: getcwd for the absolute stutter.log path
 //#include "debug.h"
 
 
@@ -498,7 +499,13 @@ void DEBUG_stutter_frame(float total_ms, float logic_ms, float vbl_ms, float wai
 		if(stutter_logfile==NULL)
 		{
 			stutter_logfile=fopen("stutter.log","a");
-			if(stutter_logfile!=NULL)fprintf(stderr,"[STUTTER] logging hitches to ./stutter.log\n");
+			if(stutter_logfile!=NULL)
+			{
+				// PORT: print the absolute path so there is no guessing where stutter.log landed.
+				char st_cwd[1024];
+				if(getcwd(st_cwd,sizeof(st_cwd))!=NULL)fprintf(stderr,"[STUTTER] logging hitches to %s/stutter.log\n",st_cwd);
+				else fprintf(stderr,"[STUTTER] logging hitches to ./stutter.log\n");
+			}
 		}
 		if(stutter_logfile!=NULL){fprintf(stutter_logfile,"%s",line);fflush(stutter_logfile);}
 	}
