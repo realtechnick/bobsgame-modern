@@ -65,7 +65,9 @@ void MAP_set_map_cam_to_cameraman()
 	MAP_cam_y=y-(GAME_VIEWPORT_HEIGHT_PIXELS/2);
 	//PORT: at 0.25 zoom the world draws at 0.5x; keep the camera on even pixels
 	//so it lands on integer screen pixels instead of half-pixel jitter.
-	if(ZOOM<1.0f){MAP_cam_x&=~1;MAP_cam_y&=~1;}
+	//PORT: removed even-pixel camera pin (was f27dcde). It forced 2px camera steps
+	//causing X-axis stutter. No longer needed: 0.5 and 0.25-direct both draw at
+	//1.0x now, so integer camera positions are always pixel-clean.
 }
 
 
