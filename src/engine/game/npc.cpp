@@ -1836,11 +1836,7 @@ void NPC_vbl()
 
 				bottom_npc->sprite = HARDWARE_create_sprite(bottom_npc->gfx,bottom_npc->gfx_index,bottom_npc->layer,bottom_npc->scale,bottom_npc->screen_x,bottom_npc->screen_y,bottom_npc->alpha);
 
-				//PORT 2026-10-08: disabled again per Boss - shadows popped in/out under every
-//street sign/electric pole/wire (single thin tile triggers it). The 2026-10-07 re-enable
-//fixed shadows over furniture, but the check can't tell furniture from a pole.
-#if 0
-//if any part of the feet are under a tile on the above layer, dont draw the shadow
+				//if any part of the feet are under a tile on the above layer, dont draw the shadow
 				//REENABLED 2026-10-07: Bob's original shadow clipping. The layer==3 branch had a
 				//typo (MAP_x/2 instead of MAP_x) that sampled the wrong tile, causing the misfires
 				//that got this disabled on 2026-10-06. Fixed to match the layer==2 branch and the
@@ -1851,28 +1847,37 @@ void NPC_vbl()
 					//2
 					//1
 
-				if(
+				//PORT 2026-10-08: only clip shadow for WIDE layer-1 objects (furniture),
+				//not thin poles/wires. A pole is 1 tile wide (neighbors empty); furniture spans tiles.
+				{
+					int _stx=((bottom_npc->MAP_x+bottom_npc->size_x/2)/8);
+					int _sty=(((bottom_npc->MAP_y+bottom_npc->size_y-2)/8)*HARDWARE_map_width_tiles);
+					int _sti=_sty+_stx;
+					int _wide=(HARDWARE_map_1[_sti-1]!=0||HARDWARE_map_1[_sti+1]!=0);
+					if(
 						(
 							bottom_npc->layer==3
 							&&
 							(
-								HARDWARE_map_1[((((bottom_npc->MAP_y+bottom_npc->size_y-2)/8)*HARDWARE_map_width_tiles)+((bottom_npc->MAP_x+bottom_npc->size_x/2)/8))]!=0
+								HARDWARE_map_1[_sti]!=0
 								||
-								HARDWARE_map_2[((((bottom_npc->MAP_y+bottom_npc->size_y-2)/8)*HARDWARE_map_width_tiles)+((bottom_npc->MAP_x+bottom_npc->size_x/2)/8))]!=0
+								HARDWARE_map_2[_sti]!=0
 							)
+							&&_wide
 						)
 						||
 						(
 							bottom_npc->layer==2
 							&&
-							HARDWARE_map_1[((((bottom_npc->MAP_y+bottom_npc->size_y-2)/8)*HARDWARE_map_width_tiles)+((bottom_npc->MAP_x+bottom_npc->size_x/2)/8))]!=0
+							HARDWARE_map_1[_sti]!=0
+							&&_wide
 						)
 				)
 				{
 					//dont draw past the feet
 					bottom_npc->sprite->draw_size_y=bottom_npc->size_y;
 				}
-#endif
+				}
 
 
 				//-----------------------------
