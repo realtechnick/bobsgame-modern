@@ -616,9 +616,10 @@ int main(int argc, char *argv[])//int argc, char **argv)
 
 				Uint64 st_t1 = SDL_GetPerformanceCounter();
 				// PORT: wobble test — GAME_main() picks substeps/frame by movement:
-				// run 24 (4.0px cardinal / 3.0px diagonal), walk-diagonal 20 (2.0px),
-				// walk-cardinal 21 (3.0px); see the PORT block in GAME_main(). Revert to
-				// GAME_main(20) and delete that block to restore Bob's original rhythm.
+				// run 20 (5.0px cardinal / 4.0px diagonal, Bob's original run speeds),
+				// walk-diagonal 20 (2.0px), walk-cardinal 21 (3.0px); see the PORT
+				// block in GAME_main(). Revert to GAME_main(20) and delete that
+				// block to restore Bob's original rhythm.
 				GAME_main(21); //kodenermaschiniene
 				Uint64 st_t2 = SDL_GetPerformanceCounter();
 
@@ -666,9 +667,10 @@ int main(int argc, char *argv[])//int argc, char **argv)
 			{
 				lasttimer=newtimer;
 				// PORT: wobble test — GAME_main() picks substeps/frame by movement:
-				// run 24 (4.0px cardinal / 3.0px diagonal), walk-diagonal 20 (2.0px),
-				// walk-cardinal 21 (3.0px); see the PORT block in GAME_main(). Revert to
-				// GAME_main(20) and delete that block to restore Bob's original rhythm.
+				// run 20 (5.0px cardinal / 4.0px diagonal, Bob's original run speeds),
+				// walk-diagonal 20 (2.0px), walk-cardinal 21 (3.0px); see the PORT
+				// block in GAME_main(). Revert to GAME_main(20) and delete that
+				// block to restore Bob's original rhythm.
 				GAME_main(21); //kodenermaschiniene
 
 				ERROR_check_SDL_and_GL_errors("GAME_main");
