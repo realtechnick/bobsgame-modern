@@ -576,15 +576,17 @@ void GAME_main(int gamespeed) //kodenermaschiniene
 {//=========================================================================================================================
 
 	// PORT: wobble test — pick substeps/frame so movement divides evenly:
-	// running (B/R held): 24 substeps -> 24/6=4.0px/frame cardinal, 24/8=3.0 diagonal;
-	// walking diagonal: 20 substeps -> 20/10=2.0px/frame;
-	// walking cardinal: 21 substeps -> 21/7=3.0px/frame.
-	// Uses last frame's input (one frame of lag, imperceptible); Yuu and camera
-	// share the substep stream so they stay in lockstep. Run is ~20% faster than
-	// Bob's 3.33px/frame. Delete this block to restore a flat substep count.
+	// Yuu running (B/R held, or latched run speed 3=YUU_RUNNING_SPEED until he
+	// stops): 20 substeps -> 20/4=5.0px/frame cardinal, 20/5=4.0px/frame diagonal
+	// (1.5x gate) — exactly Bob's original run speeds, now perfectly even.
+	// Yuu walking diagonal: 20 substeps -> 20/10=2.0px/frame.
+	// Yuu walking cardinal: 21 substeps -> 21/7=3.0px/frame.
+	// Yuu and camera share the substep stream so they stay in lockstep. Delete
+	// this block to restore a flat substep count.
 	{
+		int _ws = (PLAYER_npc!=NULL) ? PLAYER_npc->walking_speed : 6;
 		int _wd = (PLAYER_npc!=NULL) ? PLAYER_npc->walk_dir : 0;
-		if(BUTTON_R_HELD||BUTTON_B_HELD) gamespeed=24;
+		if(_ws==3/*YUU_RUNNING_SPEED*/||BUTTON_R_HELD||BUTTON_B_HELD) gamespeed=20;
 		else if(_wd==UPLEFT||_wd==UPRIGHT||_wd==DOWNLEFT||_wd==DOWNRIGHT) gamespeed=20;
 	}
 
