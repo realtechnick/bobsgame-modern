@@ -163,7 +163,7 @@ void DEBUG_main()
 				switch(GLOBAL_debug_level_select)
 				{
 
-				case  0: {MAP_change_map(MAP_bobsgame_TOWNYUUUpstairsYuusRoom,16,14);PLAYER_npc->gfx_filename=yuu;break;}
+				case  0: {MAP_change_map(MAP_bobsgame_TOWNYUUUpstairsYuusRoom,16,14);PLAYER_npc->gfx=GFX_KID_yuu;break;}
 				//case  0: {MAP_change_map(MAP_bobsgame_MISCCastRoom,14,14);break;}
 
 
@@ -256,7 +256,7 @@ void DEBUG_main()
 				case 78: {MAP_change_map(MAP_bobsgame_CITYHourlyMotel,22,64);break;}
 				case 79: {MAP_change_map(MAP_bobsgame_SCHOOLPlayground,22,64);break;}
 				case 80: {MAP_change_map(MAP_bobsgame_CITYCity,1000,45);break;}
-				case 81: {MAP_change_map(MAP_bobsgame_INTROUpstairsYuusRoom,16,14);PLAYER_npc->gfx_filename=youngyuu;break;}
+				case 81: {MAP_change_map(MAP_bobsgame_INTROUpstairsYuusRoom,16,14);PLAYER_npc->gfx=GFX_KID_youngyuu;break;}
 				case 82: {MAP_change_map(MAP_bobsgame_MISCCastRoom,14,14);break;}/*PORT: CastRoom warp for Boss*/
 
 
@@ -264,11 +264,8 @@ void DEBUG_main()
 
 				default: break;
 				}
-
-
-
-
-
+			}/*PORT: close inner if*/
+		}/*PORT: close outer if*/
 	//==========DEBUG===============================================================================================================
 		//if(BUTTON_L_HELD)CLOCK_second++;
 		//if(BUTTON_L_HELD)
