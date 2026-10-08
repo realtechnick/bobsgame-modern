@@ -613,6 +613,7 @@ void GAME_main(int gamespeed) //kodenermaschiniene
 
 		NPC_main();
 		PLAYER_main();
+		DEBUG_main();/*PORT: was never called*/
 
 		if(GAME_playing_tetrid==1)TETRID_main();
 		if(GAME_playing_ping==1)PING_main();
