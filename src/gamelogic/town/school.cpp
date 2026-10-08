@@ -1434,7 +1434,8 @@ void bobsgame_SCHOOLEntranceHallway_Map_Run_Function(int MAP_just_loaded)
 	{
 			if(CLOCK_minute<30)
 			{
-				HARDWARE_play_sound_if_not_playing("murmur",127,50000,1);
+				/*PORT: murmur ambience muted per Boss (was leaking across maps)*/
+				//HARDWARE_play_sound_if_not_playing("murmur",127,50000,1);
 				int c=0;
 
 				static int last_vbl10_var=0;
@@ -1686,7 +1687,8 @@ void bobsgame_SCHOOLEntranceHallway_Map_Run_Function(int MAP_just_loaded)
 			//exiting kids flooding out
 			if(CLOCK_minute>=30)
 			{
-				HARDWARE_play_sound_if_not_playing("murmur",127,50000,1);
+				/*PORT: murmur ambience muted per Boss (was leaking across maps)*/
+				//HARDWARE_play_sound_if_not_playing("murmur",127,50000,1);
 				int c=0;
 				for(c=0;c<40;c++)
 				if(schoolentrancehallwayexitingkids_npcs[c]==NULL&&vbl_10_var%10==c%10)
