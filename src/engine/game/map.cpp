@@ -336,6 +336,20 @@ void MAP_change_map(int cm,int sx,int sy)
 	HARDWARE_map_hit_layer=(unsigned char*)HARDWARE_load_file(HARDWARE_map_hit_layer_filename);
 	HARDWARE_map_fx_layer=(unsigned short*)HARDWARE_load_file(HARDWARE_map_fx_layer_filename);
 
+	/*PORT: some maps lack layer files (debug warps); allocate zeroed layers instead of null-deref crashing*/
+	{
+		int tiles=HARDWARE_map_width_tiles*HARDWARE_map_height_tiles;
+		if(tiles>0)
+		{
+			if(HARDWARE_map_0==NULL){HARDWARE_map_0=(unsigned short*)calloc(tiles,sizeof(unsigned short));}
+			if(HARDWARE_map_1==NULL){HARDWARE_map_1=(unsigned short*)calloc(tiles,sizeof(unsigned short));}
+			if(HARDWARE_map_2==NULL){HARDWARE_map_2=(unsigned short*)calloc(tiles,sizeof(unsigned short));}
+			if(HARDWARE_map_3==NULL){HARDWARE_map_3=(unsigned short*)calloc(tiles,sizeof(unsigned short));}
+			if(HARDWARE_map_hit_layer==NULL){HARDWARE_map_hit_layer=(unsigned char*)calloc(tiles,sizeof(unsigned char));}
+			if(HARDWARE_map_fx_layer==NULL){HARDWARE_map_fx_layer=(unsigned short*)calloc(tiles,sizeof(unsigned short));}
+		}
+	}
+
 	HARDWARE_map_palette=(unsigned short*)HARDWARE_load_file(HARDWARE_map_palette_filename);
 	HARDWARE_map_tileset=(unsigned char*)HARDWARE_load_file(HARDWARE_map_tileset_filename);
 
