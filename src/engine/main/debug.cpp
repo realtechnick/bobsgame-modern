@@ -147,7 +147,8 @@ void DEBUG_main()
 {//=========================================================================================================================
 
 
-		/* if(BUTTON_START_HELD)
+		/*PORT: debug warp menu re-enabled per Boss*/
+		if(BUTTON_START_HELD)
 		{
 			while(BUTTON_START_HELD&&MAIN_QUIT==false)whilefix();
 
@@ -157,7 +158,7 @@ void DEBUG_main()
 				//else{HARDWARE_play_music_file(current_mod);music_playing=1;}
 
 				GLOBAL_debug_level_select++;
-				if(GLOBAL_debug_level_select>81)GLOBAL_debug_level_select=0;
+				if(GLOBAL_debug_level_select>82)GLOBAL_debug_level_select=0;
 
 				switch(GLOBAL_debug_level_select)
 				{
@@ -256,6 +257,7 @@ void DEBUG_main()
 				case 79: {MAP_change_map(MAP_bobsgame_SCHOOLPlayground,22,64);break;}
 				case 80: {MAP_change_map(MAP_bobsgame_CITYCity,1000,45);break;}
 				case 81: {MAP_change_map(MAP_bobsgame_INTROUpstairsYuusRoom,16,14);PLAYER_npc->gfx_filename=youngyuu;break;}
+				case 82: {MAP_change_map(MAP_bobsgame_MISCCastRoom,14,14);break;}/*PORT: CastRoom warp for Boss*/
 
 
 				//case  79: {MAP_change_map(MAP_bobsgame_TOWNTown,800,270);break;}
@@ -264,8 +266,6 @@ void DEBUG_main()
 				}
 
 
-
-*/
 
 
 
