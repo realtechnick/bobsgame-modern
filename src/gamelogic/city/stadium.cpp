@@ -1565,7 +1565,10 @@ static int lastvbltimer2 = 0;
 	if(screenflicker_npc==NULL)
 	{
 		NPC_create_npc(&screenflicker_npc,GFX_MISC_bigscreen_scanlines,30*8,20*8,86*8,6*8);
-		screenflicker_npc->alpha=64;
+		if(screenflicker_npc!=NULL)
+		{
+			screenflicker_npc->alpha=64;
+		}
 	}
 
 	if(screenflicker_npc!=NULL)
@@ -1732,11 +1735,14 @@ void bobsgame_CITYStadiumProducerRoom_Map_Run_Function(int MAP_just_loaded)
 	if(producer_npc==NULL)
 	{
 		NPC_create_npc_xy_feet(&producer_npc,GFX_ADULT_bigwig,16,40,14*8,17*8);
-		producer_npc->non_walkable=1;
-		producer_npc->layer=2;
-		NPC_animate_stand_dir(&producer_npc,DOWN);
-		producer_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
-		producer_npc->walk_dir=producer_npc->anim_dir;
+		if(producer_npc!=NULL)
+		{
+			producer_npc->non_walkable=1;
+			producer_npc->layer=2;
+			NPC_animate_stand_dir(&producer_npc,DOWN);
+			producer_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
+			producer_npc->walk_dir=producer_npc->anim_dir;
+		}
 	}
 	if(producer_npc!=NULL)
 	{
@@ -1763,11 +1769,14 @@ void bobsgame_CITYStadiumProducerRoom_Map_Run_Function(int MAP_just_loaded)
 	if(editingguy1_npc==NULL)
 	{
 		NPC_create_npc_xy_feet(&editingguy1_npc,GFX_ADULT_skinnymeekcoder,16,40,8*8,16*8);
-		editingguy1_npc->non_walkable=1;
-		editingguy1_npc->layer=2;
-		NPC_animate_stand_dir(&editingguy1_npc,LEFT);
-		editingguy1_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
-		editingguy1_npc->walk_dir=editingguy1_npc->anim_dir;
+		if(editingguy1_npc!=NULL)
+		{
+			editingguy1_npc->non_walkable=1;
+			editingguy1_npc->layer=2;
+			NPC_animate_stand_dir(&editingguy1_npc,LEFT);
+			editingguy1_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
+			editingguy1_npc->walk_dir=editingguy1_npc->anim_dir;
+		}
 	}
 	if(editingguy1_npc!=NULL)
 	{
@@ -1790,11 +1799,14 @@ void bobsgame_CITYStadiumProducerRoom_Map_Run_Function(int MAP_just_loaded)
 	if(editingguy2_npc==NULL)
 	{
 		NPC_create_npc_xy_feet(&editingguy2_npc,GFX_ADULT_fatmeekcoder,16,40,21*8,16*8);
-		editingguy2_npc->non_walkable=1;
-		editingguy2_npc->layer=2;
-		NPC_animate_stand_dir(&editingguy2_npc,RIGHT);
-		editingguy2_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
-		editingguy2_npc->walk_dir=editingguy2_npc->anim_dir;
+		if(editingguy2_npc!=NULL)
+		{
+			editingguy2_npc->non_walkable=1;
+			editingguy2_npc->layer=2;
+			NPC_animate_stand_dir(&editingguy2_npc,RIGHT);
+			editingguy2_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
+			editingguy2_npc->walk_dir=editingguy2_npc->anim_dir;
+		}
 	}
 	if(editingguy2_npc!=NULL)
 	{
@@ -1920,12 +1932,15 @@ void bobsgame_CITYStadiumDressingRoom3_Map_Run_Function(int MAP_just_loaded)
 	{
 		//NPC_create_random_WOMAN_xy_feet(&famousguy_npc,39*8,11*8);
 		NPC_create_npc_xy_feet(&famousguy_npc,GFX_ADULT_richnerdguy,16,40,21*8,12*8+4);
-		famousguy_npc->non_walkable=1;
-		famousguy_npc->layer=3;
-		NPC_animate_stand_dir(&famousguy_npc,UP);
-		famousguy_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
-		famousguy_npc->walk_dir=famousguy_npc->anim_dir;
-		//NPC_animate_increment_direction_frame_now(&famousguy_npc, famousguy_npc->anim_direction);
+		if(famousguy_npc!=NULL)
+		{
+			famousguy_npc->non_walkable=1;
+			famousguy_npc->layer=3;
+			NPC_animate_stand_dir(&famousguy_npc,UP);
+			famousguy_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
+			famousguy_npc->walk_dir=famousguy_npc->anim_dir;
+			//NPC_animate_increment_direction_frame_now(&famousguy_npc, famousguy_npc->anim_direction);
+		}
 	}
 	if(famousguy_npc!=NULL)
 	{
@@ -1950,12 +1965,15 @@ void bobsgame_CITYStadiumDressingRoom3_Map_Run_Function(int MAP_just_loaded)
 	{
 		//NPC_create_random_WOMAN_xy_feet(&assistant_npc,39*8,11*8);
 		NPC_create_npc_xy_feet(&assistant_npc,GFX_ADULT_wealthyguy,16,40,18*8,13*8);
-		assistant_npc->non_walkable=1;
-		assistant_npc->layer=2;
-		NPC_animate_stand_dir(&assistant_npc,RIGHT);
-		assistant_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
-		assistant_npc->walk_dir=assistant_npc->anim_dir;
-		//NPC_animate_increment_direction_frame_now(&assistant_npc, assistant_npc->anim_direction);
+		if(assistant_npc!=NULL)
+		{
+			assistant_npc->non_walkable=1;
+			assistant_npc->layer=2;
+			NPC_animate_stand_dir(&assistant_npc,RIGHT);
+			assistant_npc->walking_speed=SPEED_NORMAL+(r(SPEED_SLOWEST-SPEED_FAST));
+			assistant_npc->walk_dir=assistant_npc->anim_dir;
+			//NPC_animate_increment_direction_frame_now(&assistant_npc, assistant_npc->anim_direction);
+		}
 	}
 	if(assistant_npc!=NULL)
 	{
