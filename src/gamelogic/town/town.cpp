@@ -538,7 +538,7 @@ void bobsgame_TOWNTown_Map_Run_Function(int MAP_just_loaded)
 			HARDWARE_play_sound("doorsound",127,44100,0);
 			if(crossingguard_npc==NULL)
 			{
-				NPC_create_npc_xy_feet(&crossingguard_npc,GFX_ADULT_crossingguard, 16, 40,242*8, 276*8);
+				NPC_create_npc_xy_feet(&crossingguard_npc,GFX_ADULT_crossingguard, 16, 40,238*8, 276*8);/*PORT: was blocking center school door*/
 				if(crossingguard_npc!=NULL)/*PORT: creation can fail*/
 				{
 					crossingguard_npc->non_walkable=1;
@@ -551,7 +551,7 @@ void bobsgame_TOWNTown_Map_Run_Function(int MAP_just_loaded)
 		{
 			if(crossingguard_npc==NULL)
 			{
-				NPC_create_npc_xy_feet(&crossingguard_npc,GFX_ADULT_crossingguard, 16, 40,242*8, 276*8);
+				NPC_create_npc_xy_feet(&crossingguard_npc,GFX_ADULT_crossingguard, 16, 40,238*8, 276*8);/*PORT: was blocking center school door*/
 				if(crossingguard_npc==NULL){/*PORT: creation can fail, skip*/}
 				else{
 				crossingguard_npc->non_walkable=1;
@@ -664,7 +664,7 @@ void bobsgame_TOWNTown_Map_Run_Function(int MAP_just_loaded)
 
 			if(crossingguard_npc!=NULL)
 			{
-				if(NPC_walk_to_xy_nohit_avoidothers_pushmain(&crossingguard_npc, SPEED_SLOWEST, 242*8, 276*8)==(1))
+				if(NPC_walk_to_xy_nohit_avoidothers_pushmain(&crossingguard_npc, SPEED_SLOWEST, 238*8, 276*8)==(1))/*PORT: was blocking center school door*/
 				{
 					NPC_fade_out_and_delete(&crossingguard_npc);
 				}
@@ -1185,7 +1185,7 @@ static NPC* exitkids[30] = {NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NU
 		//crossing guard delete
 		if(crossingguard_npc!=NULL)
 		{
-			if(NPC_walk_to_xy_nohit_avoidothers_pushmain(&crossingguard_npc, SPEED_SLOWEST, 242*8, 276*8)==(1))
+			if(NPC_walk_to_xy_nohit_avoidothers_pushmain(&crossingguard_npc, SPEED_SLOWEST, 238*8, 276*8)==(1))/*PORT: was blocking center school door*/
 			{
 				NPC_fade_out_and_delete(&crossingguard_npc);
 			}
