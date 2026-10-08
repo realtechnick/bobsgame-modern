@@ -512,6 +512,13 @@ bool NPC_in_range_of_area_xyxy_in_direction_by_amount(NPC** npcpp,int x,int y,in
 
 	bool detected=0;
 
+	//PORT: if already inside the area, direction doesn't matter.
+	//Bob's ACTION zones are "stand here" spots, but the facing checks below
+	//require the area to be in front of the player, which is mathematically
+	//impossible for small zones (e.g. priest's 40x8 zone). This made prompts
+	//disappear when facing the target directly.
+	if(!((right)<(x)||(left)>(x2)||(bottom)<(y)||(top)>(y2)))detected=1;
+
 	if(direction==UP)
 	{
 		if(
