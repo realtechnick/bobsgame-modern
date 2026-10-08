@@ -695,6 +695,9 @@ bool walking_into_door(int x,int y,int x2,int y2)
 void PLAYER_check_fx_layer()
 {//=========================================================================================================================
 
+/*PORT: some maps (e.g. debug warps) have no FX layer; was a null deref crash*/
+if(HARDWARE_map_fx_layer==NULL)return;
+
 static int under2=2,over1=1;	//+ under 0...tiles in the tileset.. i should standardize this,though it wastes valuable tiles :( maybe i can standardize them.. elsewhere :O 1025 1026 1027?
 
 	if(
