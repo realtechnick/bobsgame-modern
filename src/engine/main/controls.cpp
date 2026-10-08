@@ -58,7 +58,7 @@ bool BUTTON_SELECT_HELD=0;
 
 
 float MAXZOOM = 3.0f;
-float MINZOOM = 1.0f;
+float MINZOOM = 0.5f;/*PORT: was 1.0, allow zooming out*/
 float ZOOMINCREMENT = 0.25f;
 
 HARDWARE_TouchScreen TouchScreen;
