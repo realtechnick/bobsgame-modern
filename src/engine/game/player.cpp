@@ -554,20 +554,7 @@ void PLAYER_main()
 
 
 		//=================================actual cameraman movement
-		// PORT: gate the camera on the same clock Yuu steps on. Yuu's own step
-		// gate runs 1.5x slower on diagonals (PLAYER_check_hit_move_pixel_animate);
-		// without the same adjustment the camera steps on a 7-substep rhythm
-		// while Yuu steps on a 10-substep rhythm, so on diagonals he visibly
-		// wobbles against the background on a drifting ~3.5-frame beat.
-		// Only applied while tracking (close to target); catch-up keeps full speed.
-		int cam_gate_speed=cameraman->walking_speed;
-		if(xdistance<=2&&ydistance<=2)
-		{
-			int cam_wd=PLAYER_npc->walk_dir;
-			if(cam_wd==DOWNLEFT||cam_wd==DOWNRIGHT||cam_wd==UPLEFT||cam_wd==UPRIGHT)
-				cam_gate_speed=(int)(((float)cam_gate_speed)*1.5f);
-		}
-		if(cameraman->ms>cam_gate_speed)
+		if(cameraman->ms>cameraman->walking_speed)
 		{
 			cameraman->ms=0;
 
