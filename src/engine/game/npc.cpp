@@ -1847,13 +1847,13 @@ void NPC_vbl()
 					//2
 					//1
 
-				//PORT 2026-10-08: only clip shadow for WIDE layer-1 objects (furniture),
-				//not thin poles/wires. A pole is 1 tile wide (neighbors empty); furniture spans tiles.
+				//PORT 2026-10-08: only clip shadow when fully inside WIDE layer-1 objects (furniture).
+				//Requires BOTH neighbors solid (AND) so the edge tile doesn't pop; thin poles/wires never trigger.
 				{
 					int _stx=((bottom_npc->MAP_x+bottom_npc->size_x/2)/8);
 					int _sty=(((bottom_npc->MAP_y+bottom_npc->size_y-2)/8)*HARDWARE_map_width_tiles);
 					int _sti=_sty+_stx;
-					int _wide=((_stx>0&&HARDWARE_map_1[_sti-1]!=0)||HARDWARE_map_1[_sti+1]!=0);
+					int _wide=(_stx>0&&HARDWARE_map_1[_sti-1]!=0&&HARDWARE_map_1[_sti+1]!=0);
 					if(
 						(
 							bottom_npc->layer==3
