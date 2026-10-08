@@ -95,7 +95,7 @@ void calculate_fps()
 			static int zoomcaptionswitch=1;
 			static CAPTION* zoomcaption=NULL;
 			static char zoomchar[4];
-			static float curzoom=1.00f;
+			static float curzoom=0.50f;
 
 			if(zoomcaptionswitch==1)
 			{
@@ -107,7 +107,7 @@ void calculate_fps()
 					zoomchar[2]=((int)((int)(curzoom*100.0f))%10)+48;
 					zoomchar[3]='\0';
 
-					if(zoomcaption==NULL)CAPTION_make_caption(&zoomcaption,1,200,0,-1,(char*)zoomchar,FONT_SMALL_ID,WHITE,BLACK,5,1);
+					if(zoomcaption==NULL)CAPTION_make_caption(&zoomcaption,1,200,0,2,(char*)zoomchar,FONT_SMALL_ID,WHITE,BLACK,5,1);
 					if(zoomcaption!=NULL){CAPTION_replace_text(zoomcaption,(char*)zoomchar);}//CAPTION_delete_caption(tilecaption);}
 				}
 			}
