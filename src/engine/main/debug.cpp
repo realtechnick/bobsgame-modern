@@ -59,7 +59,7 @@ void calculate_fps()
 			}
 
 
-			static int tilexyswitch=1;
+			static int tilexyswitch=0;//PORT: default off for first-run builds
 			//static CAPTION* tilecaption=NULL;
 			static char tilexy[10];
 			static int curx=0;
@@ -148,8 +148,11 @@ void DEBUG_main()
 {//=========================================================================================================================
 
 
-		/*PORT: debug warp menu re-enabled per Boss*/
-		if(BUTTON_R_HELD)/*PORT: R, since START is the pause menu*/
+		/*PORT: debug warp menu (83 destinations). Disabled for first-run builds;
+		set ENABLE_DEBUG_WARP to 1 to re-enable. Note R is also Yuu's run button
+		(player.cpp), so with the warp on, every run ends in a warp on release.*/
+#define ENABLE_DEBUG_WARP 0
+		if(ENABLE_DEBUG_WARP&&BUTTON_R_HELD)/*PORT: R, since START is the pause menu*/
 		{
 			while(BUTTON_R_HELD&&MAIN_QUIT==false)whilefix();
 
@@ -453,7 +456,7 @@ void DEBUG_vbl()
 // than logic+vbl+wait, the stall happened outside our code (OS scheduling,
 // thread preemption, thermal throttle, compositor...).
 //=========================================================================================================================
-int stuttermeter=1;
+int stuttermeter=0;//PORT: default off for first-run builds (F3 re-enables)
 
 #define STUTTER_RING 240
 #define STUTTER_HITCH_MS 25.0f
@@ -492,6 +495,17 @@ static char stutter_sparkline_char(float ms)
 
 void DEBUG_stutter_frame(float total_ms, float logic_ms, float vbl_ms, float wait_ms)
 {
+// PORT: when the stutter meter is off (the default for first-run builds), do
+// nothing at all: no overlay, no camera tracking, no hitch logging, no
+// stutter.log file, no stderr spam. F3 re-enables everything.
+if(stuttermeter==0)
+{
+	if(stutter_overlay_stats!=NULL){DEBUG_delete_overlay(stutter_overlay_stats);stutter_overlay_stats=NULL;}
+	if(stutter_overlay_spark!=NULL){DEBUG_delete_overlay(stutter_overlay_spark);stutter_overlay_spark=NULL;}
+	if(stutter_overlay_cam!=NULL){DEBUG_delete_overlay(stutter_overlay_cam);stutter_overlay_cam=NULL;}
+	return;
+}
+
 	// PORT: camera-step tracker. vbl_ms>0 means this iteration ran a game
 	// tick (main_vbl only runs on ticks), so this measures camera movement
 	// per tick: the "does the camera ever jump 2px in one tick" test.
@@ -545,14 +559,6 @@ void DEBUG_stutter_frame(float total_ms, float logic_ms, float vbl_ms, float wai
 	if(total_ms>st_sec_worst)st_sec_worst=total_ms;
 	st_sec_sum+=total_ms; st_sec_n++;
 	st_sec_logic+=logic_ms; st_sec_vbl+=vbl_ms; st_sec_wait+=wait_ms;
-
-	if(stuttermeter==0)
-	{
-		if(stutter_overlay_stats!=NULL){DEBUG_delete_overlay(stutter_overlay_stats);stutter_overlay_stats=NULL;}
-		if(stutter_overlay_spark!=NULL){DEBUG_delete_overlay(stutter_overlay_spark);stutter_overlay_spark=NULL;}
-		if(stutter_overlay_cam!=NULL){DEBUG_delete_overlay(stutter_overlay_cam);stutter_overlay_cam=NULL;}
-		return;
-	}
 
 	Uint32 now=SDL_GetTicks();
 	if(st_sec_start==0)st_sec_start=now;
