@@ -319,6 +319,8 @@ z axis left trigger - right trigger
 					case SDLK_F: {if(GLOBAL_FRAMEBUFFER_FILTER_TYPE==GL_LINEAR)GLOBAL_FRAMEBUFFER_FILTER_TYPE=GL_NEAREST;else GLOBAL_FRAMEBUFFER_FILTER_TYPE=GL_LINEAR;}break;
 
 					case SDLK_GRAVE: {if(error_console_on==1)error_console_on=0;else error_console_on=1;}break;
+					//PORT: F3 toggles the stutter-debug overlay (frame-time stats + sparkline). Hitch log always on.
+					case SDLK_F3: {if(stuttermeter==0)stuttermeter=1;else stuttermeter=0;}break;
 
 					case SDLK_5: {CLOCK_hour--;CLOCK_moving=true;CLOCK_update_clock();}break;
 					case SDLK_6: {CLOCK_hour++;CLOCK_moving=true;CLOCK_update_clock();}break;

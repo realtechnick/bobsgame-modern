@@ -602,19 +602,29 @@ int main(int argc, char *argv[])//int argc, char **argv)
 			// gate can't drift from the vsync grid, and sleep precisely with
 			// SDL_DelayNS. SDL_Delay(1) overshoots and misses the vsync deadline,
 			// dropping frames (58-59fps stutter).
+			// PORT: stutter-debug timing. st_t0 marks the loop-iteration start; the
+			// logic/vbl/wait split lets a hitch's [STUTTER] log line show where time went.
+			Uint64 st_t0 = SDL_GetPerformanceCounter();
+			float st_logic_ms=0.0f, st_vbl_ms=0.0f, st_wait_ms=0.0f;
 			newtimer = SDL_GetPerformanceCounter();
 			Uint64 tick_interval = hires_ticks_per_second/60;
 			if(newtimer-lasttimer >= tick_interval)
 			{
 				lasttimer+=tick_interval;
-			// if badly behind (e.g. breakpoint), resync instead of spiral of death
-			if(newtimer-lasttimer >= tick_interval)lasttimer=newtimer;
+				// if badly behind (e.g. breakpoint), resync instead of spiral of death
+				if(newtimer-lasttimer >= tick_interval)lasttimer=newtimer;
 
+				Uint64 st_t1 = SDL_GetPerformanceCounter();
 				GAME_main(20); //kodenermaschiniene
+				Uint64 st_t2 = SDL_GetPerformanceCounter();
 
 				//ERROR_check_SDL_and_GL_errors("GAME_main");
 
 				main_vbl();
+				Uint64 st_t3 = SDL_GetPerformanceCounter();
+
+				st_logic_ms=(float)((st_t2-st_t1)*1000.0/(double)hires_ticks_per_second);
+				st_vbl_ms=(float)((st_t3-st_t2)*1000.0/(double)hires_ticks_per_second);
 
 				//ERROR_check_SDL_and_GL_errors("vbl");
 
@@ -622,6 +632,7 @@ int main(int argc, char *argv[])//int argc, char **argv)
 			}
 			else
 			{
+				Uint64 st_w0 = SDL_GetPerformanceCounter();
 				Uint64 target = lasttimer+tick_interval;
 				Uint64 now = SDL_GetPerformanceCounter();
 				if(target>now)
@@ -631,6 +642,15 @@ int main(int argc, char *argv[])//int argc, char **argv)
 					// Burns a CPU core vs SDL_DelayNS, but precision wins.
 					if(ns_wait>0)SDL_DelayPrecise(ns_wait);
 				}
+				Uint64 st_w1 = SDL_GetPerformanceCounter();
+				st_wait_ms=(float)((st_w1-st_w0)*1000.0/(double)hires_ticks_per_second);
+			}
+			// PORT: hand the frame's timing to the stutter debugger (debug.cpp).
+			{
+				static Uint64 st_prev_t0=0;
+				float st_total_ms = st_prev_t0==0 ? 16.666f : (float)((st_t0-st_prev_t0)*1000.0/(double)hires_ticks_per_second);
+				st_prev_t0=st_t0;
+				DEBUG_stutter_frame(st_total_ms,st_logic_ms,st_vbl_ms,st_wait_ms);
 			}
 		}
 		else

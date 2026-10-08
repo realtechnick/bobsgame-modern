@@ -440,4 +440,107 @@ void DEBUG_vbl()
 
 }
 
+//=========================================================================================================================
+// PORT: stutter-debug. The main loop reports per-frame timing here every
+// iteration. Keeps a ring buffer of recent frame times, logs hitches
+// (>25ms, i.e. 1.5x the 16.67ms budget) with a breakdown to stderr and
+// ./stutter.log, and draws a toggleable (F3) overlay with per-second stats
+// plus an ASCII sparkline of the last 60 frame times.
+// Reading a hitch line: logic=GAME_main (game code: chunk loads, NPC AI,
+// texture uploads...), vbl=main_vbl (render + SDL_GL_SwapWindow, includes the
+// vsync block), wait=the precise busy-wait sleep. If total is much bigger
+// than logic+vbl+wait, the stall happened outside our code (OS scheduling,
+// thread preemption, thermal throttle, compositor...).
+//=========================================================================================================================
+int stuttermeter=1;
 
+#define STUTTER_RING 240
+#define STUTTER_HITCH_MS 25.0f
+
+static float stutter_ring[STUTTER_RING];
+static int stutter_ring_i=0;
+static int stutter_ring_n=0;
+static int stutter_hitch_total=0;
+
+static float st_sec_worst=0.0f;
+static double st_sec_sum=0.0;
+static int st_sec_n=0;
+static int st_sec_hitches=0;
+static double st_sec_logic=0.0, st_sec_vbl=0.0, st_sec_wait=0.0;
+static Uint32 st_sec_start=0;
+
+static DEBUG_overlay_STRUCT* stutter_overlay_stats=NULL;
+static DEBUG_overlay_STRUCT* stutter_overlay_spark=NULL;
+static FILE* stutter_logfile=NULL;
+
+static char stutter_sparkline_char(float ms)
+{
+	if(ms<17.5f)return '.';
+	if(ms<20.0f)return ':';
+	if(ms<25.0f)return '!';
+	if(ms<34.0f)return '#';
+	return '@';
+}
+
+void DEBUG_stutter_frame(float total_ms, float logic_ms, float vbl_ms, float wait_ms)
+{
+	stutter_ring[stutter_ring_i]=total_ms;
+	stutter_ring_i=(stutter_ring_i+1)%STUTTER_RING;
+	if(stutter_ring_n<STUTTER_RING)stutter_ring_n++;
+
+	if(total_ms>STUTTER_HITCH_MS)
+	{
+		st_sec_hitches++;
+		stutter_hitch_total++;
+		char line[256];
+		sprintf(line,"[STUTTER] total=%.1fms logic=%.1fms vbl=%.1fms wait=%.1fms\n",total_ms,logic_ms,vbl_ms,wait_ms);
+		fprintf(stderr,"%s",line);
+		if(stutter_logfile==NULL)
+		{
+			stutter_logfile=fopen("stutter.log","a");
+			if(stutter_logfile!=NULL)fprintf(stderr,"[STUTTER] logging hitches to ./stutter.log\n");
+		}
+		if(stutter_logfile!=NULL){fprintf(stutter_logfile,"%s",line);fflush(stutter_logfile);}
+	}
+
+	if(total_ms>st_sec_worst)st_sec_worst=total_ms;
+	st_sec_sum+=total_ms; st_sec_n++;
+	st_sec_logic+=logic_ms; st_sec_vbl+=vbl_ms; st_sec_wait+=wait_ms;
+
+	if(stuttermeter==0)
+	{
+		if(stutter_overlay_stats!=NULL){DEBUG_delete_overlay(stutter_overlay_stats);stutter_overlay_stats=NULL;}
+		if(stutter_overlay_spark!=NULL){DEBUG_delete_overlay(stutter_overlay_spark);stutter_overlay_spark=NULL;}
+		return;
+	}
+
+	Uint32 now=SDL_GetTicks();
+	if(st_sec_start==0)st_sec_start=now;
+	if(now-st_sec_start>=1000)
+	{
+		st_sec_start=now;
+		float avg=st_sec_n>0?(float)(st_sec_sum/st_sec_n):0.0f;
+		float avg_l=st_sec_n>0?(float)(st_sec_logic/st_sec_n):0.0f;
+		float avg_v=st_sec_n>0?(float)(st_sec_vbl/st_sec_n):0.0f;
+		float avg_w=st_sec_n>0?(float)(st_sec_wait/st_sec_n):0.0f;
+
+		char stats[256];
+		sprintf(stats,"stut avg:%.1fms worst:%.1fms hitch:%d/%d | L:%.1f V:%.1f W:%.1f",
+			avg,st_sec_worst,st_sec_hitches,stutter_hitch_total,avg_l,avg_v,avg_w);
+
+		char spark[64];
+		int n=stutter_ring_n<60?stutter_ring_n:60;
+		int start=(stutter_ring_i-n+STUTTER_RING)%STUTTER_RING;
+		int i=0;
+		for(i=0;i<n;i++)spark[i]=stutter_sparkline_char(stutter_ring[(start+i)%STUTTER_RING]);
+		spark[n]='\0';
+
+		if(stutter_overlay_stats==NULL)stutter_overlay_stats=DEBUG_make_overlay(stats,8,8);
+		else DEBUG_update_overlay(stutter_overlay_stats,stats,8,8);
+		if(stutter_overlay_spark==NULL)stutter_overlay_spark=DEBUG_make_overlay(spark,8,20);
+		else DEBUG_update_overlay(stutter_overlay_spark,spark,8,20);
+
+		st_sec_worst=0.0f; st_sec_sum=0.0; st_sec_n=0; st_sec_hitches=0;
+		st_sec_logic=0.0; st_sec_vbl=0.0; st_sec_wait=0.0;
+	}
+}
