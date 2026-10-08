@@ -44,7 +44,7 @@ bool GLOBAL_hq2x_is_on=0;
 
 int HARDWARE_brightness=0;
 int vsync=1;
-int fpsmeter=1;
+int fpsmeter=0;//PORT: default off for first-run builds
 
 
 //-----------------------------
