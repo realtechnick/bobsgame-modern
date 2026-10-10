@@ -95,3 +95,9 @@ See `BOB_PATTERNS.md` for documented patterns from the source.
 ## License
 
 Original code by Robert Pelloni (2003-2009). Treated as freeware/abandonware for preservation purposes. This port is for personal/preservation use.
+
+## Continuation
+
+This repo is a faithful 1:1 preservation port of Robert Pelloni's recovered source — port-fidelity fixes only.
+The build working toward a finished, fully playable game lives in **[realtechnick/bobsgame-continued](https://github.com/realtechnick/bobsgame-continued)**,
+forked from the `preservation/1.0` tag. New content there is Nick's own, never presented as Bob's.
