@@ -155,6 +155,10 @@ void create_needed_metatiles(int bg)
 void delete_unneeded_metatiles()
 {//==========================================================================================================================
 
+	//PORT: disabled for preload experiment. Metatiles are preloaded for the
+	//entire map at load time and kept cached; deleting them would reintroduce
+	//streaming hitches. Re-enable by removing this early return.
+	return;
 
 	//metatiles should always be created starting at 0,0, in chunks of 512x512.
 	//so walking around, when the camera moves,
@@ -259,6 +263,44 @@ void HARDWARE_delete_all_bg_data()//HARDWARE_ResetBgSys
 }
 
 //==========================================================================================================================
+void preload_all_metatiles()
+//PORT: Preload entire map's metatiles upfront to eliminate streaming hitches.
+//Instead of creating 128x128 chunks on-demand as the camera moves (each
+//causing a texture upload hitch), create them all at map load. Memory cost
+//is trivial (town: 62x43 tiles = ~48 metatiles/layer, cache holds 70).
+{//==========================================================================================================================
+
+	if(metatile_map==1)
+	{
+		int map_w_px=HARDWARE_map_width_tiles*8;
+		int map_h_px=HARDWARE_map_height_tiles*8;
+		int bg=0;
+		for(bg=0;bg<4;bg++)
+		{
+			char* fname=NULL;
+			if(bg==0)fname=HARDWARE_map_0_filename;
+			if(bg==1)fname=HARDWARE_map_1_filename;
+			if(bg==2)fname=HARDWARE_map_2_filename;
+			if(bg==3)fname=HARDWARE_map_3_filename;
+			if(fname==NULL)continue;
+			int x=0,y=0;
+			for(y=0;y<map_h_px;y+=METATILE_SIZE)
+				for(x=0;x<map_w_px;x+=METATILE_SIZE)
+				{
+					//check if already exists
+					int s=0; bool exists=0;
+					for(s=0;s<METATILES_POSSIBLE;s++)
+						if(metatile_used[bg*METATILES_POSSIBLE+s]==1)
+							if(metatile_x[bg*METATILES_POSSIBLE+s]==x&&metatile_y[bg*METATILES_POSSIBLE+s]==y){exists=1;break;}
+					if(!exists)
+						HARDWARE_load_metatile(bg,map_w_px,map_h_px,x,y,fname);
+				}
+		}
+		fprintf(stderr,"Preloaded all metatiles for map %dx%d px\n",map_w_px,map_h_px);
+	}
+}
+
+//==========================================================================================================================
 void HARDWARE_reload_bg_textures()
 {//==========================================================================================================================
 
@@ -274,9 +316,8 @@ void HARDWARE_reload_bg_textures()
 		//delete all metatiles so they get redrawn
 		delete_all_metatiles();
 
-		int c=0;
-		for(c=0;c<4;c++)
-		create_needed_metatiles(c);
+		//PORT: preload entire map upfront (no streaming hitches)
+		preload_all_metatiles();
 	}
 
 }
